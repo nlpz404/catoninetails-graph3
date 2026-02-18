@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Análisis Musical: Cat O' Nine Tails, John Zorn. Por Nicolás López.</title>
+    <title>Análisis Musical: Red Zorn</title>
     <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <style>
         body { font-family: sans-serif; margin: 20px; background-color: #f5f5f5; }
@@ -23,96 +23,111 @@
     <div id="mynetwork"></div>
 
     <script type="text/javascript">
-        let network = null;
-        let allNodes = null;
-        let allEdges = null;
-        let nodesView = null;
+        var network = null;
+        var allNodes = null;
+        var allEdges = null;
+        var nodesView = null;
 
-fetch('catoninetails-graph3.json')
-            .then(res => res.json())
-            .then(data => {
+        // Cargamos el archivo JSON
+        fetch('catoninetails-graph3.json')
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
                 
-                const processedNodes = data.nodes.map(n => {
-                    const attrs = n.attributes; 
+                // 1. PROCESAR NODOS
+                var processedNodes = data.nodes.map(function(n) {
+                    var a = n.attributes || {}; // Acceso seguro a atributos
+                    
                     return {
-                        id: n.key,
-                        label: attrs.label || n.key,
-                        x: Number(attrs.x), 
-                        // CORRECCIÓN EJE Y: Invertimos el signo para que coincida con Gephi
-                        y: Number(attrs.y) * -1, 
-                        color: attrs.color || '#97C2FC',
-                        size: attrs.size ? attrs.size : 10,
-                        // Forzamos minúsculas para evitar errores de matching
-                        dimension: attrs.dimension ? attrs.dimension.toLowerCase() : 'sin dimensión',
-                        nivel: attrs.nivel ? attrs.nivel.toLowerCase() : ''
+                        id: n.key, // Gephi usa 'key', Vis.js necesita 'id'
+                        label: a.label || n.key,
+                        x: Number(a.x) || 0,
+                        // INVERSIÓN EJE Y: Para que no salga cabeza abajo
+                        y: (Number(a.y) || 0) * -1,
+                        color: a.color || '#97C2FC',
+                        size: Number(a.size) || 10,
+                        // Guardamos metadata para el filtro
+                        dimension: a.dimension ? String(a.dimension).toLowerCase() : 'sin dimensión',
+                        nivel: a.nivel ? String(a.nivel).toLowerCase() : ''
                     };
                 });
 
-                const processedEdges = data.edges.map(e => ({
-                    id: e.key,
-                    from: e.source,
-                    to: e.target,
-                    color: { color: '#848484', opacity: 0.3 }
-                }));
+                // 2. PROCESAR ARISTAS (EDGES)
+                var processedEdges = data.edges.map(function(e) {
+                    return {
+                        id: e.key,
+                        from: e.source, // Gephi usa 'source', Vis.js necesita 'from'
+                        to: e.target,   // Gephi usa 'target', Vis.js necesita 'to'
+                        color: { color: '#848484', opacity: 0.3 },
+                        arrows: 'to'
+                    };
+                });
 
-                // Llenar el selector con valores únicos y limpios
-                const dimensions = [...new Set(processedNodes.map(n => n.dimension).filter(d => d && d !== 'sin dimensión'))];
-                const select = document.getElementById('dimensionFilter');
-                
-                // Limpiamos el select por si acaso
-                select.innerHTML = '<option value="all">Mostrar Todo</option>';
-                
-                dimensions.sort().forEach(dim => {
-                    const opt = document.createElement('option');
+                // 3. LLENAR EL FILTRO DE DIMENSIONES
+                var select = document.getElementById('dimensionFilter');
+                var uniqueDims = {};
+                processedNodes.forEach(function(n) {
+                    if (n.dimension && n.dimension !== 'sin dimensión' && n.nivel !== 'frase') {
+                        uniqueDims[n.dimension] = true;
+                    }
+                });
+
+                Object.keys(uniqueDims).sort().forEach(function(dim) {
+                    var opt = document.createElement('option');
                     opt.value = dim;
-                    opt.innerHTML = dim.toUpperCase(); // Lo mostramos en mayúsculas para estética
+                    opt.innerHTML = dim.toUpperCase();
                     select.appendChild(opt);
                 });
 
+                // 4. CONFIGURAR LA RED
                 allNodes = new vis.DataSet(processedNodes);
                 allEdges = new vis.DataSet(processedEdges);
                 nodesView = new vis.DataView(allNodes);
 
-                const container = document.getElementById('mynetwork');
-                const visData = { nodes: nodesView, edges: allEdges };
+                var container = document.getElementById('mynetwork');
+                var visData = { 
+                    nodes: nodesView, 
+                    edges: allEdges 
+                };
 
-                const options = {
+                var options = {
                     nodes: {
                         shape: 'dot',
                         font: { size: 14, strokeWidth: 4, strokeColor: '#ffffff' }
                     },
                     edges: {
-                        arrows: { to: { enabled: true, scaleFactor: 0.4 } },
-                        smooth: { type: 'continuous' } 
+                        smooth: { type: 'continuous' }
                     },
-                    physics: { enabled: false },
-                    interaction: { hover: true, navigationButtons: true }
+                    physics: {
+                        enabled: false // Mantiene tus posiciones manuales de Gephi
+                    },
+                    interaction: {
+                        hover: true,
+                        navigationButtons: true
+                    }
                 };
 
                 network = new vis.Network(container, visData, options);
 
-                // FILTRO CORREGIDO
-                select.addEventListener('change', (e) => {
-                    const val = e.target.value.toLowerCase();
+                // 5. LÓGICA DEL FILTRO
+                select.addEventListener('change', function(e) {
+                    var val = e.target.value.toLowerCase();
                     
                     if (val === 'all') {
                         nodesView.setFilter(null);
                     } else {
-                        nodesView.setFilter((node) => {
-                            // REGLA: Mostrar si el nodo pertenece a la dimensión
-                            // O si el nodo es de nivel "frase" (para ver la relación)
-                            // O si es el nodo principal de la dimensión (el nodo "padre")
+                        nodesView.setFilter(function(node) {
+                            // MOSTRAR si es la dimensión elegida O si es una FRASE
+                            // (el nivel 'frase' permite ver el eje central siempre)
                             return node.dimension === val || node.nivel === 'frase';
                         });
                     }
                 });
-            });
-        
-            .catch(err => {
-                console.error("Error completo:", err);
+
+            })
+            .catch(function(err) {
+                console.error("Error cargando el JSON:", err);
                 document.getElementById('mynetwork').innerHTML = "Error: " + err.message;
             });
     </script>
 </body>
 </html>
-
