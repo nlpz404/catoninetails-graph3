@@ -33,32 +33,55 @@
             .then(function(res) { return res.json(); })
             .then(function(data) {
                 
-                // 1. PROCESAR NODOS
+                // 1. PRIMERO: Procesamos los nodos y creamos un "Diccionario de Colores"
+                var colorLookup = {};
+                var nivelLookup = {};
+
                 var processedNodes = data.nodes.map(function(n) {
-                    var a = n.attributes || {}; // Acceso seguro a atributos
+                    var a = n.attributes || {};
+                    var color = a.color || '#97C2FC';
+                    var nivel = a.nivel ? String(a.nivel).toLowerCase() : '';
                     
+                    // Guardamos en el diccionario para usarlo luego en las aristas
+                    colorLookup[n.key] = color;
+                    nivelLookup[n.key] = nivel;
+
                     return {
-                        id: n.key, // Gephi usa 'key', Vis.js necesita 'id'
+                        id: n.key,
                         label: a.label || n.key,
                         x: Number(a.x) || 0,
-                        // INVERSIÓN EJE Y: Para que no salga cabeza abajo
                         y: (Number(a.y) || 0) * -1,
-                        color: a.color || '#97C2FC',
+                        color: color,
                         size: Number(a.size) || 10,
-                        // Guardamos metadata para el filtro
                         dimension: a.dimension ? String(a.dimension).toLowerCase() : 'sin dimensión',
-                        nivel: a.nivel ? String(a.nivel).toLowerCase() : ''
+                        nivel: nivel
                     };
                 });
 
-                // 2. PROCESAR ARISTAS (EDGES) - Sin color fijo para permitir herencia
+                // 2. SEGUNDO: Procesamos las aristas con lógica de color inteligente
                 var processedEdges = data.edges.map(function(e) {
+                    var colorSource = colorLookup[e.source];
+                    var colorTarget = colorLookup[e.target];
+                    var nivelSource = nivelLookup[e.source];
+                    var nivelTarget = nivelLookup[e.target];
+
+                    // LÓGICA: Si uno de los dos es "frase", usamos el color del OTRO nodo
+                    // (que será el subtipo o la dimensión).
+                    var finalColor = colorSource; // Por defecto el de origen
+                    
+                    if (nivelSource === 'frase' && nivelTarget !== 'frase') {
+                        finalColor = colorTarget;
+                    }
+
                     return {
                         id: e.key,
-                        from: e.source, 
+                        from: e.source,
                         to: e.target,
-                        // No definimos color aquí para que lo tome de las opciones globales
-                        // o lo herede de los nodos.
+                        color: { 
+                            color: finalColor, 
+                            opacity: 0.7 
+                        },
+                        arrows: { to: { enabled: true, scaleFactor: 1.2 } }
                     };
                 });
 
@@ -78,7 +101,7 @@
                     select.appendChild(opt);
                 });
 
-                // 4. CONFIGURAR LA RED CON FILTRO DINÁMICO
+                // 4. CONFIGURAR LA RED
                 allNodes = new vis.DataSet(processedNodes);
                 allEdges = new vis.DataSet(processedEdges);
                 
@@ -106,40 +129,19 @@
                     edges: allEdges 
                 };
 
+                // (Importante: En las OPTIONS, quita el 'inherit: from' para que use el color manual)
                 var options = {
                     nodes: {
                         shape: 'dot',
-                        font: { 
-                            size: 14, 
-                            strokeWidth: 4, 
-                            strokeColor: '#ffffff' 
-                        }
+                        font: { size: 14, strokeWidth: 4, strokeColor: '#ffffff' }
                     },
                     edges: {
-                        width: 2, // Hace la línea más gruesa
-                        color: {
-                            inherit: 'from', // HERENCIA: Toma el color del nodo origen
-                            opacity: 0.8      // OPACIDAD: Mucho más visible que el 0.3 anterior
-                        },
-                        arrows: {
-                            to: { 
-                                enabled: true, 
-                                scaleFactor: 1.2 // Flechas más grandes y fáciles de ver
-                            }
-                        },
-                        smooth: { 
-                            type: 'continuous',
-                            roundness: 0.5 
-                        }
+                        width: 2,
+                        // Quitamos inherit: 'from' aquí porque ya lo definimos arriba
+                        smooth: { type: 'continuous' }
                     },
-                    physics: {
-                        enabled: false 
-                    },
-                    interaction: {
-                        hover: true,
-                        navigationButtons: true,
-                        multiselect: true
-                    }
+                    physics: { enabled: false },
+                    interaction: { hover: true, navigationButtons: true }
                 };
 
                 network = new vis.Network(container, visData, options);
@@ -170,5 +172,6 @@
     </script>
 </body>
 </html>
+
 
 
