@@ -78,10 +78,27 @@
                     select.appendChild(opt);
                 });
 
-                // 4. CONFIGURAR LA RED
+                // 4. CONFIGURAR LA RED CON FILTRO DINÁMICO
                 allNodes = new vis.DataSet(processedNodes);
                 allEdges = new vis.DataSet(processedEdges);
-                nodesView = new vis.DataView(allNodes);
+                
+                // Variable global para guardar el filtro actual
+                var filtroActual = 'all';
+
+                // Inicializamos el DataView con la lógica de filtrado
+                nodesView = new vis.DataView(allNodes, {
+                    filter: function (node) {
+                        if (filtroActual === 'all') return true;
+                        
+                        // REGLA DE ORO: 
+                        // Mostramos si coincide la dimensión 
+                        // O si el nivel es exactamente "frase"
+                        var matchDimension = (node.dimension === filtroActual);
+                        var esFrase = (node.nivel === 'frase');
+                        
+                        return matchDimension || esFrase;
+                    }
+                });
 
                 var container = document.getElementById('mynetwork');
                 var visData = { 
@@ -95,10 +112,11 @@
                         font: { size: 14, strokeWidth: 4, strokeColor: '#ffffff' }
                     },
                     edges: {
-                        smooth: { type: 'continuous' }
+                        smooth: { type: 'continuous' },
+                        color: { inherit: 'from', opacity: 0.3 }
                     },
                     physics: {
-                        enabled: false // Mantiene tus posiciones manuales de Gephi
+                        enabled: false 
                     },
                     interaction: {
                         hover: true,
@@ -108,18 +126,21 @@
 
                 network = new vis.Network(container, visData, options);
 
-                // 5. LÓGICA DEL FILTRO
+                // 5. LÓGICA DEL FILTRO ACTUALIZADA
                 select.addEventListener('change', function(e) {
-                    var val = e.target.value.toLowerCase();
+                    // Actualizamos la variable global
+                    filtroActual = e.target.value.toLowerCase();
                     
-                    if (val === 'all') {
-                        nodesView.setFilter(null);
-                    } else {
-                        nodesView.setFilter(function(node) {
-                            // MOSTRAR si es la dimensión elegida O si es una FRASE
-                            // (el nivel 'frase' permite ver el eje central siempre)
-                            return node.dimension === val || node.nivel === 'frase';
-                        });
+                    // IMPORTANTE: Esto obliga al DataView a volver a ejecutar la función filter
+                    nodesView.refresh(); 
+                });
+
+                // BONUS: Resaltar conexiones al hacer clic
+                network.on("click", function (params) {
+                    if (params.nodes.length > 0) {
+                        var nodeId = params.nodes[0];
+                        // Aquí podrías añadir lógica para iluminar vecinos
+                        console.log("Nodo seleccionado:", nodeId);
                     }
                 });
 
@@ -131,3 +152,4 @@
     </script>
 </body>
 </html>
+
