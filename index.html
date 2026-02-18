@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Análisis Musical: Red Zorn</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <style>
+        #mynetwork { width: 100%; height: 800px; border: 1px solid lightgray; }
+    </style>
+</head>
+<body>
+    <h2>Explorador de Ontología Musical</h2>
+    <div id="mynetwork"></div>
+
+    <script type="text/javascript">
+        // Aquí cargarías tu archivo JSON exportado de Gephi
+        fetch('catoninetails-graph3.json')
+            .then(res => res.json())
+            .then(data => {
+                const container = document.getElementById('mynetwork');
+                
+                // Mapear los datos de Gephi al formato de Vis.js
+                const visData = {
+                    nodes: new vis.DataSet(data.nodes.map(n => ({
+                        id: n.id,
+                        label: n.label,
+                        color: n.color, // Mantiene los colores que elegiste en Gephi
+                        size: n.size * 2 // Ajusta el tamaño
+                    }))),
+                    edges: new vis.DataSet(data.edges)
+                };
+
+                const options = {
+                    nodes: { shape: 'dot' },
+                    physics: {
+                        forceAtlas2Based: {
+                            gravitationalConstant: -50,
+                            centralGravity: 0.01,
+                        },
+                        solver: 'forceAtlas2Based'
+                    },
+                    interaction: { hover: true, navigationButtons: true }
+                };
+
+                new vis.Network(container, visData, options);
+            });
+    </script>
+</body>
+</html>
