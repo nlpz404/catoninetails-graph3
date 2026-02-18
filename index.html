@@ -178,78 +178,94 @@
         // --- LÓGICA DE RESALTADO ---
 
         // Función para actualizar el estilo visual basado en la selección o hover
-        function actualizarResaltado(nodosActivos) {
-            var tieneSeleccion = nodosActivos.length > 0;
+
+        function actualizarResaltado(nodosSeleccionados) {
+            var tieneSeleccion = nodosSeleccionados.length > 0;
         
-            // 1. Obtener todos los vecinos de los nodos activos
-            var vecinos = new Set();
-            var aristasAResaltar = new Set();
+            // 1. Identificar quiénes se quedan (nodos activos + sus vecinos directos)
+            var nodosVisibles = new Set();
+            var aristasVisibles = new Set();
         
-            nodosActivos.forEach(function(nodeId) {
-                vecinos.add(nodeId);
-                var conectadas = network.getConnectedNodes(nodeId);
-                conectadas.forEach(v => vecinos.add(v));
-                
-                var edges = network.getConnectedEdges(nodeId);
-                edges.forEach(e => aristasAResaltar.add(e));
-            });
+            if (tieneSeleccion) {
+                nodosSeleccionados.forEach(function(nodeId) {
+                    nodosVisibles.add(nodeId);
+                    
+                    // Vecinos
+                    var vecinos = network.getConnectedNodes(nodeId);
+                    vecinos.forEach(function(v) { nodosVisibles.add(v); });
+                    
+                    // Aristas conectadas
+                    var edges = network.getConnectedEdges(nodeId);
+                    edges.forEach(function(e) { aristasVisibles.add(e); });
+                });
+            }
         
-            // 2. Actualizar Nodos
-            var actualizacionesNodos = allNodes.get().map(function(node) {
+            // 2. Aplicar cambios a los NODOS
+            var updatesNodos = allNodes.get().map(function(node) {
                 if (!tieneSeleccion) {
-                    return { id: node.id, color: { opacity: 1 }, font: { color: '#000000' } };
+                    // Estado original: todo brillante
+                    return { 
+                        id: node.id, 
+                        color: { opacity: 1.0 }, 
+                        font: { color: '#000000', opacity: 1.0 } 
+                    };
                 }
-                var esVecino = vecinos.has(node.id);
+                
+                var esVisible = nodosVisibles.has(node.id);
                 return {
                     id: node.id,
-                    color: { opacity: esVecino ? 1 : 0.1 },
-                    font: { color: esVecino ? '#000000' : 'rgba(0,0,0,0.1)' }
+                    color: { opacity: esVisible ? 1.0 : 0.1 }, // Gran contraste
+                    font: { 
+                        // El texto también se desvanece
+                        color: esVisible ? '#000000' : 'rgba(0,0,0,0.1)' 
+                    }
                 };
             });
-            allNodes.update(actualizacionesNodos);
+            allNodes.update(updatesNodos);
         
-            // 3. Actualizar Aristas
-            var actualizacionesAristas = allEdges.get().map(function(edge) {
+            // 3. Aplicar cambios a las ARISTAS
+            var updatesAristas = allEdges.get().map(function(edge) {
                 if (!tieneSeleccion) {
                     return { id: edge.id, color: { opacity: 0.7 } };
                 }
-                var esRelevante = aristasAResaltar.has(edge.id);
+                
+                var esVisible = aristasVisibles.has(edge.id);
                 return {
                     id: edge.id,
-                    color: { opacity: esRelevante ? 1 : 0.05 }
+                    color: { 
+                        opacity: esVisible ? 1.0 : 0.02 // Casi invisible si no está conectada
+                    }
                 };
             });
-            allEdges.update(actualizacionesAristas);
+            allEdges.update(updatesAristas);
         }
         
-        // EVENTO: Hover (pasar el mouse)
+        // Re-vinculamos los eventos para asegurar consistencia
         network.on("hoverNode", function (params) {
-            // Si no hay nada seleccionado con click, resaltamos el hover
             if (network.getSelectedNodes().length === 0) {
                 actualizarResaltado([params.node]);
             }
         });
         
-        // EVENTO: Blur (quitar el mouse)
         network.on("blurNode", function (params) {
             if (network.getSelectedNodes().length === 0) {
                 actualizarResaltado([]);
             }
         });
         
-        // EVENTO: Click y Multi-selección (Ctrl+Click)
         network.on("click", function (params) {
-            // params.nodes contiene los IDs de los nodos seleccionados (uno o varios)
+            // Al hacer click, Vis.js ya gestiona la selección múltiple en params.nodes
             actualizarResaltado(params.nodes);
         });
         
-        // EVENTO: Deseleccionar al clickear el fondo
+        // Este evento es clave: cuando clickeas el fondo vacío
         network.on("deselectNode", function (params) {
             actualizarResaltado(network.getSelectedNodes());
         });
     </script>
 </body>
 </html>
+
 
 
 
