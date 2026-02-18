@@ -31,38 +31,55 @@
         fetch('catoninetails-graph3.json')
             .then(res => res.json())
             .then(data => {
-                // 1. Mapeo inteligente de datos
-                // Gephi suele exportar atributos dentro de 'attributes' o en la raíz
+                
+                // 1. CORRECCIÓN DE NODOS
                 const processedNodes = data.nodes.map(n => {
+                    // Accedemos a n.attributes porque tu JSON lo guarda todo ahí
+                    const attrs = n.attributes; 
+                    
                     return {
-                        id: n.id,
-                        label: n.label || n.attributes?.Label || n.id,
-                        // Usamos las coordenadas de Gephi para mantener tu eje vertical
-                        x: n.x || undefined,
-                        y: n.y || undefined,
-                        // Color: Priorizamos el color de Gephi, si no, gris
-                        color: n.color || n.attributes?.color || '#97C2FC',
-                        size: (n.size || n.attributes?.size || 10) * 1.5,
-                        // Guardamos la dimensión para el filtro
-                        dimension: n.attributes?.Dimension || 'Sin Dimensión'
+                        id: n.key,  // CRÍTICO: Mapeamos "key" (Gephi) a "id" (Vis.js)
+                        label: attrs.label || n.key,
+                        
+                        // Coordenadas: Las tomamos directamente de attributes
+                        x: attrs.x, 
+                        y: attrs.y, 
+                        
+                        color: attrs.color || '#97C2FC',
+                        size: attrs.size ? attrs.size : 10,
+                        
+                        // Guardamos datos extra para el filtro
+                        dimension: attrs.dimension || 'Sin Dimensión',
+                        nivel: attrs.nivel // Guardamos si es frase, subtipo, etc.
                     };
                 });
 
-                // 2. Llenar el selector de dimensiones automáticamente
-                const dimensions = [...new Set(processedNodes.map(n => n.dimension))];
+                // 2. CORRECCIÓN DE ARISTAS (EDGES)
+                // Vis.js ignora "source/target", necesita "from/to"
+                const processedEdges = data.edges.map(e => ({
+                    id: e.key,
+                    from: e.source, // CRÍTICO: source -> from
+                    to: e.target,   // CRÍTICO: target -> to
+                    color: { color: '#848484', opacity: 0.6 } // Color gris suave para las líneas
+                }));
+
+                // 3. Llenar el selector
+                // Filtramos dimensiones únicas que no sean undefined
+                const dimensions = [...new Set(processedNodes.map(n => n.dimension).filter(d => d))];
                 const select = document.getElementById('dimensionFilter');
-                dimensions.forEach(dim => {
-                    const opt = document.createElement('option');
-                    opt.value = dim;
-                    opt.innerHTML = dim;
-                    select.appendChild(opt);
+                dimensions.sort().forEach(dim => {
+                    // Evitamos agregar la dimension "falsa" de las frases si existe
+                    if(dim !== '_Frase_Master') {
+                        const opt = document.createElement('option');
+                        opt.value = dim;
+                        opt.innerHTML = dim.charAt(0).toUpperCase() + dim.slice(1); // Capitalizar
+                        select.appendChild(opt);
+                    }
                 });
 
-                // 3. Configurar Vis.js
+                // 4. Inicializar Vis.js
                 allNodes = new vis.DataSet(processedNodes);
-                allEdges = new vis.DataSet(data.edges);
-                
-                // NodesView nos permite filtrar sin borrar datos
+                allEdges = new vis.DataSet(processedEdges);
                 nodesView = new vis.DataView(allNodes);
 
                 const container = document.getElementById('mynetwork');
@@ -71,42 +88,44 @@
                 const options = {
                     nodes: {
                         shape: 'dot',
-                        font: { size: 14, strokeWidth: 2, strokeColor: '#ffffff' }
+                        font: { size: 14, strokeWidth: 4, strokeColor: '#ffffff' } // Borde blanco en texto para legibilidad
                     },
                     edges: {
                         arrows: { to: { enabled: true, scaleFactor: 0.5 } },
-                        color: { inherit: 'from', opacity: 0.4 },
-                        smooth: { type: 'continuous' } // Líneas suaves para evitar el "espagueti"
+                        smooth: { type: 'continuous' } 
                     },
                     physics: {
-                        enabled: false // IMPORTANTE: False para respetar tu diseño manual de Gephi
+                        enabled: false // CRÍTICO: Mantiene tus posiciones manuales fijas
                     },
                     interaction: {
                         hover: true,
                         navigationButtons: true,
-                        tooltipDelay: 200
+                        zoomView: true
                     }
                 };
 
                 network = new vis.Network(container, visData, options);
 
-                // 4. Lógica del Filtro
+                // 5. Lógica del Filtro
                 select.addEventListener('change', (e) => {
                     const val = e.target.value;
                     if (val === 'all') {
                         nodesView.setFilter(null);
                     } else {
                         nodesView.setFilter((node) => {
-                            // Mostramos el nodo si es de esa dimensión O si es una "frase" 
-                            // (para ver la relación entre dimensión y estructura temporal)
-                            return node.dimension === val || node.dimension === '_Frase_Master';
+                            // Muestra el nodo si coincide con la dimensión seleccionada
+                            // O SI el nivel es "frase" (para mantener el eje central visible siempre)
+                            // O SI la dimensión es la master de frases
+                            return node.dimension === val || 
+                                   node.nivel === 'frase' || 
+                                   node.dimension === '_Frase_Master';
                         });
                     }
                 });
             })
             .catch(err => {
-                console.error("Error cargando el JSON:", err);
-                document.getElementById('mynetwork').innerHTML = "Error al cargar el archivo JSON. Revisa la consola (F12).";
+                console.error("Error completo:", err);
+                document.getElementById('mynetwork').innerHTML = "Error: " + err.message;
             });
     </script>
 </body>
