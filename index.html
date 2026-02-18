@@ -28,56 +28,47 @@
         let allEdges = null;
         let nodesView = null;
 
-        fetch('catoninetails-graph3.json')
+fetch('catoninetails-graph3.json')
             .then(res => res.json())
             .then(data => {
                 
-                // 1. CORRECCIÓN DE NODOS
                 const processedNodes = data.nodes.map(n => {
-                    // Accedemos a n.attributes porque tu JSON lo guarda todo ahí
                     const attrs = n.attributes; 
-                    
                     return {
-                        id: n.key,  // CRÍTICO: Mapeamos "key" (Gephi) a "id" (Vis.js)
+                        id: n.key,
                         label: attrs.label || n.key,
-                        
-                        // Coordenadas: Las tomamos directamente de attributes
-                        x: attrs.x, 
-                        y: attrs.y, 
-                        
+                        x: Number(attrs.x), 
+                        // CORRECCIÓN EJE Y: Invertimos el signo para que coincida con Gephi
+                        y: Number(attrs.y) * -1, 
                         color: attrs.color || '#97C2FC',
                         size: attrs.size ? attrs.size : 10,
-                        
-                        // Guardamos datos extra para el filtro
-                        dimension: attrs.dimension || 'Sin Dimensión',
-                        nivel: attrs.nivel // Guardamos si es frase, subtipo, etc.
+                        // Forzamos minúsculas para evitar errores de matching
+                        dimension: attrs.dimension ? attrs.dimension.toLowerCase() : 'sin dimensión',
+                        nivel: attrs.nivel ? attrs.nivel.toLowerCase() : ''
                     };
                 });
 
-                // 2. CORRECCIÓN DE ARISTAS (EDGES)
-                // Vis.js ignora "source/target", necesita "from/to"
                 const processedEdges = data.edges.map(e => ({
                     id: e.key,
-                    from: e.source, // CRÍTICO: source -> from
-                    to: e.target,   // CRÍTICO: target -> to
-                    color: { color: '#848484', opacity: 0.6 } // Color gris suave para las líneas
+                    from: e.source,
+                    to: e.target,
+                    color: { color: '#848484', opacity: 0.3 }
                 }));
 
-                // 3. Llenar el selector
-                // Filtramos dimensiones únicas que no sean undefined
-                const dimensions = [...new Set(processedNodes.map(n => n.dimension).filter(d => d))];
+                // Llenar el selector con valores únicos y limpios
+                const dimensions = [...new Set(processedNodes.map(n => n.dimension).filter(d => d && d !== 'sin dimensión'))];
                 const select = document.getElementById('dimensionFilter');
+                
+                // Limpiamos el select por si acaso
+                select.innerHTML = '<option value="all">Mostrar Todo</option>';
+                
                 dimensions.sort().forEach(dim => {
-                    // Evitamos agregar la dimension "falsa" de las frases si existe
-                    if(dim !== '_Frase_Master') {
-                        const opt = document.createElement('option');
-                        opt.value = dim;
-                        opt.innerHTML = dim.charAt(0).toUpperCase() + dim.slice(1); // Capitalizar
-                        select.appendChild(opt);
-                    }
+                    const opt = document.createElement('option');
+                    opt.value = dim;
+                    opt.innerHTML = dim.toUpperCase(); // Lo mostramos en mayúsculas para estética
+                    select.appendChild(opt);
                 });
 
-                // 4. Inicializar Vis.js
                 allNodes = new vis.DataSet(processedNodes);
                 allEdges = new vis.DataSet(processedEdges);
                 nodesView = new vis.DataView(allNodes);
@@ -88,41 +79,35 @@
                 const options = {
                     nodes: {
                         shape: 'dot',
-                        font: { size: 14, strokeWidth: 4, strokeColor: '#ffffff' } // Borde blanco en texto para legibilidad
+                        font: { size: 14, strokeWidth: 4, strokeColor: '#ffffff' }
                     },
                     edges: {
-                        arrows: { to: { enabled: true, scaleFactor: 0.5 } },
+                        arrows: { to: { enabled: true, scaleFactor: 0.4 } },
                         smooth: { type: 'continuous' } 
                     },
-                    physics: {
-                        enabled: false // CRÍTICO: Mantiene tus posiciones manuales fijas
-                    },
-                    interaction: {
-                        hover: true,
-                        navigationButtons: true,
-                        zoomView: true
-                    }
+                    physics: { enabled: false },
+                    interaction: { hover: true, navigationButtons: true }
                 };
 
                 network = new vis.Network(container, visData, options);
 
-                // 5. Lógica del Filtro
+                // FILTRO CORREGIDO
                 select.addEventListener('change', (e) => {
-                    const val = e.target.value;
+                    const val = e.target.value.toLowerCase();
+                    
                     if (val === 'all') {
                         nodesView.setFilter(null);
                     } else {
                         nodesView.setFilter((node) => {
-                            // Muestra el nodo si coincide con la dimensión seleccionada
-                            // O SI el nivel es "frase" (para mantener el eje central visible siempre)
-                            // O SI la dimensión es la master de frases
-                            return node.dimension === val || 
-                                   node.nivel === 'frase' || 
-                                   node.dimension === '_Frase_Master';
+                            // REGLA: Mostrar si el nodo pertenece a la dimensión
+                            // O si el nodo es de nivel "frase" (para ver la relación)
+                            // O si es el nodo principal de la dimensión (el nodo "padre")
+                            return node.dimension === val || node.nivel === 'frase';
                         });
                     }
                 });
-            })
+            });
+        
             .catch(err => {
                 console.error("Error completo:", err);
                 document.getElementById('mynetwork').innerHTML = "Error: " + err.message;
@@ -130,3 +115,4 @@
     </script>
 </body>
 </html>
+
