@@ -133,15 +133,20 @@
                 var options = {
                     nodes: {
                         shape: 'dot',
-                        font: { size: 14, strokeWidth: 4, strokeColor: '#ffffff' }
+                        font: { size: 14, strokeWidth: 4, strokeColor: '#ffffff' },
+                        borderWidth: 2
                     },
                     edges: {
                         width: 2,
-                        // Quitamos inherit: 'from' aquí porque ya lo definimos arriba
                         smooth: { type: 'continuous' }
                     },
                     physics: { enabled: false },
-                    interaction: { hover: true, navigationButtons: true }
+                    interaction: {
+                        hover: true,
+                        navigationButtons: true,
+                        multiselect: true, // Habilita Ctrl+Click nativo
+                        selectConnectedEdges: false // Manejaremos esto manualmente para mejor control
+                    }
                 };
 
                 network = new vis.Network(container, visData, options);
@@ -169,9 +174,83 @@
                 console.error("Error cargando el JSON:", err);
                 document.getElementById('mynetwork').innerHTML = "Error: " + err.message;
             });
+
+        // --- LÓGICA DE RESALTADO ---
+
+        // Función para actualizar el estilo visual basado en la selección o hover
+        function actualizarResaltado(nodosActivos) {
+            var tieneSeleccion = nodosActivos.length > 0;
+        
+            // 1. Obtener todos los vecinos de los nodos activos
+            var vecinos = new Set();
+            var aristasAResaltar = new Set();
+        
+            nodosActivos.forEach(function(nodeId) {
+                vecinos.add(nodeId);
+                var conectadas = network.getConnectedNodes(nodeId);
+                conectadas.forEach(v => vecinos.add(v));
+                
+                var edges = network.getConnectedEdges(nodeId);
+                edges.forEach(e => aristasAResaltar.add(e));
+            });
+        
+            // 2. Actualizar Nodos
+            var actualizacionesNodos = allNodes.get().map(function(node) {
+                if (!tieneSeleccion) {
+                    return { id: node.id, color: { opacity: 1 }, font: { color: '#000000' } };
+                }
+                var esVecino = vecinos.has(node.id);
+                return {
+                    id: node.id,
+                    color: { opacity: esVecino ? 1 : 0.1 },
+                    font: { color: esVecino ? '#000000' : 'rgba(0,0,0,0.1)' }
+                };
+            });
+            allNodes.update(actualizacionesNodos);
+        
+            // 3. Actualizar Aristas
+            var actualizacionesAristas = allEdges.get().map(function(edge) {
+                if (!tieneSeleccion) {
+                    return { id: edge.id, color: { opacity: 0.7 } };
+                }
+                var esRelevante = aristasAResaltar.has(edge.id);
+                return {
+                    id: edge.id,
+                    color: { opacity: esRelevante ? 1 : 0.05 }
+                };
+            });
+            allEdges.update(actualizacionesAristas);
+        }
+        
+        // EVENTO: Hover (pasar el mouse)
+        network.on("hoverNode", function (params) {
+            // Si no hay nada seleccionado con click, resaltamos el hover
+            if (network.getSelectedNodes().length === 0) {
+                actualizarResaltado([params.node]);
+            }
+        });
+        
+        // EVENTO: Blur (quitar el mouse)
+        network.on("blurNode", function (params) {
+            if (network.getSelectedNodes().length === 0) {
+                actualizarResaltado([]);
+            }
+        });
+        
+        // EVENTO: Click y Multi-selección (Ctrl+Click)
+        network.on("click", function (params) {
+            // params.nodes contiene los IDs de los nodos seleccionados (uno o varios)
+            actualizarResaltado(params.nodes);
+        });
+        
+        // EVENTO: Deseleccionar al clickear el fondo
+        network.on("deselectNode", function (params) {
+            actualizarResaltado(network.getSelectedNodes());
+        });
     </script>
 </body>
 </html>
+
 
 
 
