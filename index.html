@@ -51,14 +51,14 @@
                     };
                 });
 
-                // 2. PROCESAR ARISTAS (EDGES)
+                // 2. PROCESAR ARISTAS (EDGES) - Sin color fijo para permitir herencia
                 var processedEdges = data.edges.map(function(e) {
                     return {
                         id: e.key,
-                        from: e.source, // Gephi usa 'source', Vis.js necesita 'from'
-                        to: e.target,   // Gephi usa 'target', Vis.js necesita 'to'
-                        color: { color: '#848484', opacity: 0.3 },
-                        arrows: 'to'
+                        from: e.source, 
+                        to: e.target,
+                        // No definimos color aquí para que lo tome de las opciones globales
+                        // o lo herede de los nodos.
                     };
                 });
 
@@ -109,18 +109,36 @@
                 var options = {
                     nodes: {
                         shape: 'dot',
-                        font: { size: 14, strokeWidth: 4, strokeColor: '#ffffff' }
+                        font: { 
+                            size: 14, 
+                            strokeWidth: 4, 
+                            strokeColor: '#ffffff' 
+                        }
                     },
                     edges: {
-                        smooth: { type: 'continuous' },
-                        color: { inherit: 'from', opacity: 0.3 }
+                        width: 2, // Hace la línea más gruesa
+                        color: {
+                            inherit: 'from', // HERENCIA: Toma el color del nodo origen
+                            opacity: 0.8      // OPACIDAD: Mucho más visible que el 0.3 anterior
+                        },
+                        arrows: {
+                            to: { 
+                                enabled: true, 
+                                scaleFactor: 1.2 // Flechas más grandes y fáciles de ver
+                            }
+                        },
+                        smooth: { 
+                            type: 'continuous',
+                            roundness: 0.5 
+                        }
                     },
                     physics: {
                         enabled: false 
                     },
                     interaction: {
                         hover: true,
-                        navigationButtons: true
+                        navigationButtons: true,
+                        multiselect: true
                     }
                 };
 
@@ -152,4 +170,5 @@
     </script>
 </body>
 </html>
+
 
