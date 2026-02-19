@@ -74,12 +74,13 @@
 
     // ── Parámetros ajustables ─────────────────────────────────────────────────────
     //
-    //  widthConstraint fija el diámetro del círculo sin importar el largo del label.
-    //  Subir NODE_W_MAX hace los nodos hub más grandes.
-    //  Subir FONT_SIZE agranda el texto para todos (puede desbordar el círculo: OK).
+    //  Usamos shape:'dot' + font.vadjust para centrar el label sobre el nodo.
+    //  'dot' nunca envuelve el texto → label siempre en una sola línea.
+    //  vadjust = -radius sube el label desde su posición por defecto (debajo del
+    //  nodo) hasta quedar centrado sobre él.
     //
-    const NODE_W_MIN = 30;   // diámetro mínimo en px (nodo menos conectado)
-    const NODE_W_MAX = 85;   // diámetro máximo en px (nodo más conectado)
+    const NODE_R_MIN = 15;   // radio mínimo en px (nodo menos conectado)
+    const NODE_R_MAX = 42;   // radio máximo en px (nodo más conectado)
     const FONT_SIZE  = 16;   // tamaño de fuente fijo para todos los labels
 
     fetch('catoninetails-graph3.json')
@@ -103,9 +104,9 @@
             const degRange   = maxDegree - minDegree || 1;
 
             // Escala con raíz cuadrada: suaviza diferencias muy grandes
-            function degreeToWidth(id) {
+            function degreeToRadius(id) {
                 const t = Math.sqrt((degreeMap[id] - minDegree) / degRange);
-                return Math.round(NODE_W_MIN + t * (NODE_W_MAX - NODE_W_MIN));
+                return Math.round(NODE_R_MIN + t * (NODE_R_MAX - NODE_R_MIN));
             }
 
             // ── PASO 2: diccionarios ──────────────────────────────────────────────
@@ -122,7 +123,7 @@
                 colorLookup[n.key] = colorBase;
                 nivelLookup[n.key] = nivel;
 
-                const w = degreeToWidth(n.key);
+                const r = degreeToRadius(n.key);
 
                 return {
                     id:    n.key,
@@ -131,14 +132,13 @@
                     y: (Number(a.y) || 0) * -1,
 
                     // ─────────────────────────────────────────────────────────────
-                    //  CLAVE: shape 'circle' centra el label dentro del nodo.
-                    //  widthConstraint fija el diámetro → el texto puede desbordar
-                    //  sin hacer crecer el círculo.
-                    //  margin pequeño asegura que widthConstraint mande de verdad.
+                    //  shape:'dot' → tamaño controlado por 'size' (radio en px),
+                    //  el label NO se envuelve nunca → siempre en una sola línea.
+                    //  font.vadjust = -r sube el label hasta el centro del círculo
+                    //  (por defecto 'dot' coloca el label debajo del nodo).
                     // ─────────────────────────────────────────────────────────────
-                    shape: 'circle',
-                    widthConstraint: { minimum: w, maximum: w },
-                    margin: 4,
+                    shape: 'dot',
+                    size:  r,
 
                     color: {
                         background: colorBase,
@@ -150,8 +150,7 @@
                         size:        FONT_SIZE,
                         color:       '#111',
                         face:        'Segoe UI, sans-serif',
-                        // strokeWidth crea un halo blanco → el texto es legible
-                        // aunque el círculo sea pequeño o el fondo sea oscuro.
+                        vadjust:     -r,      // centra el label sobre el nodo
                         strokeWidth: 3,
                         strokeColor: 'rgba(255,255,255,0.9)'
                     },
