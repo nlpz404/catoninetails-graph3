@@ -81,7 +81,7 @@
     //
     const NODE_R_MIN = 15;   // radio mínimo en px (nodo menos conectado)
     const NODE_R_MAX = 42;   // radio máximo en px (nodo más conectado)
-    const FONT_SIZE  = 16;   // tamaño de fuente fijo para todos los labels
+    const FONT_SIZE  = 24;   // tamaño de fuente fijo para todos los labels
 
     fetch('catoninetails-graph3.json')
         .then(res => res.json())
@@ -150,7 +150,7 @@
                         size:        FONT_SIZE,
                         color:       '#111',
                         face:        'Segoe UI, sans-serif',
-                        vadjust:     -(r*1.5),      // centra el label sobre el nodo
+                        vadjust:     -(r+8),      // centra el label sobre el nodo
                         strokeWidth: 3,
                         strokeColor: 'rgba(255,255,255,0.9)'
                     },
@@ -334,5 +334,6 @@
     </script>
 </body>
 </html>
+
 
 
