@@ -146,11 +146,14 @@
                         highlight:  { background: colorBase, border: '#222' },
                         hover:      { background: colorBase, border: '#222' }
                     },
+
+                    _vadjust: -(r + 35),
+                    
                     font: {
                         size:        FONT_SIZE,
                         color:       '#111',
                         face:        'Segoe UI, sans-serif',
-                        vadjust:     -(r+35),      // centra el label sobre el nodo
+                        vadjust:     -(r + 35),      // centra el label sobre el nodo
                         strokeWidth: 3,
                         strokeColor: 'rgba(255,255,255,0.9)'
                     },
@@ -243,7 +246,13 @@
                 allNodes.update(allNodes.get().map(n => ({
                     id:    n.id,
                     color: nodeColorProps(n.id, 1),
-                    font:  { color: '#111', strokeColor: 'rgba(255,255,255,0.9)' }
+                    font: {
+                        color:       '#111',
+                        size:        FONT_SIZE,
+                        vadjust:     n._vadjust,
+                        strokeWidth: 3,
+                        strokeColor: 'rgba(255,255,255,0.9)'
+                    }
                 })));
                 allEdges.update(allEdges.get().map(e => ({
                     id:    e.id,
@@ -264,8 +273,11 @@
                     return {
                         id:    n.id,
                         color: nodeColorProps(n.id, vis_ ? 1 : 0.08),
-                        font:  {
+                        font: {
                             color:       vis_ ? '#111' : 'rgba(0,0,0,0.08)',
+                            size:        FONT_SIZE,
+                            vadjust:     n._vadjust,
+                            strokeWidth: 3,
                             strokeColor: vis_ ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.04)'
                         }
                     };
@@ -334,6 +346,7 @@
     </script>
 </body>
 </html>
+
 
 
 
