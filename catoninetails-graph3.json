@@ -12,8 +12,6 @@
       "key": "Pausa",
       "attributes": {
         "label": "Pausa",
-        "x": -757.1949,
-        "y": -388.92444,
         "size": 30.952381,
         "color": "#ff5d85",
         "nivel": "subtipo",
@@ -21,15 +19,15 @@
         "dimension": "temporalidad",
         "indegree": 13,
         "outdegree": 1,
-        "degree": 14
+        "degree": 14,
+        "x": -757.1949,
+        "y": -388.92444
       }
     },
     {
       "key": "Temporalidad (MOC)",
       "attributes": {
         "label": "Temporalidad (MOC)",
-        "x": -1340.1515,
-        "y": -138.31549,
         "size": 15.714286,
         "color": "#ff5d85",
         "nivel": "dimension",
@@ -37,15 +35,15 @@
         "dimension": "temporalidad",
         "indegree": 3,
         "outdegree": 3,
-        "degree": 6
+        "degree": 6,
+        "x": -1340.1515,
+        "y": -138.31549
       }
     },
     {
       "key": "Rápido",
       "attributes": {
         "label": "Rápido",
-        "x": -756.7894,
-        "y": -188.11047,
         "size": 32.857143,
         "color": "#ff5d85",
         "nivel": "subtipo",
@@ -53,15 +51,15 @@
         "dimension": "temporalidad",
         "indegree": 14,
         "outdegree": 1,
-        "degree": 15
+        "degree": 15,
+        "x": -756.7894,
+        "y": -188.11047
       }
     },
     {
       "key": "Lento",
       "attributes": {
         "label": "Lento",
-        "x": -748.61334,
-        "y": 41.795227,
         "size": 30.952381,
         "color": "#ff5d85",
         "nivel": "subtipo",
@@ -69,15 +67,15 @@
         "dimension": "temporalidad",
         "indegree": 13,
         "outdegree": 1,
-        "degree": 14
+        "degree": 14,
+        "x": -748.61334,
+        "y": 41.795227
       }
     },
     {
       "key": "Hoquete",
       "attributes": {
         "label": "Hoquete",
-        "x": -696.7401,
-        "y": -1842.1421,
         "size": 15.714286,
         "color": "#00af87",
         "nivel": "subtipo",
@@ -85,15 +83,15 @@
         "dimension": "acción",
         "indegree": 5,
         "outdegree": 1,
-        "degree": 6
+        "degree": 6,
+        "x": -696.7401,
+        "y": -1842.1421
       }
     },
     {
       "key": "Acción (MOC)",
       "attributes": {
         "label": "Acción (MOC)",
-        "x": -1351.1226,
-        "y": -1615.8796,
         "size": 15.714286,
         "color": "#00af87",
         "nivel": "dimension",
@@ -101,15 +99,15 @@
         "dimension": "acción",
         "indegree": 3,
         "outdegree": 3,
-        "degree": 6
+        "degree": 6,
+        "x": -1351.1226,
+        "y": -1615.8796
       }
     },
     {
       "key": "Improvisación",
       "attributes": {
         "label": "Improvisación",
-        "x": -705.28406,
-        "y": -1473.6067,
         "size": 27.142857,
         "color": "#00af87",
         "nivel": "subtipo",
@@ -117,15 +115,15 @@
         "dimension": "acción",
         "indegree": 11,
         "outdegree": 1,
-        "degree": 12
+        "degree": 12,
+        "x": -705.28406,
+        "y": -1473.6067
       }
     },
     {
       "key": "Solo",
       "attributes": {
         "label": "Solo",
-        "x": -712.58875,
-        "y": -1652.9529,
         "size": 17.619047,
         "color": "#00af87",
         "nivel": "subtipo",
@@ -133,15 +131,15 @@
         "dimension": "acción",
         "indegree": 6,
         "outdegree": 1,
-        "degree": 7
+        "degree": 7,
+        "x": -712.58875,
+        "y": -1652.9529
       }
     },
     {
       "key": "Ruido",
       "attributes": {
         "label": "Ruido",
-        "x": 419.9768,
-        "y": -950.2426,
         "size": 38.57143,
         "color": "#00c7ff",
         "nivel": "subtipo",
@@ -149,15 +147,15 @@
         "dimension": "sonoridad",
         "indegree": 17,
         "outdegree": 1,
-        "degree": 18
+        "degree": 18,
+        "x": 419.9768,
+        "y": -950.2426
       }
     },
     {
       "key": "Vibrato",
       "attributes": {
         "label": "Vibrato",
-        "x": 490.9673,
-        "y": -791.78925,
         "size": 13.809524,
         "color": "#00c7ff",
         "nivel": "subtipo",
@@ -165,15 +163,15 @@
         "dimension": "sonoridad",
         "indegree": 4,
         "outdegree": 1,
-        "degree": 5
+        "degree": 5,
+        "x": 490.9673,
+        "y": -791.78925
       }
     },
     {
       "key": "Sonoridad (MOC)",
       "attributes": {
         "label": "Sonoridad (MOC)",
-        "x": 1172.7296,
-        "y": -962.9256,
         "size": 34.761906,
         "color": "#00c7ff",
         "nivel": "dimension",
@@ -181,15 +179,15 @@
         "dimension": "sonoridad",
         "indegree": 8,
         "outdegree": 8,
-        "degree": 16
+        "degree": 16,
+        "x": 1172.7296,
+        "y": -962.9256
       }
     },
     {
       "key": "Trémolo",
       "attributes": {
         "label": "Trémolo",
-        "x": 443.0205,
-        "y": -1244.342,
         "size": 36.666668,
         "color": "#00c7ff",
         "nivel": "subtipo",
@@ -197,15 +195,15 @@
         "dimension": "sonoridad",
         "indegree": 16,
         "outdegree": 1,
-        "degree": 17
+        "degree": 17,
+        "x": 443.0205,
+        "y": -1244.342
       }
     },
     {
       "key": "Armónicos",
       "attributes": {
         "label": "Armónicos",
-        "x": 740.3351,
-        "y": -697.9323,
         "size": 23.333334,
         "color": "#00c7ff",
         "nivel": "subtipo",
@@ -213,15 +211,15 @@
         "dimension": "sonoridad",
         "indegree": 9,
         "outdegree": 1,
-        "degree": 10
+        "degree": 10,
+        "x": 740.3351,
+        "y": -697.9323
       }
     },
     {
       "key": "Sul-Pont",
       "attributes": {
         "label": "Sul-Pont",
-        "x": 668.0737,
-        "y": -865.0169,
         "size": 13.809524,
         "color": "#00c7ff",
         "nivel": "subtipo",
@@ -229,15 +227,15 @@
         "dimension": "sonoridad",
         "indegree": 4,
         "outdegree": 1,
-        "degree": 5
+        "degree": 5,
+        "x": 668.0737,
+        "y": -865.0169
       }
     },
     {
       "key": "Pizzicato",
       "attributes": {
         "label": "Pizzicato",
-        "x": 627.3861,
-        "y": -1047.362,
         "size": 32.857143,
         "color": "#00c7ff",
         "nivel": "subtipo",
@@ -245,15 +243,15 @@
         "dimension": "sonoridad",
         "indegree": 14,
         "outdegree": 1,
-        "degree": 15
+        "degree": 15,
+        "x": 627.3861,
+        "y": -1047.362
       }
     },
     {
       "key": "Rasgueo",
       "attributes": {
         "label": "Rasgueo",
-        "x": 767.8629,
-        "y": -972.90594,
         "size": 11.904762,
         "color": "#00c7ff",
         "nivel": "subtipo",
@@ -261,15 +259,15 @@
         "dimension": "sonoridad",
         "indegree": 3,
         "outdegree": 1,
-        "degree": 4
+        "degree": 4,
+        "x": 767.8629,
+        "y": -972.90594
       }
     },
     {
       "key": "Glissando",
       "attributes": {
         "label": "Glissando",
-        "x": 421.57062,
-        "y": -624.2564,
         "size": 40.47619,
         "color": "#00c7ff",
         "nivel": "subtipo",
@@ -277,15 +275,15 @@
         "dimension": "sonoridad",
         "indegree": 18,
         "outdegree": 1,
-        "degree": 19
+        "degree": 19,
+        "x": 421.57062,
+        "y": -624.2564
       }
     },
     {
       "key": "Ostinato",
       "attributes": {
         "label": "Ostinato",
-        "x": -837.7347,
-        "y": -873.69855,
         "size": 11.904762,
         "color": "#69c404",
         "nivel": "subtipo",
@@ -293,15 +291,15 @@
         "dimension": "sintaxis",
         "indegree": 3,
         "outdegree": 1,
-        "degree": 4
+        "degree": 4,
+        "x": -837.7347,
+        "y": -873.69855
       }
     },
     {
       "key": "Secuencia",
       "attributes": {
         "label": "Secuencia",
-        "x": -541.3394,
-        "y": -870.2757,
         "size": 21.428572,
         "color": "#69c404",
         "nivel": "subtipo",
@@ -309,15 +307,15 @@
         "dimension": "sintaxis",
         "indegree": 8,
         "outdegree": 1,
-        "degree": 9
+        "degree": 9,
+        "x": -541.3394,
+        "y": -870.2757
       }
     },
     {
       "key": "Arpegio",
       "attributes": {
         "label": "Arpegio",
-        "x": -774.9834,
-        "y": -657.67255,
         "size": 11.904762,
         "color": "#69c404",
         "nivel": "subtipo",
@@ -325,15 +323,15 @@
         "dimension": "sintaxis",
         "indegree": 3,
         "outdegree": 1,
-        "degree": 4
+        "degree": 4,
+        "x": -774.9834,
+        "y": -657.67255
       }
     },
     {
       "key": "Montaje",
       "attributes": {
         "label": "Montaje",
-        "x": -544.7274,
-        "y": -950.55035,
         "size": 23.333334,
         "color": "#69c404",
         "nivel": "subtipo",
@@ -341,15 +339,15 @@
         "dimension": "sintaxis",
         "indegree": 9,
         "outdegree": 1,
-        "degree": 10
+        "degree": 10,
+        "x": -544.7274,
+        "y": -950.55035
       }
     },
     {
       "key": "Ornamento",
       "attributes": {
         "label": "Ornamento",
-        "x": -549.4706,
-        "y": -633.1847,
         "size": 19.52381,
         "color": "#69c404",
         "nivel": "subtipo",
@@ -357,15 +355,15 @@
         "dimension": "sintaxis",
         "indegree": 7,
         "outdegree": 1,
-        "degree": 8
+        "degree": 8,
+        "x": -549.4706,
+        "y": -633.1847
       }
     },
     {
       "key": "Motivo",
       "attributes": {
         "label": "Motivo",
-        "x": -547.0061,
-        "y": -1092.4021,
         "size": 21.428572,
         "color": "#69c404",
         "nivel": "subtipo",
@@ -373,15 +371,15 @@
         "dimension": "sintaxis",
         "indegree": 8,
         "outdegree": 1,
-        "degree": 9
+        "degree": 9,
+        "x": -547.0061,
+        "y": -1092.4021
       }
     },
     {
       "key": "Escala",
       "attributes": {
         "label": "Escala",
-        "x": -732.53784,
-        "y": -1031.7302,
         "size": 27.142857,
         "color": "#69c404",
         "nivel": "subtipo",
@@ -389,15 +387,15 @@
         "dimension": "sintaxis",
         "indegree": 11,
         "outdegree": 1,
-        "degree": 12
+        "degree": 12,
+        "x": -732.53784,
+        "y": -1031.7302
       }
     },
     {
       "key": "Cadencia",
       "attributes": {
         "label": "Cadencia",
-        "x": -534.802,
-        "y": -766.08435,
         "size": 15.714286,
         "color": "#69c404",
         "nivel": "subtipo",
@@ -405,47 +403,47 @@
         "dimension": "sintaxis",
         "indegree": 5,
         "outdegree": 1,
-        "degree": 6
+        "degree": 6,
+        "x": -534.802,
+        "y": -766.08435
       }
     },
     {
       "key": "Sintaxis (MOC)",
       "attributes": {
         "label": "Sintaxis (MOC)",
-        "x": -1363.244,
-        "y": -776.0695,
-        "size": 50.0,
+        "size": 50,
         "color": "#69c404",
         "nivel": "dimension",
         "orden": 0,
         "dimension": "sintaxis",
         "indegree": 12,
         "outdegree": 12,
-        "degree": 24
+        "degree": 24,
+        "x": -1363.244,
+        "y": -776.0695
       }
     },
     {
       "key": "Canon",
       "attributes": {
         "label": "Canon",
-        "x": -1068.0521,
-        "y": -864.4373,
-        "size": 10.0,
+        "size": 10,
         "color": "#69c404",
         "nivel": "subtipo",
         "orden": 0,
         "dimension": "sintaxis",
         "indegree": 2,
         "outdegree": 1,
-        "degree": 3
+        "degree": 3,
+        "x": -1068.0521,
+        "y": -864.4373
       }
     },
     {
       "key": "Homofonía",
       "attributes": {
         "label": "Homofonía",
-        "x": -866.2408,
-        "y": -950.17804,
         "size": 19.52381,
         "color": "#69c404",
         "nivel": "subtipo",
@@ -453,15 +451,15 @@
         "dimension": "sintaxis",
         "indegree": 7,
         "outdegree": 1,
-        "degree": 8
+        "degree": 8,
+        "x": -866.2408,
+        "y": -950.17804
       }
     },
     {
       "key": "Unísono",
       "attributes": {
         "label": "Unísono",
-        "x": -744.40796,
-        "y": -810.69037,
         "size": 11.904762,
         "color": "#69c404",
         "nivel": "subtipo",
@@ -469,15 +467,15 @@
         "dimension": "sintaxis",
         "indegree": 3,
         "outdegree": 1,
-        "degree": 4
+        "degree": 4,
+        "x": -744.40796,
+        "y": -810.69037
       }
     },
     {
       "key": "Discontinua",
       "attributes": {
         "label": "Discontinua",
-        "x": -864.2415,
-        "y": -751.9625,
         "size": 11.904762,
         "color": "#69c404",
         "nivel": "subtipo",
@@ -485,15 +483,15 @@
         "dimension": "sintaxis",
         "indegree": 3,
         "outdegree": 1,
-        "degree": 4
+        "degree": 4,
+        "x": -864.2415,
+        "y": -751.9625
       }
     },
     {
       "key": "Lenguaje (MOC)",
       "attributes": {
         "label": "Lenguaje (MOC)",
-        "x": 1146.4365,
-        "y": -67.37921,
         "size": 27.142857,
         "color": "#fa9200",
         "nivel": "dimension",
@@ -501,15 +499,15 @@
         "dimension": "lenguaje",
         "indegree": 6,
         "outdegree": 6,
-        "degree": 12
+        "degree": 12,
+        "x": 1146.4365,
+        "y": -67.37921
       }
     },
     {
       "key": "Atonal",
       "attributes": {
         "label": "Atonal",
-        "x": 660.82086,
-        "y": -311.09442,
         "size": 25.238094,
         "color": "#fa9200",
         "nivel": "subtipo",
@@ -517,15 +515,15 @@
         "dimension": "lenguaje",
         "indegree": 10,
         "outdegree": 1,
-        "degree": 11
+        "degree": 11,
+        "x": 660.82086,
+        "y": -311.09442
       }
     },
     {
       "key": "Modal",
       "attributes": {
         "label": "Modal",
-        "x": 786.2017,
-        "y": 1.7147217,
         "size": 19.52381,
         "color": "#fa9200",
         "nivel": "subtipo",
@@ -533,15 +531,15 @@
         "dimension": "lenguaje",
         "indegree": 7,
         "outdegree": 1,
-        "degree": 8
+        "degree": 8,
+        "x": 786.2017,
+        "y": 1.7147217
       }
     },
     {
       "key": "Politonal",
       "attributes": {
         "label": "Politonal",
-        "x": 759.90643,
-        "y": -165.1507,
         "size": 11.904762,
         "color": "#fa9200",
         "nivel": "subtipo",
@@ -549,15 +547,15 @@
         "dimension": "lenguaje",
         "indegree": 3,
         "outdegree": 1,
-        "degree": 4
+        "degree": 4,
+        "x": 759.90643,
+        "y": -165.1507
       }
     },
     {
       "key": "Cromático",
       "attributes": {
         "label": "Cromático",
-        "x": 482.9124,
-        "y": -20.173523,
         "size": 34.761906,
         "color": "#fa9200",
         "nivel": "subtipo",
@@ -565,15 +563,15 @@
         "dimension": "lenguaje",
         "indegree": 15,
         "outdegree": 1,
-        "degree": 16
+        "degree": 16,
+        "x": 482.9124,
+        "y": -20.173523
       }
     },
     {
       "key": "Tonal",
       "attributes": {
         "label": "Tonal",
-        "x": 458.1865,
-        "y": 163.93597,
         "size": 38.57143,
         "color": "#fa9200",
         "nivel": "subtipo",
@@ -581,15 +579,15 @@
         "dimension": "lenguaje",
         "indegree": 17,
         "outdegree": 1,
-        "degree": 18
+        "degree": 18,
+        "x": 458.1865,
+        "y": 163.93597
       }
     },
     {
       "key": "No-Funcional",
       "attributes": {
         "label": "No-Funcional",
-        "x": 482.24243,
-        "y": -205.60632,
         "size": 36.666668,
         "color": "#fa9200",
         "nivel": "subtipo",
@@ -597,15 +595,15 @@
         "dimension": "lenguaje",
         "indegree": 16,
         "outdegree": 1,
-        "degree": 17
+        "degree": 17,
+        "x": 482.24243,
+        "y": -205.60632
       }
     },
     {
       "key": "Carácter",
       "attributes": {
         "label": "Carácter",
-        "x": 448.48914,
-        "y": -1888.0674,
         "size": 29.047619,
         "color": "#aa00fc",
         "nivel": "subtipo",
@@ -613,15 +611,15 @@
         "dimension": "referencia",
         "indegree": 12,
         "outdegree": 1,
-        "degree": 13
+        "degree": 13,
+        "x": 448.48914,
+        "y": -1888.0674
       }
     },
     {
       "key": "Estilo",
       "attributes": {
         "label": "Estilo",
-        "x": 462.2016,
-        "y": -1704.6646,
         "size": 30.952381,
         "color": "#aa00fc",
         "nivel": "subtipo",
@@ -629,15 +627,15 @@
         "dimension": "referencia",
         "indegree": 13,
         "outdegree": 1,
-        "degree": 14
+        "degree": 14,
+        "x": 462.2016,
+        "y": -1704.6646
       }
     },
     {
       "key": "Referencia (MOC)",
       "attributes": {
         "label": "Referencia (MOC)",
-        "x": 1139.2567,
-        "y": -1682.5342,
         "size": 19.52381,
         "color": "#aa00fc",
         "nivel": "dimension",
@@ -645,15 +643,15 @@
         "dimension": "referencia",
         "indegree": 4,
         "outdegree": 4,
-        "degree": 8
+        "degree": 8,
+        "x": 1139.2567,
+        "y": -1682.5342
       }
     },
     {
       "key": "Mímesis",
       "attributes": {
         "label": "Mímesis",
-        "x": 452.80212,
-        "y": -1525.4346,
         "size": 30.952381,
         "color": "#aa00fc",
         "nivel": "subtipo",
@@ -661,15 +659,15 @@
         "dimension": "referencia",
         "indegree": 13,
         "outdegree": 1,
-        "degree": 14
+        "degree": 14,
+        "x": 452.80212,
+        "y": -1525.4346
       }
     },
     {
       "key": "Cita",
       "attributes": {
         "label": "Cita",
-        "x": 705.6513,
-        "y": -1708.9409,
         "size": 13.809524,
         "color": "#aa00fc",
         "nivel": "subtipo",
@@ -677,15 +675,15 @@
         "dimension": "referencia",
         "indegree": 4,
         "outdegree": 1,
-        "degree": 5
+        "degree": 5,
+        "x": 705.6513,
+        "y": -1708.9409
       }
     },
     {
       "key": "Frase 07",
       "attributes": {
         "label": "Frase 07",
-        "x": -31.417068,
-        "y": -283.66394,
         "size": 27.142857,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -693,15 +691,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 10,
-        "degree": 12
+        "degree": 12,
+        "x": -31.417068,
+        "y": -283.66394
       }
     },
     {
       "key": "Frase 04",
       "attributes": {
         "label": "Frase 04",
-        "x": -40.622643,
-        "y": -55.276794,
         "size": 21.428572,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -709,15 +707,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 7,
-        "degree": 9
+        "degree": 9,
+        "x": -40.622643,
+        "y": -55.276794
       }
     },
     {
       "key": "Frase 27",
       "attributes": {
         "label": "Frase 27",
-        "x": -31.417068,
-        "y": -1830.3306,
         "size": 29.047619,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -725,15 +723,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 11,
-        "degree": 13
+        "degree": 13,
+        "x": -31.417068,
+        "y": -1830.3306
       }
     },
     {
       "key": "Frase 12",
       "attributes": {
         "label": "Frase 12",
-        "x": -28.294632,
-        "y": -668.03723,
         "size": 23.333334,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -741,15 +739,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 8,
-        "degree": 10
+        "degree": 10,
+        "x": -28.294632,
+        "y": -668.03723
       }
     },
     {
       "key": "Frase 26",
       "attributes": {
         "label": "Frase 26",
-        "x": -31.417068,
-        "y": -1752.9973,
         "size": 32.857143,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -757,15 +755,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 13,
-        "degree": 15
+        "degree": 15,
+        "x": -31.417068,
+        "y": -1752.9973
       }
     },
     {
       "key": "Frase 19",
       "attributes": {
         "label": "Frase 19",
-        "x": -31.417068,
-        "y": -1211.6641,
         "size": 30.952381,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -773,15 +771,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 12,
-        "degree": 14
+        "degree": 14,
+        "x": -31.417068,
+        "y": -1211.6641
       }
     },
     {
       "key": "Frase 17",
       "attributes": {
         "label": "Frase 17",
-        "x": -31.417068,
-        "y": -1056.9973,
         "size": 36.666668,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -789,15 +787,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 15,
-        "degree": 17
+        "degree": 17,
+        "x": -31.417068,
+        "y": -1056.9973
       }
     },
     {
       "key": "Frase 25",
       "attributes": {
         "label": "Frase 25",
-        "x": -31.417068,
-        "y": -1675.6641,
         "size": 42.38095,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -805,15 +803,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 18,
-        "degree": 20
+        "degree": 20,
+        "x": -31.417068,
+        "y": -1675.6641
       }
     },
     {
       "key": "Frase 23",
       "attributes": {
         "label": "Frase 23",
-        "x": -31.417068,
-        "y": -1520.9973,
         "size": 27.142857,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -821,15 +819,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 10,
-        "degree": 12
+        "degree": 12,
+        "x": -31.417068,
+        "y": -1520.9973
       }
     },
     {
       "key": "Frase 05",
       "attributes": {
         "label": "Frase 05",
-        "x": -40.622643,
-        "y": -132.61017,
         "size": 23.333334,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -837,15 +835,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 8,
-        "degree": 10
+        "degree": 10,
+        "x": -40.622643,
+        "y": -132.61017
       }
     },
     {
       "key": "Frase 18",
       "attributes": {
         "label": "Frase 18",
-        "x": -31.417068,
-        "y": -1134.3306,
         "size": 25.238094,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -853,15 +851,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 9,
-        "degree": 11
+        "degree": 11,
+        "x": -31.417068,
+        "y": -1134.3306
       }
     },
     {
       "key": "Frase 09",
       "attributes": {
         "label": "Frase 09",
-        "x": -31.417068,
-        "y": -438.33063,
         "size": 29.047619,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -869,15 +867,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 11,
-        "degree": 13
+        "degree": 13,
+        "x": -31.417068,
+        "y": -438.33063
       }
     },
     {
       "key": "Frase 28",
       "attributes": {
         "label": "Frase 28",
-        "x": -31.417068,
-        "y": -1907.6638,
         "size": 29.047619,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -885,15 +883,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 11,
-        "degree": 13
+        "degree": 13,
+        "x": -31.417068,
+        "y": -1907.6638
       }
     },
     {
       "key": "Frase 08",
       "attributes": {
         "label": "Frase 08",
-        "x": -31.417068,
-        "y": -360.9973,
         "size": 46.190475,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -901,15 +899,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 20,
-        "degree": 22
+        "degree": 22,
+        "x": -31.417068,
+        "y": -360.9973
       }
     },
     {
       "key": "Frase 21",
       "attributes": {
         "label": "Frase 21",
-        "x": -31.417068,
-        "y": -1366.3306,
         "size": 29.047619,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -917,15 +915,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 11,
-        "degree": 13
+        "degree": 13,
+        "x": -31.417068,
+        "y": -1366.3306
       }
     },
     {
       "key": "Frase 20",
       "attributes": {
         "label": "Frase 20",
-        "x": -31.417068,
-        "y": -1288.9973,
         "size": 32.857143,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -933,15 +931,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 13,
-        "degree": 15
+        "degree": 15,
+        "x": -31.417068,
+        "y": -1288.9973
       }
     },
     {
       "key": "Frase 22",
       "attributes": {
         "label": "Frase 22",
-        "x": -31.417068,
-        "y": -1443.6641,
         "size": 36.666668,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -949,15 +947,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 15,
-        "degree": 17
+        "degree": 17,
+        "x": -31.417068,
+        "y": -1443.6641
       }
     },
     {
       "key": "Frase 11",
       "attributes": {
         "label": "Frase 11",
-        "x": -21.6904,
-        "y": -590.704,
         "size": 48.095238,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -965,15 +963,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 21,
-        "degree": 23
+        "degree": 23,
+        "x": -21.6904,
+        "y": -590.704
       }
     },
     {
       "key": "Frase 14",
       "attributes": {
         "label": "Frase 14",
-        "x": -31.417068,
-        "y": -824.99725,
         "size": 23.333334,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -981,15 +979,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 8,
-        "degree": 10
+        "degree": 10,
+        "x": -31.417068,
+        "y": -824.99725
       }
     },
     {
       "key": "Frase 16",
       "attributes": {
         "label": "Frase 16",
-        "x": -31.417068,
-        "y": -979.664,
         "size": 42.38095,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -997,15 +995,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 18,
-        "degree": 20
+        "degree": 20,
+        "x": -31.417068,
+        "y": -979.664
       }
     },
     {
       "key": "Frase 01",
       "attributes": {
         "label": "Frase 01",
-        "x": -34.018417,
-        "y": 176.7232,
         "size": 29.047619,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -1013,15 +1011,15 @@
         "dimension": "N/A",
         "indegree": 1,
         "outdegree": 12,
-        "degree": 13
+        "degree": 13,
+        "x": -34.018417,
+        "y": 176.7232
       }
     },
     {
       "key": "Frase 02",
       "attributes": {
         "label": "Frase 02",
-        "x": -34.018417,
-        "y": 99.38983,
         "size": 36.666668,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -1029,15 +1027,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 15,
-        "degree": 17
+        "degree": 17,
+        "x": -34.018417,
+        "y": 99.38983
       }
     },
     {
       "key": "Frase 15",
       "attributes": {
         "label": "Frase 15",
-        "x": -31.417068,
-        "y": -902.3306,
         "size": 27.142857,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -1045,15 +1043,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 10,
-        "degree": 12
+        "degree": 12,
+        "x": -31.417068,
+        "y": -902.3306
       }
     },
     {
       "key": "Frase 13",
       "attributes": {
         "label": "Frase 13",
-        "x": -28.294632,
-        "y": -745.3706,
         "size": 38.57143,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -1061,15 +1059,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 16,
-        "degree": 18
+        "degree": 18,
+        "x": -28.294632,
+        "y": -745.3706
       }
     },
     {
       "key": "Frase 06",
       "attributes": {
         "label": "Frase 06",
-        "x": -40.622643,
-        "y": -209.94354,
         "size": 27.142857,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -1077,15 +1075,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 10,
-        "degree": 12
+        "degree": 12,
+        "x": -40.622643,
+        "y": -209.94354
       }
     },
     {
       "key": "Frase 03",
       "attributes": {
         "label": "Frase 03",
-        "x": -40.622643,
-        "y": 22.056458,
         "size": 38.57143,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -1093,15 +1091,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 16,
-        "degree": 18
+        "degree": 18,
+        "x": -40.622643,
+        "y": 22.056458
       }
     },
     {
       "key": "Frase 29",
       "attributes": {
         "label": "Frase 29",
-        "x": -31.417068,
-        "y": -1984.9973,
         "size": 17.619047,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -1109,15 +1107,15 @@
         "dimension": "N/A",
         "indegree": 1,
         "outdegree": 6,
-        "degree": 7
+        "degree": 7,
+        "x": -31.417068,
+        "y": -1984.9973
       }
     },
     {
       "key": "Frase 24",
       "attributes": {
         "label": "Frase 24",
-        "x": -31.417068,
-        "y": -1598.3306,
         "size": 21.428572,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -1125,15 +1123,15 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 7,
-        "degree": 9
+        "degree": 9,
+        "x": -31.417068,
+        "y": -1598.3306
       }
     },
     {
       "key": "Frase 10",
       "attributes": {
         "label": "Frase 10",
-        "x": -31.417068,
-        "y": -515.66394,
         "size": 17.619047,
         "color": "#a6a6a6",
         "nivel": "frase",
@@ -1141,7 +1139,9 @@
         "dimension": "N/A",
         "indegree": 2,
         "outdegree": 5,
-        "degree": 7
+        "degree": 7,
+        "x": -31.417068,
+        "y": -515.66394
       }
     }
   ],
@@ -1150,30 +1150,6 @@
       "key": "0",
       "source": "Pausa",
       "target": "Temporalidad (MOC)",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "1",
-      "source": "Temporalidad (MOC)",
-      "target": "Lento",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "2",
-      "source": "Temporalidad (MOC)",
-      "target": "Pausa",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "3",
-      "source": "Temporalidad (MOC)",
-      "target": "Rápido",
       "attributes": {
         "weight": 1.0
       }
@@ -1198,30 +1174,6 @@
       "key": "6",
       "source": "Hoquete",
       "target": "Acción (MOC)",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "7",
-      "source": "Acción (MOC)",
-      "target": "Hoquete",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "8",
-      "source": "Acción (MOC)",
-      "target": "Improvisación",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "9",
-      "source": "Acción (MOC)",
-      "target": "Solo",
       "attributes": {
         "weight": 1.0
       }
@@ -1254,70 +1206,6 @@
       "key": "13",
       "source": "Vibrato",
       "target": "Sonoridad (MOC)",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "14",
-      "source": "Sonoridad (MOC)",
-      "target": "Armónicos",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "15",
-      "source": "Sonoridad (MOC)",
-      "target": "Glissando",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "16",
-      "source": "Sonoridad (MOC)",
-      "target": "Pizzicato",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "17",
-      "source": "Sonoridad (MOC)",
-      "target": "Rasgueo",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "18",
-      "source": "Sonoridad (MOC)",
-      "target": "Ruido",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "19",
-      "source": "Sonoridad (MOC)",
-      "target": "Sul-Pont",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "20",
-      "source": "Sonoridad (MOC)",
-      "target": "Trémolo",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "21",
-      "source": "Sonoridad (MOC)",
-      "target": "Vibrato",
       "attributes": {
         "weight": 1.0
       }
@@ -1435,102 +1323,6 @@
       }
     },
     {
-      "key": "37",
-      "source": "Sintaxis (MOC)",
-      "target": "Arpegio",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "38",
-      "source": "Sintaxis (MOC)",
-      "target": "Cadencia",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "39",
-      "source": "Sintaxis (MOC)",
-      "target": "Escala",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "40",
-      "source": "Sintaxis (MOC)",
-      "target": "Montaje",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "41",
-      "source": "Sintaxis (MOC)",
-      "target": "Motivo",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "42",
-      "source": "Sintaxis (MOC)",
-      "target": "Ornamento",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "43",
-      "source": "Sintaxis (MOC)",
-      "target": "Ostinato",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "44",
-      "source": "Sintaxis (MOC)",
-      "target": "Secuencia",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "45",
-      "source": "Sintaxis (MOC)",
-      "target": "Canon",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "46",
-      "source": "Sintaxis (MOC)",
-      "target": "Discontinua",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "47",
-      "source": "Sintaxis (MOC)",
-      "target": "Homofonía",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "48",
-      "source": "Sintaxis (MOC)",
-      "target": "Unísono",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
       "key": "49",
       "source": "Canon",
       "target": "Sintaxis (MOC)",
@@ -1558,54 +1350,6 @@
       "key": "52",
       "source": "Discontinua",
       "target": "Sintaxis (MOC)",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "53",
-      "source": "Lenguaje (MOC)",
-      "target": "Atonal",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "54",
-      "source": "Lenguaje (MOC)",
-      "target": "Cromático",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "55",
-      "source": "Lenguaje (MOC)",
-      "target": "Modal",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "56",
-      "source": "Lenguaje (MOC)",
-      "target": "No-Funcional",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "57",
-      "source": "Lenguaje (MOC)",
-      "target": "Politonal",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "58",
-      "source": "Lenguaje (MOC)",
-      "target": "Tonal",
       "attributes": {
         "weight": 1.0
       }
@@ -1670,38 +1414,6 @@
       "key": "66",
       "source": "Estilo",
       "target": "Referencia (MOC)",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "67",
-      "source": "Referencia (MOC)",
-      "target": "Carácter",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "68",
-      "source": "Referencia (MOC)",
-      "target": "Cita",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "69",
-      "source": "Referencia (MOC)",
-      "target": "Estilo",
-      "attributes": {
-        "weight": 1.0
-      }
-    },
-    {
-      "key": "70",
-      "source": "Referencia (MOC)",
-      "target": "Mímesis",
       "attributes": {
         "weight": 1.0
       }
