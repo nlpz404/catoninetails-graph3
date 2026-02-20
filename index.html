@@ -412,27 +412,62 @@
                 });
             }
 
-            // ── PASO 10: exportar PNG ─────────────────────────────────────────────
+            // ── PASO 10: exportar PNG en alta resolución ──────────────────────────
+            //
+            //  Estrategia:
+            //  1. Hacer network.fit() para obtener el scale óptimo que encierra
+            //     todo el grafo en el canvas actual (W × H).
+            //  2. Agrandar el canvas a SCALE × W  ×  SCALE × H.
+            //  3. Mover la red al mismo centro pero con scale × SCALE — así el
+            //     mismo contenido visual ocupa el canvas ampliado con SCALE veces
+            //     más píxeles: misma área del grafo, resolución SCALE veces mayor.
+            //  4. Forzar redibujado, capturar y restaurar todo.
+            //
             document.getElementById('btn-export').addEventListener('click', () => {
-                // Guardamos posición y escala actuales
-                const posActual   = network.getViewPosition();
-                const scalaActual = network.getScale();
+                const SCALE  = 3;   // factor de resolución (3 = triple de píxeles)
+                const canvas = network.canvas.frame.canvas;
 
-                // Ajustamos vista para mostrar el grafo completo
+                // Guardar estado actual
+                const posOriginal   = network.getViewPosition();
+                const scalaOriginal = network.getScale();
+                const wOrig = canvas.width;
+                const hOrig = canvas.height;
+
+                // Paso 1: fit para encontrar el scale y centro que muestra todo
                 network.fit({ animation: false });
+                const scalaFit  = network.getScale();
+                const centroFit = network.getViewPosition();
 
-                // Esperamos un frame para que el canvas se redibuje
-                requestAnimationFrame(() => {
-                    const canvas = network.canvas.frame.canvas;
-                    const url    = canvas.toDataURL('image/png');
-                    const a      = document.createElement('a');
-                    a.href       = url;
-                    a.download   = 'catoninetails-grafo.png';
-                    a.click();
+                // Paso 2: ampliar el canvas físicamente
+                canvas.width  = wOrig  * SCALE;
+                canvas.height = hOrig  * SCALE;
 
-                    // Restauramos la vista anterior
-                    network.moveTo({ position: posActual, scale: scalaActual, animation: false });
+                // Paso 3: mover la red al mismo centro con scale × SCALE
+                network.moveTo({
+                    position:  centroFit,
+                    scale:     scalaFit * SCALE,
+                    animation: false
                 });
+
+                // Paso 4: esperar dos frames para asegurar el redibujado completo
+                requestAnimationFrame(() => requestAnimationFrame(() => {
+                    network.redraw();
+
+                    requestAnimationFrame(() => {
+                        // Capturar
+                        const url = canvas.toDataURL('image/png');
+                        const a   = document.createElement('a');
+                        a.href    = url;
+                        a.download = 'catoninetails-grafo.png';
+                        a.click();
+
+                        // Restaurar canvas y vista originales
+                        canvas.width  = wOrig;
+                        canvas.height = hOrig;
+                        network.moveTo({ position: posOriginal, scale: scalaOriginal, animation: false });
+                        network.redraw();
+                    });
+                }));
             });
 
             // ── PASO 11: eventos ──────────────────────────────────────────────────
