@@ -459,11 +459,26 @@
                         <div class="detail-row">
                             <div class="detail-label">Conectado con (${vecinos.length}):</div>
                             <ul class="detail-connections">
-                                ${vecinos.map(v => `<li>${v.label}</li>`).join('')}
+                                ${vecinos.map(v => `
+                                    <li>
+                                        <span style="cursor:pointer; color:#2b7ce9; text-decoration:underline;"
+                                              class="vecino-link" data-id="${v.id}">
+                                            ${v.label}
+                                        </span>
+                                    </li>`).join('')}
                             </ul>
                         </div>
                     </div>`;
-
+                
+                cont.querySelectorAll('.vecino-link').forEach(el => {
+                    el.addEventListener('click', () => {
+                        const id = el.dataset.id;
+                        network.selectNodes([id]);
+                        resaltar([id]);
+                        actualizarDetalles([id]);
+                    });
+                });
+                
                 // Botón ocultar/mostrar el nodo seleccionado
                 document.getElementById('btn-toggle-selected').addEventListener('click', () => {
                     if (nodosOcultos.has(n.id)) {
@@ -574,5 +589,6 @@
     </script>
 </body>
 </html>
+
 
 
