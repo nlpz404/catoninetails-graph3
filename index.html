@@ -424,46 +424,42 @@
             //  4. Forzar redibujado, capturar y restaurar todo.
             //
             document.getElementById('btn-export').addEventListener('click', () => {
-                const SCALE  = 3;   // factor de resolución (3 = triple de píxeles)
+                const SCALE  = 3;   // factor de resolución — subir para más calidad
                 const canvas = network.canvas.frame.canvas;
+                const container = document.getElementById('mynetwork');
 
-                // Guardar estado actual
+                // 1. Guardar estado actual
                 const posOriginal   = network.getViewPosition();
                 const scalaOriginal = network.getScale();
                 const wOrig = canvas.width;
                 const hOrig = canvas.height;
 
-                // Paso 1: fit para encontrar el scale y centro que muestra todo
-                network.fit({ animation: false });
-                const scalaFit  = network.getScale();
-                const centroFit = network.getViewPosition();
-
-                // Paso 2: ampliar el canvas físicamente
+                // 2. Agrandar el canvas ANTES de hacer fit
+                //    network.setSize() informa a Vis.js del nuevo tamaño
                 canvas.width  = wOrig  * SCALE;
                 canvas.height = hOrig  * SCALE;
+                network.setSize(wOrig * SCALE, hOrig * SCALE);
 
-                // Paso 3: mover la red al mismo centro con scale × SCALE
-                network.moveTo({
-                    position:  centroFit,
-                    scale:     scalaFit * SCALE,
-                    animation: false
-                });
+                // 3. Ahora fit() calcula el zoom para encajar el grafo completo
+                //    en el canvas ampliado → más píxeles, mismos nodos = más calidad
+                network.fit({ animation: false });
 
-                // Paso 4: esperar dos frames para asegurar el redibujado completo
+                // 4. Esperar que Vis.js redibuje sobre el canvas grande
                 requestAnimationFrame(() => requestAnimationFrame(() => {
                     network.redraw();
 
                     requestAnimationFrame(() => {
-                        // Capturar
+                        // 5. Capturar
                         const url = canvas.toDataURL('image/png');
                         const a   = document.createElement('a');
                         a.href    = url;
                         a.download = 'catoninetails-grafo.png';
                         a.click();
 
-                        // Restaurar canvas y vista originales
+                        // 6. Restaurar canvas y vista originales
                         canvas.width  = wOrig;
                         canvas.height = hOrig;
+                        network.setSize(wOrig, hOrig);
                         network.moveTo({ position: posOriginal, scale: scalaOriginal, animation: false });
                         network.redraw();
                     });
