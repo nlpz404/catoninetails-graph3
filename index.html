@@ -298,14 +298,14 @@
                     <label style="display:flex;align-items:center;width:100%;cursor:pointer;">
                         <input type="checkbox" checked value="${n.id}">
                         <span class="color-dot" style="background-color:${n.color.background}"></span>
-                        <span>${n.label}</span>
+                        <span class="node-label-link">${n.label}</span>
                     </label>`;
-                div.querySelector('input').addEventListener('change', ev => {
-                    if (ev.target.checked) nodosOcultos.delete(n.id);
-                    else                   nodosOcultos.add(n.id);
-                    nodesView.refresh();
-                    restaurarTodo();
-                    actualizarCheckboxGrupo(grupoClave);
+                div.querySelector('.node-label-link').addEventListener('click', ev => {
+                    ev.preventDefault();
+                    network.selectNodes([n.id]);
+                    resaltar([n.id]);
+                    actualizarDetalles([n.id]);
+                    document.getElementById('btn-tab-detalles').click();
                 });
                 listaContainer.appendChild(div);
             });
@@ -574,3 +574,4 @@
     </script>
 </body>
 </html>
+
