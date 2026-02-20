@@ -267,7 +267,8 @@
                         const marcar = ev.target.checked;
                         const items  = listaContainer.querySelectorAll(`.node-item[data-grupo="${grupoClave}"]`);
                         items.forEach(item => {
-                            if (item.style.display === 'none') return; // respeta filtro activo
+//                            if (item.style.display === 'none') return; // respeta filtro activo
+                            if (item.dataset.filtroOculto) return;
                             const id = item.dataset.id;
                             const cb = item.querySelector('input');
                             cb.checked = marcar;
@@ -639,6 +640,7 @@
     </script>
 </body>
 </html>
+
 
 
 
