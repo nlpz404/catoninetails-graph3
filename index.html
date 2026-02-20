@@ -429,7 +429,6 @@
                 const vacio = document.getElementById('detallesVacio');
                 if (!ids.length) { cont.innerHTML = ''; vacio.style.display = 'block'; return; }
                 vacio.style.display = 'none';
-
                 const n      = allNodes.get(ids[0]);
                 const grado  = degreeMap[n.id] || 0;
                 // Vecinos ordenados alfabéticamente
@@ -437,7 +436,30 @@
                                        .map(vId => allNodes.get(vId))
                                        .filter(v => v && !nodosOcultos.has(v.id))
                                        .sort((a, b) => a.label.localeCompare(b.label));
-
+            
+                // Agrupar vecinos por dimensión
+                const vecinosPorDim = {};
+                vecinos.forEach(v => {
+                    const dim = v.nivel === 'frase' ? 'Frases' : (v.dimension || 'Sin dimensión');
+                    if (!vecinosPorDim[dim]) vecinosPorDim[dim] = [];
+                    vecinosPorDim[dim].push(v);
+                });
+                const vecinosHTML = Object.keys(vecinosPorDim)
+                    .sort((a,b) => a === 'Frases' ? 1 : b === 'Frases' ? -1 : a.localeCompare(b))
+                    .map(dim => `
+                        <li style="list-style:none; font-size:10px; font-weight:700; color:#aaa;
+                                   text-transform:uppercase; letter-spacing:1px; margin: 8px 0 4px 0;">
+                            ${dim}
+                        </li>
+                        ${vecinosPorDim[dim].map(v => `
+                            <li style="padding-left:8px;">
+                                <span style="cursor:pointer; color:#2b7ce9; text-decoration:underline;"
+                                      class="vecino-link" data-id="${v.id}">
+                                    ${v.label}
+                                </span>
+                            </li>`).join('')}
+                    `).join('');
+            
                 const estaOculto = nodosOcultos.has(n.id);
                 cont.innerHTML = `
                     <button class="btn-toggle-node ${estaOculto ? 'mostrar' : 'ocultar'}" id="btn-toggle-selected">
@@ -458,18 +480,12 @@
                         </div>
                         <div class="detail-row">
                             <div class="detail-label">Conectado con (${vecinos.length}):</div>
-                            <ul class="detail-connections">
-                                ${vecinos.map(v => `
-                                    <li>
-                                        <span style="cursor:pointer; color:#2b7ce9; text-decoration:underline;"
-                                              class="vecino-link" data-id="${v.id}">
-                                            ${v.label}
-                                        </span>
-                                    </li>`).join('')}
+                            <ul class="detail-connections" style="padding-left:0; list-style:none;">
+                                ${vecinosHTML}
                             </ul>
                         </div>
                     </div>`;
-                
+            
                 cont.querySelectorAll('.vecino-link').forEach(el => {
                     el.addEventListener('click', () => {
                         const id = el.dataset.id;
@@ -478,7 +494,7 @@
                         actualizarDetalles([id]);
                     });
                 });
-                
+            
                 // Botón ocultar/mostrar el nodo seleccionado
                 document.getElementById('btn-toggle-selected').addEventListener('click', () => {
                     if (nodosOcultos.has(n.id)) {
@@ -492,7 +508,6 @@
                     }
                     nodesView.refresh();
                     restaurarTodo();
-                    // Refrescar el panel de detalles para actualizar el estado del botón
                     actualizarDetalles(ids);
                 });
             }
@@ -589,6 +604,7 @@
     </script>
 </body>
 </html>
+
 
 
 
