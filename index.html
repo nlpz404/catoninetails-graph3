@@ -134,8 +134,8 @@
             const degRange   = maxDegree - minDegree || 1;
 
             function degreeToRadius(id) {
-                // const t = Math.sqrt((degreeMap[id] - minDegree) / degRange);
-                const t = (degreeMap[id] - minDegree) / degRange;
+//                const t = (degreeMap[id] - minDegree) / degRange;
+                const t = Math.log(degreeMap[id] - minDegree + 1) / Math.log(degRange + 1);
                 return Math.round(NODE_R_MIN + t * (NODE_R_MAX - NODE_R_MIN));
             }
 
@@ -503,6 +503,7 @@
     </script>
 </body>
 </html>
+
 
 
 
