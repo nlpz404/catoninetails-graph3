@@ -7,7 +7,23 @@
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 20px; background-color: #f5f5f5; display: flex; flex-direction: column; height: 95vh; }
         .controls { margin-bottom: 10px; padding: 15px; background: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #ddd; }
         .main-container { display: flex; gap: 15px; flex: 1; min-height: 0; }
-        #mynetwork { flex: 3; border: 1px solid #ccc; background-color: white; border-radius: 8px; }
+
+        /* Contenedor del mapa con posición relativa para el botón flotante */
+        #network-container { flex: 3; position: relative; }
+        #mynetwork { width: 100%; height: 100%; border: 1px solid #ccc; background-color: white; border-radius: 8px; }
+
+        /* Botón flotante de exportación */
+        #btn-export {
+            position: absolute; top: 12px; left: 12px; z-index: 10;
+            background: rgba(255,255,255,0.92); border: 1px solid #ccc;
+            border-radius: 6px; padding: 7px 13px; cursor: pointer;
+            font-size: 13px; font-weight: 600; color: #333;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+            display: flex; align-items: center; gap: 6px;
+            transition: background 0.15s, box-shadow 0.15s;
+        }
+        #btn-export:hover { background: #fff; box-shadow: 0 3px 10px rgba(0,0,0,0.18); }
+
         #sidebar { flex: 1; background: white; border: 1px solid #ccc; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .tabs { display: flex; border-bottom: 1px solid #eee; background: #f9f9f9; }
         .tab-btn { flex: 1; padding: 12px; cursor: pointer; border: none; background: transparent; font-weight: bold; color: #666; outline: none; transition: all 0.2s; border-bottom: 3px solid transparent; }
@@ -15,16 +31,32 @@
         .tab-btn.active { background: white; border-bottom: 3px solid #2b7ce9; color: #2b7ce9; }
         .tab-content { display: none; padding: 15px; overflow-y: auto; flex: 1; }
         .tab-content.active { display: block; }
-        .node-item { margin-bottom: 6px; font-size: 14px; display: flex; align-items: center; padding: 4px; border-radius: 4px; transition: background 0.2s; }
+
+        /* Lista de nodos */
+        .dim-group-header { font-size: 11px; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 12px 0 4px 0; padding-bottom: 3px; border-bottom: 1px solid #eee; }
+        .dim-group-header:first-child { margin-top: 0; }
+        .node-item { margin-bottom: 4px; font-size: 14px; display: flex; align-items: center; padding: 4px; border-radius: 4px; transition: background 0.2s; }
         .node-item:hover { background: #f0f7ff; }
         .node-item input { margin-right: 10px; transform: scale(1.1); cursor: pointer; }
         .color-dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 10px; border: 1px solid rgba(0,0,0,0.2); flex-shrink: 0; }
+
+        /* Detalles */
         .detail-card { background: #fcfcfc; border: 1px solid #eee; padding: 15px; border-radius: 8px; }
         .detail-row { margin-bottom: 15px; }
         .detail-label { font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 4px; }
         .detail-value { font-size: 16px; font-weight: 600; color: #333; }
         .detail-connections { padding-left: 20px; font-size: 14px; margin-top: 8px; color: #444; }
         .detail-connections li { margin-bottom: 6px; }
+        .btn-toggle-node {
+            width: 100%; margin-bottom: 12px; padding: 9px;
+            border-radius: 6px; border: 1px solid #ccc;
+            font-size: 13px; font-weight: 600; cursor: pointer;
+            transition: background 0.15s;
+        }
+        .btn-toggle-node.ocultar { background: #fff3f3; border-color: #f5a0a0; color: #c0392b; }
+        .btn-toggle-node.ocultar:hover { background: #ffe0e0; }
+        .btn-toggle-node.mostrar  { background: #f0fff4; border-color: #a0d9a0; color: #1e7e34; }
+        .btn-toggle-node.mostrar:hover  { background: #d0f0d8; }
     </style>
 </head>
 <body>
@@ -34,10 +66,18 @@
         <select id="dimensionFilter" style="padding: 5px; border-radius: 4px; border: 1px solid #ccc;">
             <option value="all">Mostrar Todo</option>
         </select>
-        <small style="margin-left: 25px; color:#777;">Tip: Usa <strong>Ctrl + Click</strong> para seleccionar varios nodos y comparar conexiones.</small>
+        <small style="margin-left: 25px; color:#777;">Tip: <strong>Ctrl+Click</strong> para multiselección · <strong>Supr</strong> para ocultar selección</small>
     </div>
+
     <div class="main-container">
-        <div id="mynetwork"></div>
+        <div id="network-container">
+            <button id="btn-export" title="Exportar mapa completo como PNG">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Exportar PNG
+            </button>
+            <div id="mynetwork"></div>
+        </div>
+
         <div id="sidebar">
             <div class="tabs">
                 <button class="tab-btn active" onclick="abrirTab('tab-lista', event)">Listado de Nodos</button>
@@ -73,25 +113,15 @@
     }
 
     // ── Parámetros ajustables ─────────────────────────────────────────────────────
-    //
-    //  Usamos shape:'dot' + font.vadjust para centrar el label sobre el nodo.
-    //  'dot' nunca envuelve el texto → label siempre en una sola línea.
-    //  vadjust = -radius sube el label desde su posición por defecto (debajo del
-    //  nodo) hasta quedar centrado sobre él.
-    //
-    const NODE_R_MIN = 5;   // radio mínimo en px (nodo menos conectado)
-    const NODE_R_MAX = 42;   // radio máximo en px (nodo más conectado)
-    const FONT_SIZE  = 36;   // tamaño de fuente fijo para todos los labels
+    const NODE_R_MIN = 5;
+    const NODE_R_MAX = 42;
+    const FONT_SIZE  = 36;
 
     fetch('catoninetails-graph3.json')
         .then(res => res.json())
         .then(data => {
 
-            // ── PASO 1: calcular grado ANTES de procesar nodos ────────────────────
-            //
-            //  Necesitamos el rango completo (min/max) para escalar correctamente.
-            //  Por eso esto va antes del .map() de nodos.
-            //
+            // ── PASO 1: calcular grado ────────────────────────────────────────────
             const degreeMap = {};
             data.nodes.forEach(n => { degreeMap[n.key] = 0; });
             data.edges.forEach(e => {
@@ -103,7 +133,6 @@
             const minDegree  = Math.min(...allDegrees);
             const degRange   = maxDegree - minDegree || 1;
 
-            // Escala con raíz cuadrada: suaviza diferencias muy grandes
             function degreeToRadius(id) {
                 const t = Math.sqrt((degreeMap[id] - minDegree) / degRange);
                 return Math.round(NODE_R_MIN + t * (NODE_R_MAX - NODE_R_MIN));
@@ -124,41 +153,25 @@
                 nivelLookup[n.key] = nivel;
 
                 const r = degreeToRadius(n.key);
-
                 return {
-                    id:    n.key,
-                    label: a.label || n.key,
-                    x: Number(a.x) || 0,
-                    y: (Number(a.y) || 0) * -1,
-
-                    // ─────────────────────────────────────────────────────────────
-                    //  shape:'dot' → tamaño controlado por 'size' (radio en px),
-                    //  el label NO se envuelve nunca → siempre en una sola línea.
-                    //  font.vadjust = -r sube el label hasta el centro del círculo
-                    //  (por defecto 'dot' coloca el label debajo del nodo).
-                    // ─────────────────────────────────────────────────────────────
-                    shape: 'dot',
-                    size:  r,
-
+                    id:       n.key,
+                    label:    a.label || n.key,
+                    x:        Number(a.x) || 0,
+                    y:        (Number(a.y) || 0) * -1,
+                    shape:    'dot',
+                    size:     r,
+                    _vadjust: -(r + 35),
                     color: {
-                        background: colorBase,
-                        border:     colorBase,
+                        background: colorBase, border: colorBase,
                         highlight:  { background: colorBase, border: '#222' },
                         hover:      { background: colorBase, border: '#222' }
                     },
-
-                    _vadjust: -(r + 35),
-                    
                     font: {
-                        size:        FONT_SIZE,
-                        color:       '#111',
-                        face:        'Segoe UI, sans-serif',
-                        vadjust:     -(r + 35),      // centra el label sobre el nodo
-                        strokeWidth: 3,
-                        strokeColor: 'rgba(255,255,255,0.9)'
+                        size: FONT_SIZE, color: '#111', face: 'Segoe UI, sans-serif',
+                        vadjust: -(r + 35), strokeWidth: 3, strokeColor: 'rgba(255,255,255,0.9)'
                     },
                     borderWidth: 2,
-                    dimension: a.dimension ? String(a.dimension).toLowerCase() : 'sin dimensión',
+                    dimension:  a.dimension ? String(a.dimension).toLowerCase() : 'sin dimensión',
                     nivel
                 };
             });
@@ -170,12 +183,11 @@
                             : (colorLookup[e.source] || '#848484');
                 edgeColorLookup[e.key] = col;
                 return {
-                    id:    e.key,
-                    from:  e.source,
-                    to:    e.target,
+                    id:    e.key, from: e.source, to: e.target,
+                    // ── CAMBIO: width 1.5 → 3 para mayor visibilidad ──────────────
                     color: { color: hexToRgba(col, 0.55), highlight: col, hover: col, inherit: false },
                     arrows: { to: { enabled: true, scaleFactor: 0.9 } },
-                    width: 1.5
+                    width: 3
                 };
             });
 
@@ -185,16 +197,39 @@
                                .filter(d => d !== 'sin dimensión').sort();
             uniqueDims.forEach(dim => {
                 const opt = document.createElement('option');
-                opt.value = dim;
-                opt.innerHTML = dim.toUpperCase();
+                opt.value = dim; opt.innerHTML = dim.toUpperCase();
                 select.appendChild(opt);
             });
 
             // ── PASO 6: lista de nodos ────────────────────────────────────────────
+            // Ordenar: dimensión primero (frases al final), luego label alfabético
+            const listaOrdenada = processedNodes.slice().sort((a, b) => {
+                const dimA = a.nivel === 'frase' ? 'zzz' : (a.dimension || 'sin dimensión');
+                const dimB = b.nivel === 'frase' ? 'zzz' : (b.dimension || 'sin dimensión');
+                if (dimA !== dimB) return dimA.localeCompare(dimB);
+                return a.label.localeCompare(b.label);
+            });
+
             const listaContainer = document.getElementById('listaNodosContainer');
-            processedNodes.slice().sort((a,b) => a.label.localeCompare(b.label)).forEach(n => {
+            let grupoActual = null;
+
+            listaOrdenada.forEach(n => {
+                // Encabezado de grupo por dimensión
+                const grupoClave = n.nivel === 'frase' ? 'Frases' : (n.dimension || 'Sin dimensión');
+                if (grupoClave !== grupoActual) {
+                    grupoActual = grupoClave;
+                    const h = document.createElement('div');
+                    h.className = 'dim-group-header';
+                    h.dataset.grupo = grupoClave;
+                    h.textContent = grupoClave.toUpperCase();
+                    listaContainer.appendChild(h);
+                }
+
                 const div = document.createElement('div');
                 div.className = 'node-item';
+                div.dataset.id        = n.id;
+                div.dataset.dimension = n.dimension || 'sin dimensión';
+                div.dataset.nivel     = n.nivel;
                 div.innerHTML = `
                     <label style="display:flex;align-items:center;width:100%;cursor:pointer;">
                         <input type="checkbox" checked value="${n.id}">
@@ -209,6 +244,27 @@
                 });
                 listaContainer.appendChild(div);
             });
+
+            // Función para sincronizar visibilidad de la lista con el filtro activo
+            function actualizarLista(filtro) {
+                document.querySelectorAll('.node-item').forEach(el => {
+                    const esFrase = el.dataset.nivel === 'frase';
+                    const coincide = filtro === 'all' || el.dataset.dimension === filtro || esFrase;
+                    el.style.display = coincide ? '' : 'none';
+                });
+                // Ocultar encabezados de grupo que no tienen items visibles
+                document.querySelectorAll('.dim-group-header').forEach(h => {
+                    const grupo = h.dataset.grupo;
+                    // Buscar si el siguiente grupo tiene algún item visible
+                    let siguiente = h.nextElementSibling;
+                    let tieneVisibles = false;
+                    while (siguiente && !siguiente.classList.contains('dim-group-header')) {
+                        if (siguiente.style.display !== 'none') { tieneVisibles = true; break; }
+                        siguiente = siguiente.nextElementSibling;
+                    }
+                    h.style.display = tieneVisibles ? '' : 'none';
+                });
+            }
 
             // ── PASO 7: inicializar red ───────────────────────────────────────────
             const allNodes = new vis.DataSet(processedNodes);
@@ -244,18 +300,15 @@
 
             function restaurarTodo() {
                 allNodes.update(allNodes.get().map(n => ({
-                    id:    n.id,
+                    id: n.id,
                     color: nodeColorProps(n.id, 1),
                     font: {
-                        color:       '#111',
-                        size:        FONT_SIZE,
-                        vadjust:     n._vadjust,
-                        strokeWidth: 3,
-                        strokeColor: 'rgba(255,255,255,0.9)'
+                        color: '#111', size: FONT_SIZE, vadjust: n._vadjust,
+                        strokeWidth: 3, strokeColor: 'rgba(255,255,255,0.9)'
                     }
                 })));
                 allEdges.update(allEdges.get().map(e => ({
-                    id:    e.id,
+                    id: e.id,
                     color: { color: hexToRgba(edgeColorLookup[e.id], 0.55), inherit: false }
                 })));
             }
@@ -271,7 +324,7 @@
                 allNodes.update(allNodes.get().map(n => {
                     const vis_ = vNodes.has(n.id);
                     return {
-                        id:    n.id,
+                        id: n.id,
                         color: nodeColorProps(n.id, vis_ ? 1 : 0.08),
                         font: {
                             color:       vis_ ? '#111' : 'rgba(0,0,0,0.08)',
@@ -283,9 +336,21 @@
                     };
                 }));
                 allEdges.update(allEdges.get().map(e => ({
-                    id:    e.id,
+                    id: e.id,
                     color: { color: hexToRgba(edgeColorLookup[e.id], vEdges.has(e.id) ? 1 : 0.05), inherit: false }
                 })));
+            }
+
+            // ── Función para ocultar nodos ────────────────────────────────────────
+            function ocultarNodos(ids) {
+                ids.forEach(id => nodosOcultos.add(id));
+                // Sincronizar checkboxes en la lista
+                ids.forEach(id => {
+                    const item = listaContainer.querySelector(`.node-item[data-id="${id}"] input`);
+                    if (item) item.checked = false;
+                });
+                nodesView.refresh();
+                restaurarTodo();
             }
 
             // ── PASO 9: panel de detalles ─────────────────────────────────────────
@@ -294,12 +359,20 @@
                 const vacio = document.getElementById('detallesVacio');
                 if (!ids.length) { cont.innerHTML = ''; vacio.style.display = 'block'; return; }
                 vacio.style.display = 'none';
+
                 const n      = allNodes.get(ids[0]);
                 const grado  = degreeMap[n.id] || 0;
+                // Vecinos ordenados alfabéticamente
                 const vecinos = network.getConnectedNodes(n.id)
                                        .map(vId => allNodes.get(vId))
-                                       .filter(v => v && !nodosOcultos.has(v.id));
+                                       .filter(v => v && !nodosOcultos.has(v.id))
+                                       .sort((a, b) => a.label.localeCompare(b.label));
+
+                const estaOculto = nodosOcultos.has(n.id);
                 cont.innerHTML = `
+                    <button class="btn-toggle-node ${estaOculto ? 'mostrar' : 'ocultar'}" id="btn-toggle-selected">
+                        ${estaOculto ? '👁 Mostrar este nodo' : '🙈 Ocultar este nodo'}
+                    </button>
                     <div class="detail-card" style="border-left:8px solid ${colorLookup[n.id]}">
                         <div class="detail-row">
                             <div class="detail-label">Etiqueta</div>
@@ -320,9 +393,49 @@
                             </ul>
                         </div>
                     </div>`;
+
+                // Botón ocultar/mostrar el nodo seleccionado
+                document.getElementById('btn-toggle-selected').addEventListener('click', () => {
+                    if (nodosOcultos.has(n.id)) {
+                        nodosOcultos.delete(n.id);
+                        const cb = listaContainer.querySelector(`.node-item[data-id="${n.id}"] input`);
+                        if (cb) cb.checked = true;
+                    } else {
+                        nodosOcultos.add(n.id);
+                        const cb = listaContainer.querySelector(`.node-item[data-id="${n.id}"] input`);
+                        if (cb) cb.checked = false;
+                    }
+                    nodesView.refresh();
+                    restaurarTodo();
+                    // Refrescar el panel de detalles para actualizar el estado del botón
+                    actualizarDetalles(ids);
+                });
             }
 
-            // ── PASO 10: eventos ──────────────────────────────────────────────────
+            // ── PASO 10: exportar PNG ─────────────────────────────────────────────
+            document.getElementById('btn-export').addEventListener('click', () => {
+                // Guardamos posición y escala actuales
+                const posActual   = network.getViewPosition();
+                const scalaActual = network.getScale();
+
+                // Ajustamos vista para mostrar el grafo completo
+                network.fit({ animation: false });
+
+                // Esperamos un frame para que el canvas se redibuje
+                requestAnimationFrame(() => {
+                    const canvas = network.canvas.frame.canvas;
+                    const url    = canvas.toDataURL('image/png');
+                    const a      = document.createElement('a');
+                    a.href       = url;
+                    a.download   = 'catoninetails-grafo.png';
+                    a.click();
+
+                    // Restauramos la vista anterior
+                    network.moveTo({ position: posActual, scale: scalaActual, animation: false });
+                });
+            });
+
+            // ── PASO 11: eventos ──────────────────────────────────────────────────
             network.on('click', p => {
                 resaltar(p.nodes);
                 actualizarDetalles(p.nodes);
@@ -330,10 +443,24 @@
             });
             network.on('hoverNode', p => { if (!network.getSelectedNodes().length) resaltar([p.node]); });
             network.on('blurNode',  () => { if (!network.getSelectedNodes().length) restaurarTodo(); });
+
             select.addEventListener('change', e => {
                 filtroActual = e.target.value.toLowerCase();
                 nodesView.refresh();
                 restaurarTodo();
+                actualizarLista(filtroActual);   // sincronizar lista del sidebar
+            });
+
+            // Tecla Supr: oculta los nodos seleccionados
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Delete' || e.key === 'Supr') {
+                    const seleccionados = network.getSelectedNodes();
+                    if (seleccionados.length) {
+                        ocultarNodos(seleccionados);
+                        network.unselectAll();
+                        actualizarDetalles([]);
+                    }
+                }
             });
 
         })
@@ -346,7 +473,3 @@
     </script>
 </body>
 </html>
-
-
-
-
