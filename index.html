@@ -33,8 +33,22 @@
         .tab-content.active { display: block; }
 
         /* Lista de nodos */
-        .dim-group-header { font-size: 11px; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 12px 0 4px 0; padding-bottom: 3px; border-bottom: 1px solid #eee; }
+        .dim-group-header {
+            display: flex; align-items: center; gap: 7px;
+            font-size: 11px; font-weight: 700; color: #666;
+            text-transform: uppercase; letter-spacing: 1px;
+            margin: 12px 0 4px 0; padding: 4px 4px 4px 2px;
+            border-bottom: 1px solid #e0e0e0;
+            user-select: none;
+        }
         .dim-group-header:first-child { margin-top: 0; }
+        .dim-group-header .group-checkbox { margin: 0; transform: scale(1.1); cursor: pointer; flex-shrink: 0; }
+        .dim-group-header .group-label { flex: 1; cursor: pointer; }
+        .dim-group-header .group-arrow {
+            font-size: 10px; color: #aaa; cursor: pointer;
+            transition: transform 0.2s; display: inline-block;
+        }
+        .dim-group-header.collapsed .group-arrow { transform: rotate(-90deg); }
         .node-item { margin-bottom: 4px; font-size: 14px; display: flex; align-items: center; padding: 4px; border-radius: 4px; transition: background 0.2s; }
         .node-item:hover { background: #f0f7ff; }
         .node-item input { margin-right: 10px; transform: scale(1.1); cursor: pointer; }
@@ -211,23 +225,75 @@
             const listaContainer = document.getElementById('listaNodosContainer');
             let grupoActual = null;
 
+            // Actualiza el estado del checkbox de grupo (checked / unchecked / indeterminate)
+            function actualizarCheckboxGrupo(grupoClave) {
+                const header = listaContainer.querySelector(`.dim-group-header[data-grupo="${grupoClave}"]`);
+                if (!header) return;
+                const cb = header.querySelector('.group-checkbox');
+                const items = listaContainer.querySelectorAll(`.node-item[data-grupo="${grupoClave}"]`);
+                const visibles = [...items].filter(el => el.style.display !== 'none');
+                if (!visibles.length) { cb.indeterminate = false; cb.checked = false; return; }
+                const checkedCount = visibles.filter(el => el.querySelector('input').checked).length;
+                if (checkedCount === 0)             { cb.indeterminate = false; cb.checked = false; }
+                else if (checkedCount === visibles.length) { cb.indeterminate = false; cb.checked = true; }
+                else                               { cb.indeterminate = true; }
+            }
+
             listaOrdenada.forEach(n => {
-                // Encabezado de grupo por dimensión
                 const grupoClave = n.nivel === 'frase' ? 'Frases' : (n.dimension || 'Sin dimensión');
+
+                // ── Crear encabezado de grupo si es nuevo ──────────────────────────
                 if (grupoClave !== grupoActual) {
                     grupoActual = grupoClave;
+
                     const h = document.createElement('div');
-                    h.className = 'dim-group-header';
+                    h.className   = 'dim-group-header';
                     h.dataset.grupo = grupoClave;
-                    h.textContent = grupoClave.toUpperCase();
+                    h.innerHTML = `
+                        <input type="checkbox" class="group-checkbox" checked title="Mostrar/ocultar grupo">
+                        <span class="group-label">${grupoClave.toUpperCase()}</span>
+                        <span class="group-arrow">▾</span>`;
                     listaContainer.appendChild(h);
+
+                    // Checkbox de grupo: marca/desmarca todos los nodos del grupo
+                    h.querySelector('.group-checkbox').addEventListener('change', ev => {
+                        ev.stopPropagation();
+                        const marcar = ev.target.checked;
+                        const items  = listaContainer.querySelectorAll(`.node-item[data-grupo="${grupoClave}"]`);
+                        items.forEach(item => {
+                            if (item.style.display === 'none') return; // respeta filtro activo
+                            const id = item.dataset.id;
+                            const cb = item.querySelector('input');
+                            cb.checked = marcar;
+                            if (marcar) nodosOcultos.delete(id);
+                            else        nodosOcultos.add(id);
+                        });
+                        nodesView.refresh();
+                        restaurarTodo();
+                    });
+
+                    // Click en label o flecha: colapsar/expandir el grupo
+                    const toggleColapso = () => {
+                        const colapsado = h.classList.toggle('collapsed');
+                        const items = listaContainer.querySelectorAll(`.node-item[data-grupo="${grupoClave}"]`);
+                        items.forEach(item => {
+                            // Solo afecta items que no están ocultos por el filtro de dimensión
+                            if (!item.dataset.filtroOculto) {
+                                item.style.display = colapsado ? 'none' : '';
+                            }
+                        });
+                    };
+                    h.querySelector('.group-label').addEventListener('click', toggleColapso);
+                    h.querySelector('.group-arrow').addEventListener('click',  toggleColapso);
                 }
 
+                // ── Crear item de nodo ─────────────────────────────────────────────
                 const div = document.createElement('div');
-                div.className = 'node-item';
-                div.dataset.id        = n.id;
+                div.className        = 'node-item';
+                div.dataset.id       = n.id;
+                div.dataset.grupo    = grupoClave;
                 div.dataset.dimension = n.dimension || 'sin dimensión';
-                div.dataset.nivel     = n.nivel;
+                div.dataset.nivel    = n.nivel;
                 div.innerHTML = `
                     <label style="display:flex;align-items:center;width:100%;cursor:pointer;">
                         <input type="checkbox" checked value="${n.id}">
@@ -236,9 +302,10 @@
                     </label>`;
                 div.querySelector('input').addEventListener('change', ev => {
                     if (ev.target.checked) nodosOcultos.delete(n.id);
-                    else nodosOcultos.add(n.id);
+                    else                   nodosOcultos.add(n.id);
                     nodesView.refresh();
                     restaurarTodo();
+                    actualizarCheckboxGrupo(grupoClave);
                 });
                 listaContainer.appendChild(div);
             });
@@ -246,21 +313,26 @@
             // Función para sincronizar visibilidad de la lista con el filtro activo
             function actualizarLista(filtro) {
                 document.querySelectorAll('.node-item').forEach(el => {
-                    const esFrase = el.dataset.nivel === 'frase';
+                    const esFrase  = el.dataset.nivel === 'frase';
                     const coincide = filtro === 'all' || el.dataset.dimension === filtro || esFrase;
-                    el.style.display = coincide ? '' : 'none';
+                    const header   = listaContainer.querySelector(`.dim-group-header[data-grupo="${el.dataset.grupo}"]`);
+                    const colapsado = header && header.classList.contains('collapsed');
+
+                    if (!coincide) {
+                        el.dataset.filtroOculto = '1';
+                        el.style.display = 'none';
+                    } else {
+                        delete el.dataset.filtroOculto;
+                        el.style.display = colapsado ? 'none' : '';
+                    }
                 });
-                // Ocultar encabezados de grupo que no tienen items visibles
+                // Ocultar/mostrar encabezados según si tienen items visibles por filtro
                 document.querySelectorAll('.dim-group-header').forEach(h => {
                     const grupo = h.dataset.grupo;
-                    // Buscar si el siguiente grupo tiene algún item visible
-                    let siguiente = h.nextElementSibling;
-                    let tieneVisibles = false;
-                    while (siguiente && !siguiente.classList.contains('dim-group-header')) {
-                        if (siguiente.style.display !== 'none') { tieneVisibles = true; break; }
-                        siguiente = siguiente.nextElementSibling;
-                    }
+                    const tieneVisibles = [...listaContainer.querySelectorAll(`.node-item[data-grupo="${grupo}"]`)]
+                                          .some(el => !el.dataset.filtroOculto);
                     h.style.display = tieneVisibles ? '' : 'none';
+                    if (tieneVisibles) actualizarCheckboxGrupo(grupo);
                 });
             }
 
@@ -502,15 +574,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
