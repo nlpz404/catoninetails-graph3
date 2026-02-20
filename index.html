@@ -307,6 +307,15 @@
                     actualizarDetalles([n.id]);
                     document.getElementById('btn-tab-detalles').click();
                 });
+
+                div.querySelector('input').addEventListener('change', ev => {
+                    if (ev.target.checked) nodosOcultos.delete(n.id);
+                    else                   nodosOcultos.add(n.id);
+                    nodesView.refresh();
+                    restaurarTodo();
+                    actualizarCheckboxGrupo(grupoClave);
+                });
+                
                 listaContainer.appendChild(div);
             });
 
@@ -604,6 +613,7 @@
     </script>
 </body>
 </html>
+
 
 
 
