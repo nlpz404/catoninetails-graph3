@@ -98,6 +98,12 @@
                 <button class="tab-btn" id="btn-tab-detalles" onclick="abrirTab('tab-detalles', event)">Detalles Selección</button>
             </div>
             <div id="tab-lista" class="tab-content active">
+                <div style="padding: 6px 4px 10px 4px; border-bottom: 2px solid #e0e0e0; margin-bottom: 8px; display:flex; align-items:center; gap:8px;">
+                    <input type="checkbox" id="chk-todo" checked style="transform:scale(1.1); cursor:pointer;">
+                    <label for="chk-todo" style="font-size:12px; font-weight:700; color:#555; text-transform:uppercase; letter-spacing:1px; cursor:pointer;">
+                        Mostrar / Ocultar todo
+                    </label>
+                </div>
                 <div id="listaNodosContainer"></div>
             </div>
             <div id="tab-detalles" class="tab-content">
@@ -319,6 +325,26 @@
                 listaContainer.appendChild(div);
             });
 
+            document.getElementById('chk-todo').addEventListener('change', ev => {
+                const marcar = ev.target.checked;
+                listaContainer.querySelectorAll('.node-item').forEach(item => {
+                    if (item.style.display === 'none' && item.dataset.filtroOculto) return; // respeta filtro
+                    const id = item.dataset.id;
+                    const cb = item.querySelector('input');
+                    cb.checked = marcar;
+                    if (marcar) nodosOcultos.delete(id);
+                    else        nodosOcultos.add(id);
+                });
+                // Sincronizar checkboxes de grupo
+                listaContainer.querySelectorAll('.dim-group-header').forEach(h => {
+                    const cb = h.querySelector('.group-checkbox');
+                    cb.checked = marcar;
+                    cb.indeterminate = false;
+                });
+                nodesView.refresh();
+                restaurarTodo();
+            });
+            
             // Función para sincronizar visibilidad de la lista con el filtro activo
             function actualizarLista(filtro) {
                 document.querySelectorAll('.node-item').forEach(el => {
@@ -613,6 +639,7 @@
     </script>
 </body>
 </html>
+
 
 
 
