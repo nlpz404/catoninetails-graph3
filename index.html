@@ -74,6 +74,24 @@
         .par-compartidos { font-size: 11px; color: #888; line-height: 1.5; }
         .par-compartidos strong { color: #2b7ce9; }
         .analisis-empty { color: #999; font-style: italic; font-size: 13px; text-align: center; margin-top: 20px; }
+        /* Comparar frases */
+        .comparar-seccion { margin-bottom: 14px; }
+        .comparar-seccion-titulo {
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1px; padding: 5px 8px; border-radius: 4px;
+            margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+        }
+        .comparar-seccion-titulo.compartidos { background: #e8f4e8; color: #2d7a2d; }
+        .comparar-seccion-titulo.exclusivo   { background: #f0f0f0; color: #555; }
+        .comparar-subtipo-item {
+            font-size: 13px; padding: 3px 8px; margin-bottom: 3px;
+            border-radius: 3px; cursor: pointer; display: flex; align-items: center; gap: 6px;
+        }
+        .comparar-subtipo-item:hover { background: #eef5ff; }
+        .comparar-frase-chip {
+            display: inline-block; font-size: 10px; padding: 2px 6px;
+            border-radius: 10px; margin-right: 3px; font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -116,41 +134,78 @@
             </div>
 
             <div id="tab-analisis" class="tab-content">
-                <div class="analisis-controls">
-                    <div>
-                        <label>Tamaño mínimo del grupo</label>
-                        <div style="font-size:11px;color:#999;margin-top:3px;font-style:italic;text-transform:none;letter-spacing:0;">
-                            Cantidad de subtipos que deben co-ocurrir juntos
+
+                <!-- Selector de modo -->
+                <div style="display:flex;gap:0;margin-bottom:14px;border:1px solid #ddd;border-radius:6px;overflow:hidden;">
+                    <button id="modo-coocurrencia" class="modo-btn modo-btn-activo"
+                        style="flex:1;padding:8px 4px;border:none;background:#2b7ce9;color:white;font-size:12px;font-weight:700;cursor:pointer;">
+                        Co-ocurrencia
+                    </button>
+                    <button id="modo-comparar" class="modo-btn"
+                        style="flex:1;padding:8px 4px;border:none;background:#f0f0f0;color:#666;font-size:12px;font-weight:700;cursor:pointer;">
+                        Comparar frases
+                    </button>
+                </div>
+
+                <!-- Modo 1: Co-ocurrencia -->
+                <div id="panel-coocurrencia">
+                    <div class="analisis-controls">
+                        <div>
+                            <label>Tamaño mínimo del grupo</label>
+                            <div style="font-size:11px;color:#999;margin-top:3px;font-style:italic;text-transform:none;letter-spacing:0;">
+                                Cantidad de subtipos que deben co-ocurrir juntos
+                            </div>
+                            <div class="slider-row" style="margin-top:8px;">
+                                <input type="range" id="analisis-tamano" min="2" max="5" value="2">
+                                <span class="slider-val" id="analisis-tamano-val">2</span>
+                            </div>
                         </div>
-                        <div class="slider-row" style="margin-top:8px;">
-                            <input type="range" id="analisis-tamano" min="2" max="5" value="2">
-                            <span class="slider-val" id="analisis-tamano-val">2</span>
+                        <div>
+                            <label>Mínimo de frases en común</label>
+                            <div style="font-size:11px;color:#999;margin-top:3px;font-style:italic;text-transform:none;letter-spacing:0;">
+                                El grupo debe aparecer junto en al menos N frases
+                            </div>
+                            <div class="slider-row" style="margin-top:8px;">
+                                <input type="range" id="analisis-umbral" min="1" max="15" value="2">
+                                <span class="slider-val" id="analisis-umbral-val">2</span>
+                            </div>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:8px;">
+                            <input type="checkbox" id="analisis-distintas" checked style="transform:scale(1.1);cursor:pointer;flex-shrink:0;">
+                            <label for="analisis-distintas" style="font-size:12px;font-weight:600;color:#555;text-transform:none;letter-spacing:0;cursor:pointer;">
+                                Solo subtipos de dimensiones distintas
+                            </label>
+                        </div>
+                        <div class="analisis-btns">
+                            <button class="btn-aplicar" id="btn-analisis-aplicar">Aplicar</button>
+                            <button class="btn-limpiar" id="btn-analisis-limpiar">Limpiar</button>
                         </div>
                     </div>
-                    <div>
-                        <label>Mínimo de frases en común</label>
-                        <div style="font-size:11px;color:#999;margin-top:3px;font-style:italic;text-transform:none;letter-spacing:0;">
-                            El grupo debe aparecer junto en al menos N frases
-                        </div>
-                        <div class="slider-row" style="margin-top:8px;">
-                            <input type="range" id="analisis-umbral" min="1" max="15" value="2">
-                            <span class="slider-val" id="analisis-umbral-val">2</span>
-                        </div>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:8px;">
-                        <input type="checkbox" id="analisis-distintas" checked style="transform:scale(1.1);cursor:pointer;flex-shrink:0;">
-                        <label for="analisis-distintas" style="font-size:12px;font-weight:600;color:#555;text-transform:none;letter-spacing:0;cursor:pointer;">
-                            Solo subtipos de dimensiones distintas
-                        </label>
-                    </div>
-                    <div class="analisis-btns">
-                        <button class="btn-aplicar" id="btn-analisis-aplicar">Aplicar</button>
-                        <button class="btn-limpiar" id="btn-analisis-limpiar">Limpiar</button>
+                    <div id="analisis-resultados">
+                        <div class="analisis-empty">Configurá los parámetros y presioná "Aplicar".</div>
                     </div>
                 </div>
-                <div id="analisis-resultados">
-                    <div class="analisis-empty">Configurá los parámetros y presioná "Aplicar".</div>
+
+                <!-- Modo 2: Comparar frases -->
+                <div id="panel-comparar" style="display:none;">
+                    <div class="analisis-controls">
+                        <div>
+                            <label>Seleccioná las frases a comparar</label>
+                            <div style="font-size:11px;color:#999;margin-top:3px;font-style:italic;text-transform:none;letter-spacing:0;">
+                                Elegí 2 o más frases para ver sus subtipos en común y exclusivos
+                            </div>
+                            <div id="comparar-frases-lista" style="margin-top:8px;max-height:160px;overflow-y:auto;border:1px solid #eee;border-radius:4px;padding:6px;"></div>
+                        </div>
+                        <div class="analisis-btns">
+                            <button class="btn-aplicar" id="btn-comparar-aplicar">Comparar</button>
+                            <button class="btn-limpiar" id="btn-comparar-limpiar">Limpiar</button>
+                        </div>
+                    </div>
+                    <div id="comparar-resultados">
+                        <div class="analisis-empty">Seleccioná al menos 2 frases y presioná "Comparar".</div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -599,22 +654,76 @@
                 }));
             });
 
-            // ── PASO 11: análisis de co-ocurrencia de subtipos ───────────────────
-            //
-            //  Busca grupos de N subtipos (N = tamaño mínimo del grupo) que
-            //  co-ocurren juntos en al menos M frases (M = umbral).
-            //
-            //  Algoritmo:
-            //  1. Construir frasesDeSubtipo: subtipoId → Set<fraseId>
-            //  2. Generar todas las combinaciones de N subtipos
-            //  3. Para cada combinación, la intersección de sus sets de frases
-            //     da las frases donde todos co-ocurren
-            //  4. Si |intersección| >= umbral → resultado válido
-            //
-            //  Opción "solo dimensiones distintas": descarta combinaciones donde
-            //  dos o más subtipos pertenecen a la misma dimensión.
-            //
+            // ── PASO 11: análisis ─────────────────────────────────────────────────
 
+            // ── Helpers compartidos ───────────────────────────────────────────────
+            function combinaciones(arr, k) {
+                const result = [];
+                function helper(start, combo) {
+                    if (combo.length === k) { result.push([...combo]); return; }
+                    for (let i = start; i < arr.length; i++) {
+                        combo.push(arr[i]); helper(i + 1, combo); combo.pop();
+                    }
+                }
+                helper(0, []);
+                return result;
+            }
+            function intersectarSets(sets) {
+                if (!sets.length) return new Set();
+                let result = new Set(sets[0]);
+                for (let i = 1; i < sets.length; i++)
+                    result = new Set([...result].filter(x => sets[i].has(x)));
+                return result;
+            }
+
+            // Construye los mapas frase↔subtipo a partir del grafo completo
+            function construirMapas() {
+                const todosNodos   = allNodes.get();
+                const todasAristas = allEdges.get();
+                const frases   = todosNodos.filter(n => n.nivel === 'frase');
+                const subtipos = todosNodos.filter(n =>
+                    n.nivel !== 'frase' && n.nivel !== 'dimensión' && n.dimension !== 'sin dimensión');
+                const fraseIds = new Set(frases.map(f => f.id));
+                const subtipoSet = new Set(subtipos.map(s => s.id));
+
+                const frasesDeSubtipo = {}; // subtipoId → Set<fraseId>
+                const subtiposDeFrase = {}; // fraseId   → Set<subtipoId>
+                subtipos.forEach(s => { frasesDeSubtipo[s.id] = new Set(); });
+                frases.forEach(f =>   { subtiposDeFrase[f.id] = new Set(); });
+
+                todasAristas.forEach(e => {
+                    if (fraseIds.has(e.from) && subtipoSet.has(e.to)) {
+                        frasesDeSubtipo[e.to].add(e.from);
+                        subtiposDeFrase[e.from].add(e.to);
+                    }
+                    if (fraseIds.has(e.to) && subtipoSet.has(e.from)) {
+                        frasesDeSubtipo[e.from].add(e.to);
+                        subtiposDeFrase[e.to].add(e.from);
+                    }
+                });
+                return { frases, subtipos, todasAristas, frasesDeSubtipo, subtiposDeFrase };
+            }
+
+            // ── Selector de modo ──────────────────────────────────────────────────
+            document.getElementById('modo-coocurrencia').addEventListener('click', () => {
+                document.getElementById('panel-coocurrencia').style.display = '';
+                document.getElementById('panel-comparar').style.display = 'none';
+                document.getElementById('modo-coocurrencia').style.background = '#2b7ce9';
+                document.getElementById('modo-coocurrencia').style.color = 'white';
+                document.getElementById('modo-comparar').style.background = '#f0f0f0';
+                document.getElementById('modo-comparar').style.color = '#666';
+            });
+            document.getElementById('modo-comparar').addEventListener('click', () => {
+                document.getElementById('panel-coocurrencia').style.display = 'none';
+                document.getElementById('panel-comparar').style.display = '';
+                document.getElementById('modo-comparar').style.background = '#2b7ce9';
+                document.getElementById('modo-comparar').style.color = 'white';
+                document.getElementById('modo-coocurrencia').style.background = '#f0f0f0';
+                document.getElementById('modo-coocurrencia').style.color = '#666';
+                poblarListaFrases();
+            });
+
+            // ── MODO CO-OCURRENCIA ────────────────────────────────────────────────
             document.getElementById('analisis-umbral').addEventListener('input', ev => {
                 document.getElementById('analisis-umbral-val').textContent = ev.target.value;
             });
@@ -624,79 +733,28 @@
 
             let parActivoIndex = null;
 
-            // Genera todas las combinaciones de tamaño k de un array
-            function combinaciones(arr, k) {
-                const result = [];
-                function helper(start, combo) {
-                    if (combo.length === k) { result.push([...combo]); return; }
-                    for (let i = start; i < arr.length; i++) {
-                        combo.push(arr[i]);
-                        helper(i + 1, combo);
-                        combo.pop();
-                    }
-                }
-                helper(0, []);
-                return result;
-            }
-
-            // Intersección de múltiples Sets
-            function intersectarSets(sets) {
-                if (!sets.length) return new Set();
-                let result = new Set(sets[0]);
-                for (let i = 1; i < sets.length; i++) {
-                    result = new Set([...result].filter(x => sets[i].has(x)));
-                }
-                return result;
-            }
-
             document.getElementById('btn-analisis-aplicar').addEventListener('click', () => {
-                const umbral   = parseInt(document.getElementById('analisis-umbral').value);
-                const tamano   = parseInt(document.getElementById('analisis-tamano').value);
+                const umbral        = parseInt(document.getElementById('analisis-umbral').value);
+                const tamano        = parseInt(document.getElementById('analisis-tamano').value);
                 const soloDistintas = document.getElementById('analisis-distintas').checked;
+                const { frases, subtipos, todasAristas, frasesDeSubtipo } = construirMapas();
 
-                const todosNodos   = allNodes.get();
-                const todasAristas = allEdges.get();
-                const frases   = todosNodos.filter(n => n.nivel === 'frase');
-                const subtipos = todosNodos.filter(n => n.nivel !== 'frase' && n.nivel !== 'dimensión' && n.dimension !== 'sin dimensión');
-
-                // Mapa subtipoId → Set de fraseIds que lo contienen
-                const frasesDeSubtipo = {};
-                subtipos.forEach(s => { frasesDeSubtipo[s.id] = new Set(); });
-
-                const fraseIds = new Set(frases.map(f => f.id));
-                todasAristas.forEach(e => {
-                    if (fraseIds.has(e.from) && frasesDeSubtipo.hasOwnProperty(e.to))
-                        frasesDeSubtipo[e.to].add(e.from);
-                    if (fraseIds.has(e.to) && frasesDeSubtipo.hasOwnProperty(e.from))
-                        frasesDeSubtipo[e.from].add(e.to);
-                });
-
-                // Descartar subtipos que no aparecen en ninguna frase
                 const subtiposActivos = subtipos.filter(s => frasesDeSubtipo[s.id].size > 0);
+                const combos  = combinaciones(subtiposActivos, tamano);
+                const grupos  = [];
 
-                // Generar combinaciones de tamaño `tamano`
-                const combos = combinaciones(subtiposActivos, tamano);
-
-                const grupos = [];
                 for (const combo of combos) {
-                    // Filtro de dimensiones distintas
                     if (soloDistintas) {
-                        const dims = combo.map(s => s.dimension);
-                        const dimsUnicas = new Set(dims);
-                        if (dimsUnicas.size < combo.length) continue; // hay dimensión repetida
+                        const dims = new Set(combo.map(s => s.dimension));
+                        if (dims.size < combo.length) continue;
                     }
-
-                    // Frases donde co-ocurren todos los subtipos del grupo
-                    const sets = combo.map(s => frasesDeSubtipo[s.id]);
-                    const frasesComp = intersectarSets(sets);
-
+                    const frasesComp = intersectarSets(combo.map(s => frasesDeSubtipo[s.id]));
                     if (frasesComp.size >= umbral) {
                         const frasesObjs = [...frasesComp].map(id => frases.find(f => f.id === id)).filter(Boolean);
                         grupos.push({ subtipos: combo, frases: frasesObjs });
                     }
                 }
 
-                // Ordenar: más frases primero, luego más subtipos
                 grupos.sort((a, b) => b.frases.length - a.frases.length || b.subtipos.length - a.subtipos.length);
 
                 const resDiv = document.getElementById('analisis-resultados');
@@ -704,58 +762,44 @@
 
                 if (!grupos.length) {
                     resDiv.innerHTML = `<div class="analisis-empty">No se encontraron grupos de ${tamano} subtipos que co-ocurran en ${umbral} o más frases.</div>`;
-                    restaurarTodo();
-                    return;
+                    restaurarTodo(); return;
                 }
 
                 resDiv.innerHTML = `
-                    <div style="font-size:12px; color:#888; margin-bottom:10px;">
+                    <div style="font-size:12px;color:#888;margin-bottom:10px;">
                         ${grupos.length} grupo${grupos.length !== 1 ? 's' : ''} encontrado${grupos.length !== 1 ? 's' : ''} · Click para resaltar
                     </div>
                     ${grupos.map((g, idx) => `
                         <div class="par-item" data-idx="${idx}">
                             <div class="par-nombres">
-                                ${g.subtipos.map(s =>
-                                    `<span style="color:${colorLookup[s.id]}">●</span> ${s.label}`
-                                ).join(' &nbsp;+&nbsp; ')}
+                                ${g.subtipos.map(s => `<span style="color:${colorLookup[s.id]}">●</span> ${s.label}`).join(' &nbsp;+&nbsp; ')}
                             </div>
                             <div class="par-compartidos">
                                 Co-ocurren en <strong>${g.frases.length}</strong> frase${g.frases.length !== 1 ? 's' : ''}:
                                 ${g.frases.map(f => f.label).sort().join(', ')}
                             </div>
-                        </div>
-                    `).join('')}`;
+                        </div>`).join('')}`;
 
                 resDiv.querySelectorAll('.par-item').forEach(el => {
                     el.addEventListener('click', () => {
                         const idx = parseInt(el.dataset.idx);
                         const g   = grupos[idx];
-
                         if (parActivoIndex === idx) {
                             parActivoIndex = null;
                             resDiv.querySelectorAll('.par-item').forEach(p => p.classList.remove('activo'));
-                            restaurarTodo();
-                            return;
+                            restaurarTodo(); return;
                         }
-
                         parActivoIndex = idx;
                         resDiv.querySelectorAll('.par-item').forEach(p => p.classList.remove('activo'));
                         el.classList.add('activo');
-
-                        // Nodos: todos los subtipos del grupo + las frases donde co-ocurren
                         const subtipoIds = new Set(g.subtipos.map(s => s.id));
                         const nodosVis   = new Set([...subtipoIds, ...g.frases.map(f => f.id)]);
-
-                        // Aristas: las que conectan cada frase del resultado
-                        // con alguno de los subtipos del grupo
                         const aristasVis = new Set();
                         todasAristas.forEach(e => {
                             const extremos = [e.from, e.to];
-                            const tieneFrase   = g.frases.some(f => extremos.includes(f.id));
-                            const tieneSubtipo = extremos.some(x => subtipoIds.has(x));
-                            if (tieneFrase && tieneSubtipo) aristasVis.add(e.id);
+                            if (g.frases.some(f => extremos.includes(f.id)) &&
+                                extremos.some(x => subtipoIds.has(x))) aristasVis.add(e.id);
                         });
-
                         resaltarAnalisis([...nodosVis], [...aristasVis]);
                     });
                 });
@@ -765,6 +809,179 @@
                 parActivoIndex = null;
                 document.getElementById('analisis-resultados').innerHTML =
                     '<div class="analisis-empty">Configurá los parámetros y presioná "Aplicar".</div>';
+                restaurarTodo();
+            });
+
+            // ── MODO COMPARAR FRASES ──────────────────────────────────────────────
+
+            let frasesParaComparar = new Set();
+
+            function poblarListaFrases() {
+                const lista = document.getElementById('comparar-frases-lista');
+                if (lista.dataset.poblado) return; // solo poblar una vez
+                lista.dataset.poblado = '1';
+                const { frases } = construirMapas();
+                // Ordenar frases numéricamente por label
+                frases.slice().sort((a, b) => a.label.localeCompare(b.label, undefined, { numeric: true }))
+                    .forEach(f => {
+                        const div = document.createElement('div');
+                        div.style.cssText = 'display:flex;align-items:center;gap:7px;padding:3px 2px;font-size:13px;cursor:pointer;border-radius:3px;';
+                        div.innerHTML = `
+                            <input type="checkbox" data-id="${f.id}" style="cursor:pointer;">
+                            <span style="color:${colorLookup[f.id]}">●</span>
+                            <span>${f.label}</span>`;
+                        div.querySelector('input').addEventListener('change', ev => {
+                            if (ev.target.checked) frasesParaComparar.add(f.id);
+                            else frasesParaComparar.delete(f.id);
+                        });
+                        lista.appendChild(div);
+                    });
+            }
+
+            document.getElementById('btn-comparar-aplicar').addEventListener('click', () => {
+                const resDiv = document.getElementById('comparar-resultados');
+                if (frasesParaComparar.size < 2) {
+                    resDiv.innerHTML = '<div class="analisis-empty">Seleccioná al menos 2 frases para comparar.</div>';
+                    return;
+                }
+
+                const { frases, subtipos, todasAristas, subtiposDeFrase } = construirMapas();
+                const frasesSelObj = [...frasesParaComparar].map(id => frases.find(f => f.id === id)).filter(Boolean);
+
+                // Sets de subtipos por frase seleccionada
+                const setsPorFrase = frasesSelObj.map(f => subtiposDeFrase[f.id] || new Set());
+
+                // Subtipos compartidos por TODAS las frases seleccionadas
+                const compartidosTodos = intersectarSets(setsPorFrase);
+
+                // Para cada frase: subtipos exclusivos (que no están en ninguna otra seleccionada)
+                const exclusivosPorFrase = frasesSelObj.map((f, i) => {
+                    const propios = subtiposDeFrase[f.id] || new Set();
+                    const otros   = new Set(
+                        frasesSelObj.filter((_, j) => j !== i)
+                                    .flatMap(g => [...(subtiposDeFrase[g.id] || new Set())])
+                    );
+                    return { frase: f, exclusivos: [...propios].filter(id => !otros.has(id)) };
+                });
+
+                // Subtipos comunes entre pares (para frases seleccionadas > 2)
+                // — solo si hay exactamente 2 o mostramos la intersección de cada par
+                const paresComunes = [];
+                if (frasesSelObj.length > 2) {
+                    for (let i = 0; i < frasesSelObj.length; i++) {
+                        for (let j = i + 1; j < frasesSelObj.length; j++) {
+                            const comun = [...(subtiposDeFrase[frasesSelObj[i].id] || new Set())]
+                                .filter(id => (subtiposDeFrase[frasesSelObj[j].id] || new Set()).has(id)
+                                           && !compartidosTodos.has(id));
+                            if (comun.length) paresComunes.push({ fA: frasesSelObj[i], fB: frasesSelObj[j], comun });
+                        }
+                    }
+                }
+
+                // ── Render ────────────────────────────────────────────────────────
+                const getLabel = id => allNodes.get(id)?.label || id;
+                const getColor = id => colorLookup[id] || '#888';
+
+                let html = '';
+
+                // Compartidos por todas
+                html += `<div class="comparar-seccion">
+                    <div class="comparar-seccion-titulo compartidos">
+                        ✦ En común en las ${frasesSelObj.length} frases (${compartidosTodos.size})
+                    </div>`;
+                if (compartidosTodos.size === 0) {
+                    html += `<div style="font-size:12px;color:#aaa;padding:4px 8px;font-style:italic;">Ningún subtipo comparten las ${frasesSelObj.length} frases seleccionadas.</div>`;
+                } else {
+                    [...compartidosTodos].sort((a,b) => getLabel(a).localeCompare(getLabel(b))).forEach(id => {
+                        html += `<div class="comparar-subtipo-item" data-subtipo="${id}">
+                            <span style="color:${getColor(id)}">●</span>
+                            <span>${getLabel(id)}</span>
+                            <span style="font-size:10px;color:#aaa;">(${allNodes.get(id)?.dimension || ''})</span>
+                        </div>`;
+                    });
+                }
+                html += `</div>`;
+
+                // Pares con subtipos en común (solo si hay >2 frases)
+                if (paresComunes.length) {
+                    paresComunes.forEach(({ fA, fB, comun }) => {
+                        html += `<div class="comparar-seccion">
+                            <div class="comparar-seccion-titulo" style="background:#fff3e0;color:#b36200;">
+                                ◈ Solo en ${fA.label} + ${fB.label} (${comun.length})
+                            </div>`;
+                        comun.sort((a,b) => getLabel(a).localeCompare(getLabel(b))).forEach(id => {
+                            html += `<div class="comparar-subtipo-item" data-subtipo="${id}">
+                                <span style="color:${getColor(id)}">●</span>
+                                <span>${getLabel(id)}</span>
+                                <span style="font-size:10px;color:#aaa;">(${allNodes.get(id)?.dimension || ''})</span>
+                            </div>`;
+                        });
+                        html += `</div>`;
+                    });
+                }
+
+                // Exclusivos por frase
+                exclusivosPorFrase.forEach(({ frase, exclusivos }) => {
+                    html += `<div class="comparar-seccion">
+                        <div class="comparar-seccion-titulo exclusivo">
+                            ◇ Solo en ${frase.label} (${exclusivos.length})
+                        </div>`;
+                    if (!exclusivos.length) {
+                        html += `<div style="font-size:12px;color:#aaa;padding:4px 8px;font-style:italic;">Sin subtipos exclusivos.</div>`;
+                    } else {
+                        exclusivos.sort((a,b) => getLabel(a).localeCompare(getLabel(b))).forEach(id => {
+                            html += `<div class="comparar-subtipo-item" data-subtipo="${id}">
+                                <span style="color:${getColor(id)}">●</span>
+                                <span>${getLabel(id)}</span>
+                                <span style="font-size:10px;color:#aaa;">(${allNodes.get(id)?.dimension || ''})</span>
+                            </div>`;
+                        });
+                    }
+                    html += `</div>`;
+                });
+
+                resDiv.innerHTML = html;
+
+                // Click en un subtipo del resultado → resaltarlo en el grafo
+                // junto con las frases seleccionadas que lo contienen
+                resDiv.querySelectorAll('.comparar-subtipo-item').forEach(el => {
+                    el.addEventListener('click', () => {
+                        const subId = el.dataset.subtipo;
+                        // Frases seleccionadas que contienen este subtipo
+                        const frasesConSubtipo = frasesSelObj.filter(f =>
+                            (subtiposDeFrase[f.id] || new Set()).has(subId));
+                        const nodosVis = new Set([subId, ...frasesConSubtipo.map(f => f.id)]);
+                        const aristasVis = new Set();
+                        todasAristas.forEach(e => {
+                            const extremos = [e.from, e.to];
+                            if (extremos.includes(subId) &&
+                                frasesConSubtipo.some(f => extremos.includes(f.id)))
+                                aristasVis.add(e.id);
+                        });
+                        resaltarAnalisis([...nodosVis], [...aristasVis]);
+                    });
+                });
+
+                // Resaltar todas las frases seleccionadas + sus subtipos en el grafo
+                const todosSubtiposInvolucrados = new Set(
+                    frasesSelObj.flatMap(f => [...(subtiposDeFrase[f.id] || new Set())])
+                );
+                const nodosVisGlobal = new Set([...frasesParaComparar, ...todosSubtiposInvolucrados]);
+                const aristasVisGlobal = new Set();
+                todasAristas.forEach(e => {
+                    const extremos = [e.from, e.to];
+                    if (frasesSelObj.some(f => extremos.includes(f.id)) &&
+                        extremos.some(x => todosSubtiposInvolucrados.has(x)))
+                        aristasVisGlobal.add(e.id);
+                });
+                resaltarAnalisis([...nodosVisGlobal], [...aristasVisGlobal]);
+            });
+
+            document.getElementById('btn-comparar-limpiar').addEventListener('click', () => {
+                frasesParaComparar.clear();
+                document.querySelectorAll('#comparar-frases-lista input').forEach(cb => cb.checked = false);
+                document.getElementById('comparar-resultados').innerHTML =
+                    '<div class="analisis-empty">Seleccioná al menos 2 frases y presioná "Comparar".</div>';
                 restaurarTodo();
             });
 
