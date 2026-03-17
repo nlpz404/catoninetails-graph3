@@ -118,18 +118,13 @@
             <div id="tab-analisis" class="tab-content">
                 <div class="analisis-controls">
                     <div>
-                        <label>Comparar nodos de tipo</label>
-                        <select id="analisis-tipo">
-                            <option value="frase">Solo Frases</option>
-                            <option value="subtipo">Solo Subtipos</option>
-                            <option value="ambos">Ambos</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label>Mínimo de vecinos compartidos</label>
-                        <div class="slider-row">
-                            <input type="range" id="analisis-umbral" min="1" max="15" value="3">
-                            <span class="slider-val" id="analisis-umbral-val">3</span>
+                        <label>Co-ocurrencia mínima de subtipos</label>
+                        <div style="font-size:11px; color:#999; margin-top:3px; font-style:italic; text-transform:none; letter-spacing:0;">
+                            Pares de subtipos que aparecen juntos en al menos N frases
+                        </div>
+                        <div class="slider-row" style="margin-top:8px;">
+                            <input type="range" id="analisis-umbral" min="1" max="15" value="2">
+                            <span class="slider-val" id="analisis-umbral-val">2</span>
                         </div>
                     </div>
                     <div class="analisis-btns">
@@ -138,7 +133,7 @@
                     </div>
                 </div>
                 <div id="analisis-resultados">
-                    <div class="analisis-empty">Configurá los parámetros y presioná "Aplicar".</div>
+                    <div class="analisis-empty">Configurá el umbral y presioná "Aplicar".</div>
                 </div>
             </div>
         </div>
@@ -588,9 +583,19 @@
                 }));
             });
 
-            // ── PASO 11: análisis de vecinos compartidos ──────────────────────────
+            // ── PASO 11: análisis de co-ocurrencia de subtipos ───────────────────
+            //
+            //  Estructura del grafo: frase → subtipo → dimensión
+            //  Dos subtipos "co-ocurren" en una frase si ambos son vecinos directos
+            //  de esa frase. Para cada par de subtipos contamos en cuántas frases
+            //  distintas aparecen juntos. Si ese conteo >= umbral, lo mostramos.
+            //
+            //  Al hacer click en un resultado se resaltan:
+            //    - los dos subtipos del par
+            //    - todas las frases que los contienen juntos
+            //    - las aristas que los conectan a esas frases
+            //
 
-            // Slider: mostrar valor en tiempo real
             document.getElementById('analisis-umbral').addEventListener('input', ev => {
                 document.getElementById('analisis-umbral-val').textContent = ev.target.value;
             });
@@ -598,47 +603,55 @@
             let parActivoIndex = null;
 
             document.getElementById('btn-analisis-aplicar').addEventListener('click', () => {
-                const tipo   = document.getElementById('analisis-tipo').value;
                 const umbral = parseInt(document.getElementById('analisis-umbral').value);
 
-                // Construir mapa id → Set de vecinos directos sobre TODOS los nodos del grafo
-                const vecinosMap = {};
-                allNodes.get().forEach(n => { vecinosMap[n.id] = new Set(); });
-                allEdges.get().forEach(e => {
-                    if (vecinosMap[e.from]) vecinosMap[e.from].add(e.to);
-                    if (vecinosMap[e.to])   vecinosMap[e.to].add(e.from);
+                // 1. Separar frases y subtipos
+                const todosNodos  = allNodes.get();
+                const todasAristas = allEdges.get();
+                const frases    = todosNodos.filter(n => n.nivel === 'frase');
+                const subtipos  = todosNodos.filter(n => n.nivel !== 'frase' && n.nivel !== 'dimensión' && n.dimension !== 'sin dimensión');
+
+                // 2. Para cada frase, construir el Set de subtipos que contiene
+                //    (vecinos directos de la frase que son subtipos)
+                const subtipoDeFrase = {}; // fraseId → Set<subtipoId>
+                frases.forEach(f => { subtipoDeFrase[f.id] = new Set(); });
+
+                todasAristas.forEach(e => {
+                    // arista frase → subtipo: el from puede ser frase o subtipo según
+                    // la dirección, así que chequeamos ambos extremos
+                    const fromEsFrase   = subtipoDeFrase.hasOwnProperty(e.from);
+                    const toEsFrase     = subtipoDeFrase.hasOwnProperty(e.to);
+                    const fromEsSubtipo = subtipos.some(s => s.id === e.from);
+                    const toEsSubtipo   = subtipos.some(s => s.id === e.to);
+
+                    if (fromEsFrase && toEsSubtipo)   subtipoDeFrase[e.from].add(e.to);
+                    if (toEsFrase   && fromEsSubtipo) subtipoDeFrase[e.to].add(e.from);
                 });
 
-                // Candidatos según tipo seleccionado
-                const candidatos = allNodes.get().filter(n => {
-                    if (tipo === 'frase')   return n.nivel === 'frase';
-                    if (tipo === 'subtipo') return n.nivel !== 'frase';
-                    return true;
-                });
-
-                // Calcular pares con suficientes vecinos en común
+                // 3. Para cada par de subtipos, contar frases en que co-ocurren
                 const pares = [];
-                for (let i = 0; i < candidatos.length; i++) {
-                    for (let j = i + 1; j < candidatos.length; j++) {
-                        const a = candidatos[i];
-                        const b = candidatos[j];
-                        const vecsA = vecinosMap[a.id] || new Set();
-                        const vecsB = vecinosMap[b.id] || new Set();
-                        // Vecinos compartidos: en ambos conjuntos, excluyendo a los propios nodos del par
-                        const compartidos = [...vecsA].filter(id => vecsB.has(id) && id !== a.id && id !== b.id);
-                        if (compartidos.length >= umbral) {
-                            pares.push({ a, b, compartidos });
+                for (let i = 0; i < subtipos.length; i++) {
+                    for (let j = i + 1; j < subtipos.length; j++) {
+                        const sA = subtipos[i];
+                        const sB = subtipos[j];
+                        // Frases que contienen a ambos
+                        const frasesCompartidas = frases.filter(f =>
+                            subtipoDeFrase[f.id].has(sA.id) && subtipoDeFrase[f.id].has(sB.id)
+                        );
+                        if (frasesCompartidas.length >= umbral) {
+                            pares.push({ sA, sB, frasesCompartidas });
                         }
                     }
                 }
 
-                pares.sort((x, y) => y.compartidos.length - x.compartidos.length);
+                // Ordenar por cantidad de frases compartidas (mayor primero)
+                pares.sort((x, y) => y.frasesCompartidas.length - x.frasesCompartidas.length);
 
                 const resDiv = document.getElementById('analisis-resultados');
                 parActivoIndex = null;
 
                 if (!pares.length) {
-                    resDiv.innerHTML = `<div class="analisis-empty">No se encontraron pares con ${umbral} o más vecinos compartidos.</div>`;
+                    resDiv.innerHTML = `<div class="analisis-empty">No se encontraron pares de subtipos que co-ocurran en ${umbral} o más frases.</div>`;
                     restaurarTodo();
                     return;
                 }
@@ -650,13 +663,13 @@
                     ${pares.map((par, idx) => `
                         <div class="par-item" data-idx="${idx}">
                             <div class="par-nombres">
-                                <span style="color:${colorLookup[par.a.id]}">●</span> ${par.a.label}
+                                <span style="color:${colorLookup[par.sA.id]}">●</span> ${par.sA.label}
                                 &nbsp;+&nbsp;
-                                <span style="color:${colorLookup[par.b.id]}">●</span> ${par.b.label}
+                                <span style="color:${colorLookup[par.sB.id]}">●</span> ${par.sB.label}
                             </div>
                             <div class="par-compartidos">
-                                <strong>${par.compartidos.length}</strong> en común:
-                                ${par.compartidos.map(id => allNodes.get(id)?.label || id).sort().join(', ')}
+                                Co-ocurren en <strong>${par.frasesCompartidas.length}</strong> frase${par.frasesCompartidas.length !== 1 ? 's' : ''}:
+                                ${par.frasesCompartidas.map(f => f.label).sort().join(', ')}
                             </div>
                         </div>
                     `).join('')}`;
@@ -666,7 +679,7 @@
                         const idx = parseInt(el.dataset.idx);
                         const par = pares[idx];
 
-                        // Toggle: click en el activo lo limpia
+                        // Toggle: click en el activo restaura
                         if (parActivoIndex === idx) {
                             parActivoIndex = null;
                             resDiv.querySelectorAll('.par-item').forEach(p => p.classList.remove('activo'));
@@ -678,18 +691,23 @@
                         resDiv.querySelectorAll('.par-item').forEach(p => p.classList.remove('activo'));
                         el.classList.add('activo');
 
-                        // Nodos visibles: el par + sus vecinos compartidos
-                        const nodosVis = new Set([par.a.id, par.b.id, ...par.compartidos]);
+                        // Nodos a resaltar: los dos subtipos + las frases que los comparten
+                        const nodosVis = new Set([
+                            par.sA.id,
+                            par.sB.id,
+                            ...par.frasesCompartidas.map(f => f.id)
+                        ]);
 
-                        // Aristas visibles: las que conectan cada nodo del par con cada compartido
+                        // Aristas a resaltar: las que conectan cada frase compartida
+                        // con alguno de los dos subtipos del par
                         const aristasVis = new Set();
-                        allEdges.get().forEach(e => {
-                            const enA = e.from === par.a.id || e.to === par.a.id;
-                            const enB = e.from === par.b.id || e.to === par.b.id;
-                            if (enA || enB) {
-                                const otro = (enA ? (e.from === par.a.id ? e.to : e.from)
-                                                  : (e.from === par.b.id ? e.to : e.from));
-                                if (par.compartidos.includes(otro)) aristasVis.add(e.id);
+                        todasAristas.forEach(e => {
+                            const extremos = [e.from, e.to];
+                            const tieneFrase    = par.frasesCompartidas.some(f => extremos.includes(f.id));
+                            const tieneSubtipoA = extremos.includes(par.sA.id);
+                            const tieneSubtipoB = extremos.includes(par.sB.id);
+                            if (tieneFrase && (tieneSubtipoA || tieneSubtipoB)) {
+                                aristasVis.add(e.id);
                             }
                         });
 
@@ -701,7 +719,7 @@
             document.getElementById('btn-analisis-limpiar').addEventListener('click', () => {
                 parActivoIndex = null;
                 document.getElementById('analisis-resultados').innerHTML =
-                    '<div class="analisis-empty">Configurá los parámetros y presioná "Aplicar".</div>';
+                    '<div class="analisis-empty">Configurá el umbral y presioná "Aplicar".</div>';
                 restaurarTodo();
             });
 
