@@ -7,12 +7,8 @@
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 20px; background-color: #f5f5f5; display: flex; flex-direction: column; height: 95vh; }
         .controls { margin-bottom: 10px; padding: 15px; background: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #ddd; }
         .main-container { display: flex; gap: 15px; flex: 1; min-height: 0; }
-
-        /* Contenedor del mapa con posición relativa para el botón flotante */
         #network-container { flex: 3; position: relative; }
         #mynetwork { width: 100%; height: 100%; border: 1px solid #ccc; background-color: white; border-radius: 8px; }
-
-        /* Botón flotante de exportación */
         #btn-export {
             position: absolute; top: 12px; right: 12px; z-index: 10;
             background: rgba(255,255,255,0.92); border: 1px solid #ccc;
@@ -23,37 +19,30 @@
             transition: background 0.15s, box-shadow 0.15s;
         }
         #btn-export:hover { background: #fff; box-shadow: 0 3px 10px rgba(0,0,0,0.18); }
-
         #sidebar { flex: 1; background: white; border: 1px solid #ccc; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .tabs { display: flex; border-bottom: 1px solid #eee; background: #f9f9f9; }
-        .tab-btn { flex: 1; padding: 12px; cursor: pointer; border: none; background: transparent; font-weight: bold; color: #666; outline: none; transition: all 0.2s; border-bottom: 3px solid transparent; }
+        .tab-btn { flex: 1; padding: 10px 4px; cursor: pointer; border: none; background: transparent; font-weight: bold; color: #666; outline: none; transition: all 0.2s; border-bottom: 3px solid transparent; font-size: 12px; }
         .tab-btn:hover { background: #f0f0f0; }
         .tab-btn.active { background: white; border-bottom: 3px solid #2b7ce9; color: #2b7ce9; }
         .tab-content { display: none; padding: 15px; overflow-y: auto; flex: 1; }
         .tab-content.active { display: block; }
-
         /* Lista de nodos */
         .dim-group-header {
             display: flex; align-items: center; gap: 7px;
             font-size: 11px; font-weight: 700; color: #666;
             text-transform: uppercase; letter-spacing: 1px;
             margin: 12px 0 4px 0; padding: 4px 4px 4px 2px;
-            border-bottom: 1px solid #e0e0e0;
-            user-select: none;
+            border-bottom: 1px solid #e0e0e0; user-select: none;
         }
         .dim-group-header:first-child { margin-top: 0; }
         .dim-group-header .group-checkbox { margin: 0; transform: scale(1.1); cursor: pointer; flex-shrink: 0; }
         .dim-group-header .group-label { flex: 1; cursor: pointer; }
-        .dim-group-header .group-arrow {
-            font-size: 10px; color: #aaa; cursor: pointer;
-            transition: transform 0.2s; display: inline-block;
-        }
+        .dim-group-header .group-arrow { font-size: 10px; color: #aaa; cursor: pointer; transition: transform 0.2s; display: inline-block; }
         .dim-group-header.collapsed .group-arrow { transform: rotate(-90deg); }
         .node-item { margin-bottom: 4px; font-size: 14px; display: flex; align-items: center; padding: 4px; border-radius: 4px; transition: background 0.2s; }
         .node-item:hover { background: #f0f7ff; }
         .node-item input { margin-right: 10px; transform: scale(1.1); cursor: pointer; }
         .color-dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 10px; border: 1px solid rgba(0,0,0,0.2); flex-shrink: 0; }
-
         /* Detalles */
         .detail-card { background: #fcfcfc; border: 1px solid #eee; padding: 15px; border-radius: 8px; }
         .detail-row { margin-bottom: 15px; }
@@ -61,16 +50,30 @@
         .detail-value { font-size: 16px; font-weight: 600; color: #333; }
         .detail-connections { padding-left: 20px; font-size: 14px; margin-top: 8px; color: #444; }
         .detail-connections li { margin-bottom: 6px; }
-        .btn-toggle-node {
-            width: 100%; margin-bottom: 12px; padding: 9px;
-            border-radius: 6px; border: 1px solid #ccc;
-            font-size: 13px; font-weight: 600; cursor: pointer;
-            transition: background 0.15s;
-        }
+        .btn-toggle-node { width: 100%; margin-bottom: 12px; padding: 9px; border-radius: 6px; border: 1px solid #ccc; font-size: 13px; font-weight: 600; cursor: pointer; transition: background 0.15s; }
         .btn-toggle-node.ocultar { background: #fff3f3; border-color: #f5a0a0; color: #c0392b; }
         .btn-toggle-node.ocultar:hover { background: #ffe0e0; }
         .btn-toggle-node.mostrar  { background: #f0fff4; border-color: #a0d9a0; color: #1e7e34; }
         .btn-toggle-node.mostrar:hover  { background: #d0f0d8; }
+        /* Análisis */
+        .analisis-controls { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 2px solid #e0e0e0; }
+        .analisis-controls label { font-size: 12px; font-weight: 700; color: #555; text-transform: uppercase; letter-spacing: 1px; }
+        .analisis-controls select { width: 100%; margin-top: 5px; padding: 5px; border-radius: 4px; border: 1px solid #ccc; }
+        .slider-row { display: flex; align-items: center; gap: 10px; margin-top: 5px; }
+        .slider-row input[type=range] { flex: 1; accent-color: #2b7ce9; }
+        .slider-val { font-size: 15px; font-weight: 700; color: #2b7ce9; min-width: 20px; text-align: center; }
+        .analisis-btns { display: flex; gap: 8px; }
+        .btn-aplicar { flex: 1; padding: 9px; border-radius: 6px; border: none; background: #2b7ce9; color: white; font-size: 13px; font-weight: 700; cursor: pointer; transition: background 0.15s; }
+        .btn-aplicar:hover { background: #1a6acc; }
+        .btn-limpiar { flex: 1; padding: 9px; border-radius: 6px; border: 1px solid #ccc; background: #f5f5f5; color: #555; font-size: 13px; font-weight: 700; cursor: pointer; transition: background 0.15s; }
+        .btn-limpiar:hover { background: #e8e8e8; }
+        .par-item { padding: 8px 10px; margin-bottom: 6px; border-radius: 6px; border: 1px solid #e0e0e0; background: #fafafa; cursor: pointer; transition: background 0.15s; }
+        .par-item:hover { background: #eef5ff; border-color: #2b7ce9; }
+        .par-item.activo { background: #ddeeff; border-color: #2b7ce9; }
+        .par-nombres { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 4px; }
+        .par-compartidos { font-size: 11px; color: #888; line-height: 1.5; }
+        .par-compartidos strong { color: #2b7ce9; }
+        .analisis-empty { color: #999; font-style: italic; font-size: 13px; text-align: center; margin-top: 20px; }
     </style>
 </head>
 <body>
@@ -82,7 +85,6 @@
         </select>
         <small style="margin-left: 25px; color:#777;">Tip: <strong>Ctrl+Click</strong> para multiselección · <strong>Supr</strong> para ocultar selección</small>
     </div>
-
     <div class="main-container">
         <div id="network-container">
             <button id="btn-export" title="Exportar mapa completo como PNG">
@@ -91,26 +93,53 @@
             </button>
             <div id="mynetwork"></div>
         </div>
-
         <div id="sidebar">
             <div class="tabs">
-                <button class="tab-btn active" onclick="abrirTab('tab-lista', event)">Listado de Nodos</button>
-                <button class="tab-btn" id="btn-tab-detalles" onclick="abrirTab('tab-detalles', event)">Detalles Selección</button>
+                <button class="tab-btn active" onclick="abrirTab('tab-lista', event)">Nodos</button>
+                <button class="tab-btn" id="btn-tab-detalles" onclick="abrirTab('tab-detalles', event)">Detalles</button>
+                <button class="tab-btn" onclick="abrirTab('tab-analisis', event)">Análisis</button>
             </div>
+
             <div id="tab-lista" class="tab-content active">
                 <div style="padding: 6px 4px 10px 4px; border-bottom: 2px solid #e0e0e0; margin-bottom: 8px; display:flex; align-items:center; gap:8px;">
                     <input type="checkbox" id="chk-todo" checked style="transform:scale(1.1); cursor:pointer;">
-                    <label for="chk-todo" style="font-size:12px; font-weight:700; color:#555; text-transform:uppercase; letter-spacing:1px; cursor:pointer;">
-                        Mostrar / Ocultar todo
-                    </label>
+                    <label for="chk-todo" style="font-size:12px; font-weight:700; color:#555; text-transform:uppercase; letter-spacing:1px; cursor:pointer;">Mostrar / Ocultar todo</label>
                 </div>
                 <div id="listaNodosContainer"></div>
             </div>
+
             <div id="tab-detalles" class="tab-content">
                 <div id="detallesVacio" style="color:#999; text-align:center; margin-top:40px; font-style:italic;">
                     Selecciona un nodo en el mapa para ver sus propiedades y conexiones.
                 </div>
                 <div id="detallesContenido"></div>
+            </div>
+
+            <div id="tab-analisis" class="tab-content">
+                <div class="analisis-controls">
+                    <div>
+                        <label>Comparar nodos de tipo</label>
+                        <select id="analisis-tipo">
+                            <option value="frase">Solo Frases</option>
+                            <option value="subtipo">Solo Subtipos</option>
+                            <option value="ambos">Ambos</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Mínimo de vecinos compartidos</label>
+                        <div class="slider-row">
+                            <input type="range" id="analisis-umbral" min="1" max="15" value="3">
+                            <span class="slider-val" id="analisis-umbral-val">3</span>
+                        </div>
+                    </div>
+                    <div class="analisis-btns">
+                        <button class="btn-aplicar" id="btn-analisis-aplicar">Aplicar</button>
+                        <button class="btn-limpiar" id="btn-analisis-limpiar">Limpiar</button>
+                    </div>
+                </div>
+                <div id="analisis-resultados">
+                    <div class="analisis-empty">Configurá los parámetros y presioná "Aplicar".</div>
+                </div>
             </div>
         </div>
     </div>
@@ -132,7 +161,6 @@
         return `rgba(${r},${g},${b},${opacity})`;
     }
 
-    // ── Parámetros ajustables ─────────────────────────────────────────────────────
     const NODE_R_MIN = 10;
     const NODE_R_MAX = 60;
     const FONT_SIZE  = 36;
@@ -171,7 +199,6 @@
                 const nivel     = a.nivel ? String(a.nivel).toLowerCase() : 'sin nivel';
                 colorLookup[n.key] = colorBase;
                 nivelLookup[n.key] = nivel;
-
                 const r = degreeToRadius(n.key);
                 return {
                     id:       n.key,
@@ -220,7 +247,6 @@
             });
 
             // ── PASO 6: lista de nodos ────────────────────────────────────────────
-            // Ordenar: dimensión primero (frases al final), luego label alfabético
             const listaOrdenada = processedNodes.slice().sort((a, b) => {
                 const dimA = a.nivel === 'frase' ? 'zzz' : (a.dimension || 'sin dimensión');
                 const dimB = b.nivel === 'frase' ? 'zzz' : (b.dimension || 'sin dimensión');
@@ -231,29 +257,26 @@
             const listaContainer = document.getElementById('listaNodosContainer');
             let grupoActual = null;
 
-            // Actualiza el estado del checkbox de grupo (checked / unchecked / indeterminate)
             function actualizarCheckboxGrupo(grupoClave) {
                 const header = listaContainer.querySelector(`.dim-group-header[data-grupo="${grupoClave}"]`);
                 if (!header) return;
-                const cb = header.querySelector('.group-checkbox');
-                const items = listaContainer.querySelectorAll(`.node-item[data-grupo="${grupoClave}"]`);
+                const cb     = header.querySelector('.group-checkbox');
+                const items  = listaContainer.querySelectorAll(`.node-item[data-grupo="${grupoClave}"]`);
                 const visibles = [...items].filter(el => el.style.display !== 'none');
                 if (!visibles.length) { cb.indeterminate = false; cb.checked = false; return; }
                 const checkedCount = visibles.filter(el => el.querySelector('input').checked).length;
-                if (checkedCount === 0)             { cb.indeterminate = false; cb.checked = false; }
+                if (checkedCount === 0)                    { cb.indeterminate = false; cb.checked = false; }
                 else if (checkedCount === visibles.length) { cb.indeterminate = false; cb.checked = true; }
-                else                               { cb.indeterminate = true; }
+                else                                       { cb.indeterminate = true; }
             }
 
             listaOrdenada.forEach(n => {
                 const grupoClave = n.nivel === 'frase' ? 'Frases' : (n.dimension || 'Sin dimensión');
 
-                // ── Crear encabezado de grupo si es nuevo ──────────────────────────
                 if (grupoClave !== grupoActual) {
                     grupoActual = grupoClave;
-
                     const h = document.createElement('div');
-                    h.className   = 'dim-group-header';
+                    h.className     = 'dim-group-header';
                     h.dataset.grupo = grupoClave;
                     h.innerHTML = `
                         <input type="checkbox" class="group-checkbox" checked title="Mostrar/ocultar grupo">
@@ -261,17 +284,13 @@
                         <span class="group-arrow">▾</span>`;
                     listaContainer.appendChild(h);
 
-                    // Checkbox de grupo: marca/desmarca todos los nodos del grupo
                     h.querySelector('.group-checkbox').addEventListener('change', ev => {
                         ev.stopPropagation();
                         const marcar = ev.target.checked;
-                        const items  = listaContainer.querySelectorAll(`.node-item[data-grupo="${grupoClave}"]`);
-                        items.forEach(item => {
-//                            if (item.style.display === 'none') return; // respeta filtro activo
+                        listaContainer.querySelectorAll(`.node-item[data-grupo="${grupoClave}"]`).forEach(item => {
                             if (item.dataset.filtroOculto) return;
                             const id = item.dataset.id;
-                            const cb = item.querySelector('input');
-                            cb.checked = marcar;
+                            item.querySelector('input').checked = marcar;
                             if (marcar) nodosOcultos.delete(id);
                             else        nodosOcultos.add(id);
                         });
@@ -279,28 +298,23 @@
                         restaurarTodo();
                     });
 
-                    // Click en label o flecha: colapsar/expandir el grupo
                     const toggleColapso = () => {
                         const colapsado = h.classList.toggle('collapsed');
-                        const items = listaContainer.querySelectorAll(`.node-item[data-grupo="${grupoClave}"]`);
-                        items.forEach(item => {
-                            // Solo afecta items que no están ocultos por el filtro de dimensión
-                            if (!item.dataset.filtroOculto) {
+                        listaContainer.querySelectorAll(`.node-item[data-grupo="${grupoClave}"]`).forEach(item => {
+                            if (!item.dataset.filtroOculto)
                                 item.style.display = colapsado ? 'none' : '';
-                            }
                         });
                     };
                     h.querySelector('.group-label').addEventListener('click', toggleColapso);
                     h.querySelector('.group-arrow').addEventListener('click',  toggleColapso);
                 }
 
-                // ── Crear item de nodo ─────────────────────────────────────────────
                 const div = document.createElement('div');
-                div.className        = 'node-item';
-                div.dataset.id       = n.id;
-                div.dataset.grupo    = grupoClave;
+                div.className         = 'node-item';
+                div.dataset.id        = n.id;
+                div.dataset.grupo     = grupoClave;
                 div.dataset.dimension = n.dimension || 'sin dimensión';
-                div.dataset.nivel    = n.nivel;
+                div.dataset.nivel     = n.nivel;
                 div.innerHTML = `
                     <label style="display:flex;align-items:center;width:100%;cursor:pointer;">
                         <input type="checkbox" checked value="${n.id}">
@@ -314,7 +328,6 @@
                     actualizarDetalles([n.id]);
                     document.getElementById('btn-tab-detalles').click();
                 });
-
                 div.querySelector('input').addEventListener('change', ev => {
                     if (ev.target.checked) nodosOcultos.delete(n.id);
                     else                   nodosOcultos.add(n.id);
@@ -322,47 +335,35 @@
                     restaurarTodo();
                     actualizarCheckboxGrupo(grupoClave);
                 });
-                
                 listaContainer.appendChild(div);
             });
 
             document.getElementById('chk-todo').addEventListener('change', ev => {
                 const marcar = ev.target.checked;
                 listaContainer.querySelectorAll('.node-item').forEach(item => {
-                    if (item.style.display === 'none' && item.dataset.filtroOculto) return; // respeta filtro
+                    if (item.dataset.filtroOculto) return;
                     const id = item.dataset.id;
-                    const cb = item.querySelector('input');
-                    cb.checked = marcar;
+                    item.querySelector('input').checked = marcar;
                     if (marcar) nodosOcultos.delete(id);
                     else        nodosOcultos.add(id);
                 });
-                // Sincronizar checkboxes de grupo
                 listaContainer.querySelectorAll('.dim-group-header').forEach(h => {
                     const cb = h.querySelector('.group-checkbox');
-                    cb.checked = marcar;
-                    cb.indeterminate = false;
+                    cb.checked = marcar; cb.indeterminate = false;
                 });
                 nodesView.refresh();
                 restaurarTodo();
             });
-            
-            // Función para sincronizar visibilidad de la lista con el filtro activo
+
             function actualizarLista(filtro) {
                 document.querySelectorAll('.node-item').forEach(el => {
-                    const esFrase  = el.dataset.nivel === 'frase';
-                    const coincide = filtro === 'all' || el.dataset.dimension === filtro || esFrase;
-                    const header   = listaContainer.querySelector(`.dim-group-header[data-grupo="${el.dataset.grupo}"]`);
+                    const esFrase   = el.dataset.nivel === 'frase';
+                    const coincide  = filtro === 'all' || el.dataset.dimension === filtro || esFrase;
+                    const header    = listaContainer.querySelector(`.dim-group-header[data-grupo="${el.dataset.grupo}"]`);
                     const colapsado = header && header.classList.contains('collapsed');
-
-                    if (!coincide) {
-                        el.dataset.filtroOculto = '1';
-                        el.style.display = 'none';
-                    } else {
-                        delete el.dataset.filtroOculto;
-                        el.style.display = colapsado ? 'none' : '';
-                    }
+                    if (!coincide) { el.dataset.filtroOculto = '1'; el.style.display = 'none'; }
+                    else           { delete el.dataset.filtroOculto; el.style.display = colapsado ? 'none' : ''; }
                 });
-                // Ocultar/mostrar encabezados según si tienen items visibles por filtro
                 document.querySelectorAll('.dim-group-header').forEach(h => {
                     const grupo = h.dataset.grupo;
                     const tieneVisibles = [...listaContainer.querySelectorAll(`.node-item[data-grupo="${grupo}"]`)]
@@ -408,10 +409,7 @@
                 allNodes.update(allNodes.get().map(n => ({
                     id: n.id,
                     color: nodeColorProps(n.id, 1),
-                    font: {
-                        color: '#111', size: FONT_SIZE, vadjust: n._vadjust,
-                        strokeWidth: 3, strokeColor: 'rgba(255,255,255,0.9)'
-                    }
+                    font: { color: '#111', size: FONT_SIZE, vadjust: n._vadjust, strokeWidth: 3, strokeColor: 'rgba(255,255,255,0.9)' }
                 })));
                 allEdges.update(allEdges.get().map(e => ({
                     id: e.id,
@@ -434,9 +432,7 @@
                         color: nodeColorProps(n.id, vis_ ? 1 : 0.08),
                         font: {
                             color:       vis_ ? '#111' : 'rgba(0,0,0,0.08)',
-                            size:        FONT_SIZE,
-                            vadjust:     n._vadjust,
-                            strokeWidth: 3,
+                            size:        FONT_SIZE, vadjust: n._vadjust, strokeWidth: 3,
                             strokeColor: vis_ ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.04)'
                         }
                     };
@@ -447,10 +443,30 @@
                 })));
             }
 
-            // ── Función para ocultar nodos ────────────────────────────────────────
+            // Resaltado para análisis: desvanece todo excepto el par y sus compartidos
+            function resaltarAnalisis(nodosVis, aristasVis) {
+                const vN = new Set(nodosVis);
+                const vE = new Set(aristasVis);
+                allNodes.update(allNodes.get().map(n => {
+                    const vis_ = vN.has(n.id);
+                    return {
+                        id: n.id,
+                        color: nodeColorProps(n.id, vis_ ? 1 : 0.06),
+                        font: {
+                            color:       vis_ ? '#111' : 'rgba(0,0,0,0.06)',
+                            size:        FONT_SIZE, vadjust: n._vadjust, strokeWidth: 3,
+                            strokeColor: vis_ ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.02)'
+                        }
+                    };
+                }));
+                allEdges.update(allEdges.get().map(e => ({
+                    id: e.id,
+                    color: { color: hexToRgba(edgeColorLookup[e.id], vE.has(e.id) ? 1 : 0.04), inherit: false }
+                })));
+            }
+
             function ocultarNodos(ids) {
                 ids.forEach(id => nodosOcultos.add(id));
-                // Sincronizar checkboxes en la lista
                 ids.forEach(id => {
                     const item = listaContainer.querySelector(`.node-item[data-id="${id}"] input`);
                     if (item) item.checked = false;
@@ -467,13 +483,11 @@
                 vacio.style.display = 'none';
                 const n      = allNodes.get(ids[0]);
                 const grado  = degreeMap[n.id] || 0;
-                // Vecinos ordenados alfabéticamente
                 const vecinos = network.getConnectedNodes(n.id)
                                        .map(vId => allNodes.get(vId))
                                        .filter(v => v && !nodosOcultos.has(v.id))
                                        .sort((a, b) => a.label.localeCompare(b.label));
-            
-                // Agrupar vecinos por dimensión
+
                 const vecinosPorDim = {};
                 vecinos.forEach(v => {
                     const dim = v.nivel === 'frase' ? 'Frases' : (v.dimension || 'Sin dimensión');
@@ -495,7 +509,7 @@
                                 </span>
                             </li>`).join('')}
                     `).join('');
-            
+
                 const estaOculto = nodosOcultos.has(n.id);
                 cont.innerHTML = `
                     <button class="btn-toggle-node ${estaOculto ? 'mostrar' : 'ocultar'}" id="btn-toggle-selected">
@@ -521,7 +535,7 @@
                             </ul>
                         </div>
                     </div>`;
-            
+
                 cont.querySelectorAll('.vecino-link').forEach(el => {
                     el.addEventListener('click', () => {
                         const id = el.dataset.id;
@@ -530,8 +544,7 @@
                         actualizarDetalles([id]);
                     });
                 });
-            
-                // Botón ocultar/mostrar el nodo seleccionado
+
                 document.getElementById('btn-toggle-selected').addEventListener('click', () => {
                     if (nodosOcultos.has(n.id)) {
                         nodosOcultos.delete(n.id);
@@ -548,51 +561,24 @@
                 });
             }
 
-            // ── PASO 10: exportar PNG en alta resolución ──────────────────────────
-            //
-            //  Estrategia:
-            //  1. Hacer network.fit() para obtener el scale óptimo que encierra
-            //     todo el grafo en el canvas actual (W × H).
-            //  2. Agrandar el canvas a SCALE × W  ×  SCALE × H.
-            //  3. Mover la red al mismo centro pero con scale × SCALE — así el
-            //     mismo contenido visual ocupa el canvas ampliado con SCALE veces
-            //     más píxeles: misma área del grafo, resolución SCALE veces mayor.
-            //  4. Forzar redibujado, capturar y restaurar todo.
-            //
+            // ── PASO 10: exportar PNG ─────────────────────────────────────────────
             document.getElementById('btn-export').addEventListener('click', () => {
-                const SCALE = 5;   // factor de resolución — subir para más calidad
+                const SCALE  = 5;
                 const canvas = network.canvas.frame.canvas;
-                const container = document.getElementById('mynetwork');
-
-                // 1. Guardar estado actual
                 const posOriginal   = network.getViewPosition();
                 const scalaOriginal = network.getScale();
                 const wOrig = canvas.width;
                 const hOrig = canvas.height;
-
-                // 2. Agrandar el canvas ANTES de hacer fit
-                //    network.setSize() informa a Vis.js del nuevo tamaño
                 canvas.width  = wOrig  * SCALE;
                 canvas.height = hOrig  * SCALE;
                 network.setSize(wOrig * SCALE, hOrig * SCALE);
-
-                // 3. Ahora fit() calcula el zoom para encajar el grafo completo
-                //    en el canvas ampliado → más píxeles, mismos nodos = más calidad
                 network.fit({ animation: false });
-
-                // 4. Esperar que Vis.js redibuje sobre el canvas grande
                 requestAnimationFrame(() => requestAnimationFrame(() => {
                     network.redraw();
-
                     requestAnimationFrame(() => {
-                        // 5. Capturar
                         const url = canvas.toDataURL('image/png');
                         const a   = document.createElement('a');
-                        a.href    = url;
-                        a.download = 'catoninetails-grafo.png';
-                        a.click();
-
-                        // 6. Restaurar canvas y vista originales
+                        a.href = url; a.download = 'catoninetails-grafo.png'; a.click();
                         canvas.width  = wOrig;
                         canvas.height = hOrig;
                         network.setSize(wOrig, hOrig);
@@ -602,7 +588,124 @@
                 }));
             });
 
-            // ── PASO 11: eventos ──────────────────────────────────────────────────
+            // ── PASO 11: análisis de vecinos compartidos ──────────────────────────
+
+            // Slider: mostrar valor en tiempo real
+            document.getElementById('analisis-umbral').addEventListener('input', ev => {
+                document.getElementById('analisis-umbral-val').textContent = ev.target.value;
+            });
+
+            let parActivoIndex = null;
+
+            document.getElementById('btn-analisis-aplicar').addEventListener('click', () => {
+                const tipo   = document.getElementById('analisis-tipo').value;
+                const umbral = parseInt(document.getElementById('analisis-umbral').value);
+
+                // Construir mapa id → Set de vecinos directos sobre TODOS los nodos del grafo
+                const vecinosMap = {};
+                allNodes.get().forEach(n => { vecinosMap[n.id] = new Set(); });
+                allEdges.get().forEach(e => {
+                    if (vecinosMap[e.from]) vecinosMap[e.from].add(e.to);
+                    if (vecinosMap[e.to])   vecinosMap[e.to].add(e.from);
+                });
+
+                // Candidatos según tipo seleccionado
+                const candidatos = allNodes.get().filter(n => {
+                    if (tipo === 'frase')   return n.nivel === 'frase';
+                    if (tipo === 'subtipo') return n.nivel !== 'frase';
+                    return true;
+                });
+
+                // Calcular pares con suficientes vecinos en común
+                const pares = [];
+                for (let i = 0; i < candidatos.length; i++) {
+                    for (let j = i + 1; j < candidatos.length; j++) {
+                        const a = candidatos[i];
+                        const b = candidatos[j];
+                        const vecsA = vecinosMap[a.id] || new Set();
+                        const vecsB = vecinosMap[b.id] || new Set();
+                        // Vecinos compartidos: en ambos conjuntos, excluyendo a los propios nodos del par
+                        const compartidos = [...vecsA].filter(id => vecsB.has(id) && id !== a.id && id !== b.id);
+                        if (compartidos.length >= umbral) {
+                            pares.push({ a, b, compartidos });
+                        }
+                    }
+                }
+
+                pares.sort((x, y) => y.compartidos.length - x.compartidos.length);
+
+                const resDiv = document.getElementById('analisis-resultados');
+                parActivoIndex = null;
+
+                if (!pares.length) {
+                    resDiv.innerHTML = `<div class="analisis-empty">No se encontraron pares con ${umbral} o más vecinos compartidos.</div>`;
+                    restaurarTodo();
+                    return;
+                }
+
+                resDiv.innerHTML = `
+                    <div style="font-size:12px; color:#888; margin-bottom:10px;">
+                        ${pares.length} par${pares.length !== 1 ? 'es' : ''} encontrado${pares.length !== 1 ? 's' : ''} · Click para resaltar
+                    </div>
+                    ${pares.map((par, idx) => `
+                        <div class="par-item" data-idx="${idx}">
+                            <div class="par-nombres">
+                                <span style="color:${colorLookup[par.a.id]}">●</span> ${par.a.label}
+                                &nbsp;+&nbsp;
+                                <span style="color:${colorLookup[par.b.id]}">●</span> ${par.b.label}
+                            </div>
+                            <div class="par-compartidos">
+                                <strong>${par.compartidos.length}</strong> en común:
+                                ${par.compartidos.map(id => allNodes.get(id)?.label || id).sort().join(', ')}
+                            </div>
+                        </div>
+                    `).join('')}`;
+
+                resDiv.querySelectorAll('.par-item').forEach(el => {
+                    el.addEventListener('click', () => {
+                        const idx = parseInt(el.dataset.idx);
+                        const par = pares[idx];
+
+                        // Toggle: click en el activo lo limpia
+                        if (parActivoIndex === idx) {
+                            parActivoIndex = null;
+                            resDiv.querySelectorAll('.par-item').forEach(p => p.classList.remove('activo'));
+                            restaurarTodo();
+                            return;
+                        }
+
+                        parActivoIndex = idx;
+                        resDiv.querySelectorAll('.par-item').forEach(p => p.classList.remove('activo'));
+                        el.classList.add('activo');
+
+                        // Nodos visibles: el par + sus vecinos compartidos
+                        const nodosVis = new Set([par.a.id, par.b.id, ...par.compartidos]);
+
+                        // Aristas visibles: las que conectan cada nodo del par con cada compartido
+                        const aristasVis = new Set();
+                        allEdges.get().forEach(e => {
+                            const enA = e.from === par.a.id || e.to === par.a.id;
+                            const enB = e.from === par.b.id || e.to === par.b.id;
+                            if (enA || enB) {
+                                const otro = (enA ? (e.from === par.a.id ? e.to : e.from)
+                                                  : (e.from === par.b.id ? e.to : e.from));
+                                if (par.compartidos.includes(otro)) aristasVis.add(e.id);
+                            }
+                        });
+
+                        resaltarAnalisis([...nodosVis], [...aristasVis]);
+                    });
+                });
+            });
+
+            document.getElementById('btn-analisis-limpiar').addEventListener('click', () => {
+                parActivoIndex = null;
+                document.getElementById('analisis-resultados').innerHTML =
+                    '<div class="analisis-empty">Configurá los parámetros y presioná "Aplicar".</div>';
+                restaurarTodo();
+            });
+
+            // ── PASO 12: eventos generales ────────────────────────────────────────
             network.on('click', p => {
                 resaltar(p.nodes);
                 actualizarDetalles(p.nodes);
@@ -615,10 +718,9 @@
                 filtroActual = e.target.value.toLowerCase();
                 nodesView.refresh();
                 restaurarTodo();
-                actualizarLista(filtroActual);   // sincronizar lista del sidebar
+                actualizarLista(filtroActual);
             });
 
-            // Tecla Supr: oculta los nodos seleccionados
             document.addEventListener('keydown', e => {
                 if (e.key === 'Delete' || e.key === 'Supr') {
                     const seleccionados = network.getSelectedNodes();
@@ -640,10 +742,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
