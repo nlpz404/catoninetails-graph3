@@ -118,14 +118,30 @@
             <div id="tab-analisis" class="tab-content">
                 <div class="analisis-controls">
                     <div>
-                        <label>Co-ocurrencia mínima de subtipos</label>
-                        <div style="font-size:11px; color:#999; margin-top:3px; font-style:italic; text-transform:none; letter-spacing:0;">
-                            Pares de subtipos que aparecen juntos en al menos N frases
+                        <label>Tamaño mínimo del grupo</label>
+                        <div style="font-size:11px;color:#999;margin-top:3px;font-style:italic;text-transform:none;letter-spacing:0;">
+                            Cantidad de subtipos que deben co-ocurrir juntos
+                        </div>
+                        <div class="slider-row" style="margin-top:8px;">
+                            <input type="range" id="analisis-tamano" min="2" max="5" value="2">
+                            <span class="slider-val" id="analisis-tamano-val">2</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label>Mínimo de frases en común</label>
+                        <div style="font-size:11px;color:#999;margin-top:3px;font-style:italic;text-transform:none;letter-spacing:0;">
+                            El grupo debe aparecer junto en al menos N frases
                         </div>
                         <div class="slider-row" style="margin-top:8px;">
                             <input type="range" id="analisis-umbral" min="1" max="15" value="2">
                             <span class="slider-val" id="analisis-umbral-val">2</span>
                         </div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px;">
+                        <input type="checkbox" id="analisis-distintas" checked style="transform:scale(1.1);cursor:pointer;flex-shrink:0;">
+                        <label for="analisis-distintas" style="font-size:12px;font-weight:600;color:#555;text-transform:none;letter-spacing:0;cursor:pointer;">
+                            Solo subtipos de dimensiones distintas
+                        </label>
                     </div>
                     <div class="analisis-btns">
                         <button class="btn-aplicar" id="btn-analisis-aplicar">Aplicar</button>
@@ -133,7 +149,7 @@
                     </div>
                 </div>
                 <div id="analisis-resultados">
-                    <div class="analisis-empty">Configurá el umbral y presioná "Aplicar".</div>
+                    <div class="analisis-empty">Configurá los parámetros y presioná "Aplicar".</div>
                 </div>
             </div>
         </div>
@@ -585,91 +601,127 @@
 
             // ── PASO 11: análisis de co-ocurrencia de subtipos ───────────────────
             //
-            //  Estructura del grafo: frase → subtipo → dimensión
-            //  Dos subtipos "co-ocurren" en una frase si ambos son vecinos directos
-            //  de esa frase. Para cada par de subtipos contamos en cuántas frases
-            //  distintas aparecen juntos. Si ese conteo >= umbral, lo mostramos.
+            //  Busca grupos de N subtipos (N = tamaño mínimo del grupo) que
+            //  co-ocurren juntos en al menos M frases (M = umbral).
             //
-            //  Al hacer click en un resultado se resaltan:
-            //    - los dos subtipos del par
-            //    - todas las frases que los contienen juntos
-            //    - las aristas que los conectan a esas frases
+            //  Algoritmo:
+            //  1. Construir frasesDeSubtipo: subtipoId → Set<fraseId>
+            //  2. Generar todas las combinaciones de N subtipos
+            //  3. Para cada combinación, la intersección de sus sets de frases
+            //     da las frases donde todos co-ocurren
+            //  4. Si |intersección| >= umbral → resultado válido
+            //
+            //  Opción "solo dimensiones distintas": descarta combinaciones donde
+            //  dos o más subtipos pertenecen a la misma dimensión.
             //
 
             document.getElementById('analisis-umbral').addEventListener('input', ev => {
                 document.getElementById('analisis-umbral-val').textContent = ev.target.value;
             });
+            document.getElementById('analisis-tamano').addEventListener('input', ev => {
+                document.getElementById('analisis-tamano-val').textContent = ev.target.value;
+            });
 
             let parActivoIndex = null;
 
+            // Genera todas las combinaciones de tamaño k de un array
+            function combinaciones(arr, k) {
+                const result = [];
+                function helper(start, combo) {
+                    if (combo.length === k) { result.push([...combo]); return; }
+                    for (let i = start; i < arr.length; i++) {
+                        combo.push(arr[i]);
+                        helper(i + 1, combo);
+                        combo.pop();
+                    }
+                }
+                helper(0, []);
+                return result;
+            }
+
+            // Intersección de múltiples Sets
+            function intersectarSets(sets) {
+                if (!sets.length) return new Set();
+                let result = new Set(sets[0]);
+                for (let i = 1; i < sets.length; i++) {
+                    result = new Set([...result].filter(x => sets[i].has(x)));
+                }
+                return result;
+            }
+
             document.getElementById('btn-analisis-aplicar').addEventListener('click', () => {
-                const umbral = parseInt(document.getElementById('analisis-umbral').value);
+                const umbral   = parseInt(document.getElementById('analisis-umbral').value);
+                const tamano   = parseInt(document.getElementById('analisis-tamano').value);
+                const soloDistintas = document.getElementById('analisis-distintas').checked;
 
-                // 1. Separar frases y subtipos
-                const todosNodos  = allNodes.get();
+                const todosNodos   = allNodes.get();
                 const todasAristas = allEdges.get();
-                const frases    = todosNodos.filter(n => n.nivel === 'frase');
-                const subtipos  = todosNodos.filter(n => n.nivel !== 'frase' && n.nivel !== 'dimensión' && n.dimension !== 'sin dimensión');
+                const frases   = todosNodos.filter(n => n.nivel === 'frase');
+                const subtipos = todosNodos.filter(n => n.nivel !== 'frase' && n.nivel !== 'dimensión' && n.dimension !== 'sin dimensión');
 
-                // 2. Para cada frase, construir el Set de subtipos que contiene
-                //    (vecinos directos de la frase que son subtipos)
-                const subtipoDeFrase = {}; // fraseId → Set<subtipoId>
-                frases.forEach(f => { subtipoDeFrase[f.id] = new Set(); });
+                // Mapa subtipoId → Set de fraseIds que lo contienen
+                const frasesDeSubtipo = {};
+                subtipos.forEach(s => { frasesDeSubtipo[s.id] = new Set(); });
 
+                const fraseIds = new Set(frases.map(f => f.id));
                 todasAristas.forEach(e => {
-                    // arista frase → subtipo: el from puede ser frase o subtipo según
-                    // la dirección, así que chequeamos ambos extremos
-                    const fromEsFrase   = subtipoDeFrase.hasOwnProperty(e.from);
-                    const toEsFrase     = subtipoDeFrase.hasOwnProperty(e.to);
-                    const fromEsSubtipo = subtipos.some(s => s.id === e.from);
-                    const toEsSubtipo   = subtipos.some(s => s.id === e.to);
-
-                    if (fromEsFrase && toEsSubtipo)   subtipoDeFrase[e.from].add(e.to);
-                    if (toEsFrase   && fromEsSubtipo) subtipoDeFrase[e.to].add(e.from);
+                    if (fraseIds.has(e.from) && frasesDeSubtipo.hasOwnProperty(e.to))
+                        frasesDeSubtipo[e.to].add(e.from);
+                    if (fraseIds.has(e.to) && frasesDeSubtipo.hasOwnProperty(e.from))
+                        frasesDeSubtipo[e.from].add(e.to);
                 });
 
-                // 3. Para cada par de subtipos, contar frases en que co-ocurren
-                const pares = [];
-                for (let i = 0; i < subtipos.length; i++) {
-                    for (let j = i + 1; j < subtipos.length; j++) {
-                        const sA = subtipos[i];
-                        const sB = subtipos[j];
-                        // Frases que contienen a ambos
-                        const frasesCompartidas = frases.filter(f =>
-                            subtipoDeFrase[f.id].has(sA.id) && subtipoDeFrase[f.id].has(sB.id)
-                        );
-                        if (frasesCompartidas.length >= umbral) {
-                            pares.push({ sA, sB, frasesCompartidas });
-                        }
+                // Descartar subtipos que no aparecen en ninguna frase
+                const subtiposActivos = subtipos.filter(s => frasesDeSubtipo[s.id].size > 0);
+
+                // Generar combinaciones de tamaño `tamano`
+                const combos = combinaciones(subtiposActivos, tamano);
+
+                const grupos = [];
+                for (const combo of combos) {
+                    // Filtro de dimensiones distintas
+                    if (soloDistintas) {
+                        const dims = combo.map(s => s.dimension);
+                        const dimsUnicas = new Set(dims);
+                        if (dimsUnicas.size < combo.length) continue; // hay dimensión repetida
+                    }
+
+                    // Frases donde co-ocurren todos los subtipos del grupo
+                    const sets = combo.map(s => frasesDeSubtipo[s.id]);
+                    const frasesComp = intersectarSets(sets);
+
+                    if (frasesComp.size >= umbral) {
+                        const frasesObjs = [...frasesComp].map(id => frases.find(f => f.id === id)).filter(Boolean);
+                        grupos.push({ subtipos: combo, frases: frasesObjs });
                     }
                 }
 
-                // Ordenar por cantidad de frases compartidas (mayor primero)
-                pares.sort((x, y) => y.frasesCompartidas.length - x.frasesCompartidas.length);
+                // Ordenar: más frases primero, luego más subtipos
+                grupos.sort((a, b) => b.frases.length - a.frases.length || b.subtipos.length - a.subtipos.length);
 
                 const resDiv = document.getElementById('analisis-resultados');
                 parActivoIndex = null;
 
-                if (!pares.length) {
-                    resDiv.innerHTML = `<div class="analisis-empty">No se encontraron pares de subtipos que co-ocurran en ${umbral} o más frases.</div>`;
+                if (!grupos.length) {
+                    resDiv.innerHTML = `<div class="analisis-empty">No se encontraron grupos de ${tamano} subtipos que co-ocurran en ${umbral} o más frases.</div>`;
                     restaurarTodo();
                     return;
                 }
 
                 resDiv.innerHTML = `
                     <div style="font-size:12px; color:#888; margin-bottom:10px;">
-                        ${pares.length} par${pares.length !== 1 ? 'es' : ''} encontrado${pares.length !== 1 ? 's' : ''} · Click para resaltar
+                        ${grupos.length} grupo${grupos.length !== 1 ? 's' : ''} encontrado${grupos.length !== 1 ? 's' : ''} · Click para resaltar
                     </div>
-                    ${pares.map((par, idx) => `
+                    ${grupos.map((g, idx) => `
                         <div class="par-item" data-idx="${idx}">
                             <div class="par-nombres">
-                                <span style="color:${colorLookup[par.sA.id]}">●</span> ${par.sA.label}
-                                &nbsp;+&nbsp;
-                                <span style="color:${colorLookup[par.sB.id]}">●</span> ${par.sB.label}
+                                ${g.subtipos.map(s =>
+                                    `<span style="color:${colorLookup[s.id]}">●</span> ${s.label}`
+                                ).join(' &nbsp;+&nbsp; ')}
                             </div>
                             <div class="par-compartidos">
-                                Co-ocurren en <strong>${par.frasesCompartidas.length}</strong> frase${par.frasesCompartidas.length !== 1 ? 's' : ''}:
-                                ${par.frasesCompartidas.map(f => f.label).sort().join(', ')}
+                                Co-ocurren en <strong>${g.frases.length}</strong> frase${g.frases.length !== 1 ? 's' : ''}:
+                                ${g.frases.map(f => f.label).sort().join(', ')}
                             </div>
                         </div>
                     `).join('')}`;
@@ -677,9 +729,8 @@
                 resDiv.querySelectorAll('.par-item').forEach(el => {
                     el.addEventListener('click', () => {
                         const idx = parseInt(el.dataset.idx);
-                        const par = pares[idx];
+                        const g   = grupos[idx];
 
-                        // Toggle: click en el activo restaura
                         if (parActivoIndex === idx) {
                             parActivoIndex = null;
                             resDiv.querySelectorAll('.par-item').forEach(p => p.classList.remove('activo'));
@@ -691,24 +742,18 @@
                         resDiv.querySelectorAll('.par-item').forEach(p => p.classList.remove('activo'));
                         el.classList.add('activo');
 
-                        // Nodos a resaltar: los dos subtipos + las frases que los comparten
-                        const nodosVis = new Set([
-                            par.sA.id,
-                            par.sB.id,
-                            ...par.frasesCompartidas.map(f => f.id)
-                        ]);
+                        // Nodos: todos los subtipos del grupo + las frases donde co-ocurren
+                        const subtipoIds = new Set(g.subtipos.map(s => s.id));
+                        const nodosVis   = new Set([...subtipoIds, ...g.frases.map(f => f.id)]);
 
-                        // Aristas a resaltar: las que conectan cada frase compartida
-                        // con alguno de los dos subtipos del par
+                        // Aristas: las que conectan cada frase del resultado
+                        // con alguno de los subtipos del grupo
                         const aristasVis = new Set();
                         todasAristas.forEach(e => {
                             const extremos = [e.from, e.to];
-                            const tieneFrase    = par.frasesCompartidas.some(f => extremos.includes(f.id));
-                            const tieneSubtipoA = extremos.includes(par.sA.id);
-                            const tieneSubtipoB = extremos.includes(par.sB.id);
-                            if (tieneFrase && (tieneSubtipoA || tieneSubtipoB)) {
-                                aristasVis.add(e.id);
-                            }
+                            const tieneFrase   = g.frases.some(f => extremos.includes(f.id));
+                            const tieneSubtipo = extremos.some(x => subtipoIds.has(x));
+                            if (tieneFrase && tieneSubtipo) aristasVis.add(e.id);
                         });
 
                         resaltarAnalisis([...nodosVis], [...aristasVis]);
@@ -719,7 +764,7 @@
             document.getElementById('btn-analisis-limpiar').addEventListener('click', () => {
                 parActivoIndex = null;
                 document.getElementById('analisis-resultados').innerHTML =
-                    '<div class="analisis-empty">Configurá el umbral y presioná "Aplicar".</div>';
+                    '<div class="analisis-empty">Configurá los parámetros y presioná "Aplicar".</div>';
                 restaurarTodo();
             });
 
