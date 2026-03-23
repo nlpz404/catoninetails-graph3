@@ -175,11 +175,21 @@
                                 <span class="slider-val" id="analisis-umbral-val">2</span>
                             </div>
                         </div>
-                        <div style="display:flex;align-items:center;gap:8px;">
-                            <input type="checkbox" id="analisis-distintas" checked style="transform:scale(1.1);cursor:pointer;flex-shrink:0;">
-                            <label for="analisis-distintas" style="font-size:12px;font-weight:600;color:#555;text-transform:none;letter-spacing:0;cursor:pointer;">
-                                Solo subtipos de dimensiones distintas
+                        <div style="display:flex;flex-direction:column;gap:6px;border:1px solid #e0e0e0;border-radius:6px;padding:9px 10px;background:#fafafa;">
+                            <div style="font-size:10px;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px;">Filtro de dimensiones</div>
+                            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+                                <input type="checkbox" id="analisis-distintas" checked style="transform:scale(1.1);cursor:pointer;flex-shrink:0;">
+                                <span style="font-size:12px;font-weight:600;color:#555;">Solo subtipos de dimensiones distintas</span>
                             </label>
+                            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+                                <input type="checkbox" id="analisis-misma" style="transform:scale(1.1);cursor:pointer;flex-shrink:0;">
+                                <span style="font-size:12px;font-weight:600;color:#555;">Solo subtipos de misma dimensión</span>
+                            </label>
+                            <div id="misma-dim-selector" style="display:none;margin-top:2px;padding-left:22px;">
+                                <select id="analisis-dim-select" style="width:100%;padding:5px;border-radius:4px;border:1px solid #ccc;font-size:12px;">
+                                    <option value="">— Elegí una dimensión —</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="analisis-btns">
                             <button class="btn-aplicar" id="btn-analisis-aplicar">Aplicar</button>
@@ -771,22 +781,74 @@
                 document.getElementById('analisis-tamano-val').textContent = ev.target.value;
             });
 
+            // Poblar el select de dimensiones con las que existen en el grafo
+            const dimSelect = document.getElementById('analisis-dim-select');
+            const dimOptions = [...new Set(
+                allNodes.get()
+                    .filter(n => n.nivel !== 'frase' && n.nivel !== 'dimension' && n.dimension && n.dimension !== 'sin dimensión')
+                    .map(n => n.dimension)
+            )].sort();
+            dimOptions.forEach(dim => {
+                const opt = document.createElement('option');
+                opt.value = dim;
+                opt.textContent = dim.charAt(0).toUpperCase() + dim.slice(1);
+                dimSelect.appendChild(opt);
+            });
+
+            // Checkboxes mutuamente excluyentes
+            const chkDistintas = document.getElementById('analisis-distintas');
+            const chkMisma     = document.getElementById('analisis-misma');
+            const selectorMisma = document.getElementById('misma-dim-selector');
+
+            chkDistintas.addEventListener('change', () => {
+                if (chkDistintas.checked) {
+                    chkMisma.checked = false;
+                    selectorMisma.style.display = 'none';
+                }
+            });
+            chkMisma.addEventListener('change', () => {
+                if (chkMisma.checked) {
+                    chkDistintas.checked = false;
+                    selectorMisma.style.display = 'block';
+                } else {
+                    selectorMisma.style.display = 'none';
+                }
+            });
+
             let parActivoIndex = null;
 
             document.getElementById('btn-analisis-aplicar').addEventListener('click', () => {
                 const umbral        = parseInt(document.getElementById('analisis-umbral').value);
                 const tamano        = parseInt(document.getElementById('analisis-tamano').value);
                 const soloDistintas = document.getElementById('analisis-distintas').checked;
+                const soloMisma     = document.getElementById('analisis-misma').checked;
+                const dimElegida    = document.getElementById('analisis-dim-select').value;
                 const { frases, subtipos, todasAristas, frasesDeSubtipo } = construirMapas();
 
-                const subtiposActivos = subtipos.filter(s => frasesDeSubtipo[s.id].size > 0);
-                const combos  = combinaciones(subtiposActivos, tamano);
+                // Validación para el modo misma dimensión
+                if (soloMisma && !dimElegida) {
+                    document.getElementById('analisis-resultados').innerHTML =
+                        '<div class="analisis-empty" style="color:#c0392b;">Elegí una dimensión del desplegable.</div>';
+                    return;
+                }
+
+                // Filtrar subtipos según el modo elegido
+                let subtiposBase = subtipos.filter(s => frasesDeSubtipo[s.id].size > 0);
+                if (soloMisma && dimElegida) {
+                    subtiposBase = subtiposBase.filter(s => s.dimension === dimElegida);
+                }
+
+                const combos  = combinaciones(subtiposBase, tamano);
                 const grupos  = [];
 
                 for (const combo of combos) {
                     if (soloDistintas) {
                         const dims = new Set(combo.map(s => s.dimension));
                         if (dims.size < combo.length) continue;
+                    }
+                    if (soloMisma && dimElegida) {
+                        // Todos deben ser de la misma dimensión (ya filtrado arriba, doble check)
+                        if (!combo.every(s => s.dimension === dimElegida)) continue;
                     }
                     const frasesComp = intersectarSets(combo.map(s => frasesDeSubtipo[s.id]));
                     if (frasesComp.size >= umbral) {
@@ -800,6 +862,15 @@
                 const resDiv = document.getElementById('analisis-resultados');
                 parActivoIndex = null;
 
+                // Título contextual de los resultados
+                let contextoLabel = '';
+                if (soloMisma && dimElegida) {
+                    const dimCapit = dimElegida.charAt(0).toUpperCase() + dimElegida.slice(1);
+                    contextoLabel = ` · Dimensión: <strong>${dimCapit}</strong>`;
+                } else if (soloDistintas) {
+                    contextoLabel = ' · Dimensiones distintas';
+                }
+
                 if (!grupos.length) {
                     resDiv.innerHTML = `<div class="analisis-empty">No se encontraron grupos de ${tamano} subtipos que co-ocurran en ${umbral} o más frases.</div>`;
                     restaurarTodo(); return;
@@ -807,7 +878,7 @@
 
                 resDiv.innerHTML = `
                     <div style="font-size:12px;color:#888;margin-bottom:10px;">
-                        ${grupos.length} grupo${grupos.length !== 1 ? 's' : ''} encontrado${grupos.length !== 1 ? 's' : ''} · Click para resaltar
+                        ${grupos.length} grupo${grupos.length !== 1 ? 's' : ''} encontrado${grupos.length !== 1 ? 's' : ''}${contextoLabel} · Click para resaltar
                     </div>
                     ${grupos.map((g, idx) => `
                         <div class="par-item" data-idx="${idx}">
@@ -847,6 +918,8 @@
 
             document.getElementById('btn-analisis-limpiar').addEventListener('click', () => {
                 parActivoIndex = null;
+                chkMisma.checked = false;
+                selectorMisma.style.display = 'none';
                 document.getElementById('analisis-resultados').innerHTML =
                     '<div class="analisis-empty">Configurá los parámetros y presioná "Aplicar".</div>';
                 restaurarTodo();
