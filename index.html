@@ -101,6 +101,11 @@
         <select id="dimensionFilter" style="padding: 5px; border-radius: 4px; border: 1px solid #ccc;">
             <option value="all">Mostrar Todo</option>
         </select>
+        <label style="margin-left: 20px; display:inline-flex; align-items:center; gap:7px; cursor:pointer; background:#f0f7ff; border:1px solid #b8d4f5; border-radius:5px; padding:5px 11px; font-size:13px;">
+            <input type="checkbox" id="chk-microgestos" style="transform:scale(1.2); cursor:pointer; accent-color:#2b7ce9;">
+            <span style="font-weight:600; color:#2b7ce9;">Mostrar microgestos</span>
+            <span style="font-size:11px; color:#888;">(frase → microgesto → subtipo)</span>
+        </label>
         <small style="margin-left: 25px; color:#777;">Tip: <strong>Ctrl+Click</strong> para multiselección · <strong>Supr</strong> para ocultar selección</small>
     </div>
     <div class="main-container">
@@ -231,7 +236,7 @@
     const NODE_R_MAX = 60;
     const FONT_SIZE  = 36;
 
-    fetch('catoninetails-graph3.json')
+    fetch('catoninetails-graph3-v2.json')
         .then(res => res.json())
         .then(data => {
 
@@ -295,10 +300,12 @@
                             ? (colorLookup[e.target] || '#848484')
                             : (colorLookup[e.source] || '#848484');
                 edgeColorLookup[e.key] = col;
+                const edgeNivel = (e.attributes && e.attributes.edge_nivel) || null;
                 return {
-                    id:    e.key, from: e.source, to: e.target,
-                    color: { color: hexToRgba(col, 0.55), highlight: col, hover: col, inherit: false },
-                    width: 3
+                    id:         e.key, from: e.source, to: e.target,
+                    color:      { color: hexToRgba(col, 0.55), highlight: col, hover: col, inherit: false },
+                    width:      3,
+                    edge_nivel: edgeNivel   // 'frase_subtipo' | 'frase_microgesto' | 'microgesto_subtipo' | null
                 };
             });
 
@@ -337,7 +344,11 @@
             }
 
             listaOrdenada.forEach(n => {
-                const grupoClave = n.nivel === 'frase' ? 'Frases' : (n.dimension || 'Sin dimensión');
+                const grupoClave = n.nivel === 'frase'
+                    ? 'Frases'
+                    : n.nivel === 'microgesto'
+                        ? 'microgesto'
+                        : (n.dimension || 'Sin dimensión');
 
                 if (grupoClave !== grupoActual) {
                     grupoActual = grupoClave;
@@ -349,6 +360,11 @@
                         <span class="group-label">${grupoClave.toUpperCase()}</span>
                         <span class="group-arrow">▾</span>`;
                     listaContainer.appendChild(h);
+
+                    // Ocultar grupo microgesto por defecto
+                    if (grupoClave === 'microgesto') {
+                        h.style.display = 'none';
+                    }
 
                     h.querySelector('.group-checkbox').addEventListener('change', ev => {
                         ev.stopPropagation();
@@ -402,6 +418,11 @@
                     actualizarCheckboxGrupo(grupoClave);
                 });
                 listaContainer.appendChild(div);
+
+                // Ocultar microgestos en la lista por defecto
+                if (n.nivel === 'microgesto') {
+                    div.style.display = 'none';
+                }
             });
 
             document.getElementById('chk-todo').addEventListener('change', ev => {
@@ -442,16 +463,35 @@
             // ── PASO 7: inicializar red ───────────────────────────────────────────
             const allNodes = new vis.DataSet(processedNodes);
             const allEdges = new vis.DataSet(processedEdges);
-            let filtroActual = 'all';
+            let filtroActual      = 'all';
+            let mostrarMicrogestos = false;   // OFF por defecto
 
             const nodesView = new vis.DataView(allNodes, {
-                filter: n => !nodosOcultos.has(n.id) &&
-                             (filtroActual === 'all' || n.dimension === filtroActual || n.nivel === 'frase')
+                filter: n => {
+                    if (nodosOcultos.has(n.id)) return false;
+                    if (filtroActual !== 'all' && n.nivel !== 'frase' && n.dimension !== filtroActual) return false;
+                    if (!mostrarMicrogestos && n.nivel === 'microgesto') return false;
+                    return true;
+                }
+            });
+
+            const edgesView = new vis.DataView(allEdges, {
+                filter: e => {
+                    if (mostrarMicrogestos) {
+                        // Con microgestos: ocultar aristas directas frase→subtipo
+                        // SOLO las que tienen un microgesto intermediario
+                        if (e.edge_nivel === 'frase_subtipo') return false;
+                    } else {
+                        // Sin microgestos: ocultar aristas que involucran microgestos
+                        if (e.edge_nivel === 'frase_microgesto' || e.edge_nivel === 'microgesto_subtipo') return false;
+                    }
+                    return true;
+                }
             });
 
             const network = new vis.Network(
                 document.getElementById('mynetwork'),
-                { nodes: nodesView, edges: allEdges },
+                { nodes: nodesView, edges: edgesView },
                 {
                     nodes:       { borderWidth: 2 },
                     edges:       { smooth: { type: 'continuous' } },
@@ -999,6 +1039,25 @@
                 nodesView.refresh();
                 restaurarTodo();
                 actualizarLista(filtroActual);
+            });
+
+            // ── Toggle microgestos ────────────────────────────────────────────────
+            document.getElementById('chk-microgestos').addEventListener('change', ev => {
+                mostrarMicrogestos = ev.target.checked;
+                nodesView.refresh();
+                edgesView.refresh();
+                restaurarTodo();
+                // Sincronizar checkbox en la lista de nodos (si existen nodos microgesto)
+                document.querySelectorAll('.node-item[data-nivel="microgesto"]').forEach(item => {
+                    const id = item.dataset.id;
+                    item.querySelector('input').checked = mostrarMicrogestos && !nodosOcultos.has(id);
+                    item.style.display = mostrarMicrogestos ? '' : 'none';
+                });
+                // Actualizar headers de grupo microgesto
+                document.querySelectorAll('.dim-group-header[data-grupo="microgesto"]').forEach(h => {
+                    h.style.display = mostrarMicrogestos ? '' : 'none';
+                    if (mostrarMicrogestos) actualizarCheckboxGrupo('microgesto');
+                });
             });
 
             document.addEventListener('keydown', e => {
