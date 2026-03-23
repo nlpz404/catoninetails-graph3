@@ -1,0 +1,4951 @@
+{
+  "attributes": {
+    "creator": "Gephi 0.10.1"
+  },
+  "options": {
+    "multi": false,
+    "allowSelfLoops": true,
+    "type": "directed"
+  },
+  "nodes": [
+    {
+      "key": "Pausa",
+      "attributes": {
+        "label": "Pausa",
+        "size": 30.952381,
+        "color": "#ff5d85",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "temporalidad",
+        "indegree": 13,
+        "outdegree": 1,
+        "degree": 14,
+        "x": -757.1949,
+        "y": -388.92444
+      }
+    },
+    {
+      "key": "Temporalidad (MOC)",
+      "attributes": {
+        "label": "Temporalidad (MOC)",
+        "size": 15.714286,
+        "color": "#ff5d85",
+        "nivel": "dimension",
+        "orden": 0,
+        "dimension": "temporalidad",
+        "indegree": 3,
+        "outdegree": 3,
+        "degree": 6,
+        "x": -1340.1515,
+        "y": -138.31549
+      }
+    },
+    {
+      "key": "Rápido",
+      "attributes": {
+        "label": "Rápido",
+        "size": 32.857143,
+        "color": "#ff5d85",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "temporalidad",
+        "indegree": 14,
+        "outdegree": 1,
+        "degree": 15,
+        "x": -756.7894,
+        "y": -188.11047
+      }
+    },
+    {
+      "key": "Lento",
+      "attributes": {
+        "label": "Lento",
+        "size": 30.952381,
+        "color": "#ff5d85",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "temporalidad",
+        "indegree": 13,
+        "outdegree": 1,
+        "degree": 14,
+        "x": -748.61334,
+        "y": 41.795227
+      }
+    },
+    {
+      "key": "Hoquete",
+      "attributes": {
+        "label": "Hoquete",
+        "size": 15.714286,
+        "color": "#00af87",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "acción",
+        "indegree": 5,
+        "outdegree": 1,
+        "degree": 6,
+        "x": -696.7401,
+        "y": -1842.1421
+      }
+    },
+    {
+      "key": "Acción (MOC)",
+      "attributes": {
+        "label": "Acción (MOC)",
+        "size": 15.714286,
+        "color": "#00af87",
+        "nivel": "dimension",
+        "orden": 0,
+        "dimension": "acción",
+        "indegree": 3,
+        "outdegree": 3,
+        "degree": 6,
+        "x": -1351.1226,
+        "y": -1615.8796
+      }
+    },
+    {
+      "key": "Improvisación",
+      "attributes": {
+        "label": "Improvisación",
+        "size": 27.142857,
+        "color": "#00af87",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "acción",
+        "indegree": 11,
+        "outdegree": 1,
+        "degree": 12,
+        "x": -705.28406,
+        "y": -1473.6067
+      }
+    },
+    {
+      "key": "Solo",
+      "attributes": {
+        "label": "Solo",
+        "size": 17.619047,
+        "color": "#00af87",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "acción",
+        "indegree": 6,
+        "outdegree": 1,
+        "degree": 7,
+        "x": -712.58875,
+        "y": -1652.9529
+      }
+    },
+    {
+      "key": "Ruido",
+      "attributes": {
+        "label": "Ruido",
+        "size": 38.57143,
+        "color": "#00c7ff",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "sonoridad",
+        "indegree": 17,
+        "outdegree": 1,
+        "degree": 18,
+        "x": 419.9768,
+        "y": -950.2426
+      }
+    },
+    {
+      "key": "Vibrato",
+      "attributes": {
+        "label": "Vibrato",
+        "size": 13.809524,
+        "color": "#00c7ff",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "sonoridad",
+        "indegree": 4,
+        "outdegree": 1,
+        "degree": 5,
+        "x": 490.9673,
+        "y": -791.78925
+      }
+    },
+    {
+      "key": "Sonoridad (MOC)",
+      "attributes": {
+        "label": "Sonoridad (MOC)",
+        "size": 34.761906,
+        "color": "#00c7ff",
+        "nivel": "dimension",
+        "orden": 0,
+        "dimension": "sonoridad",
+        "indegree": 8,
+        "outdegree": 8,
+        "degree": 16,
+        "x": 1172.7296,
+        "y": -962.9256
+      }
+    },
+    {
+      "key": "Trémolo",
+      "attributes": {
+        "label": "Trémolo",
+        "size": 36.666668,
+        "color": "#00c7ff",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "sonoridad",
+        "indegree": 16,
+        "outdegree": 1,
+        "degree": 17,
+        "x": 443.0205,
+        "y": -1244.342
+      }
+    },
+    {
+      "key": "Armónicos",
+      "attributes": {
+        "label": "Armónicos",
+        "size": 23.333334,
+        "color": "#00c7ff",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "sonoridad",
+        "indegree": 9,
+        "outdegree": 1,
+        "degree": 10,
+        "x": 740.3351,
+        "y": -697.9323
+      }
+    },
+    {
+      "key": "Sul-Pont",
+      "attributes": {
+        "label": "Sul-Pont",
+        "size": 13.809524,
+        "color": "#00c7ff",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "sonoridad",
+        "indegree": 4,
+        "outdegree": 1,
+        "degree": 5,
+        "x": 668.0737,
+        "y": -865.0169
+      }
+    },
+    {
+      "key": "Pizzicato",
+      "attributes": {
+        "label": "Pizzicato",
+        "size": 32.857143,
+        "color": "#00c7ff",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "sonoridad",
+        "indegree": 14,
+        "outdegree": 1,
+        "degree": 15,
+        "x": 627.3861,
+        "y": -1047.362
+      }
+    },
+    {
+      "key": "Rasgueo",
+      "attributes": {
+        "label": "Rasgueo",
+        "size": 11.904762,
+        "color": "#00c7ff",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "sonoridad",
+        "indegree": 3,
+        "outdegree": 1,
+        "degree": 4,
+        "x": 767.8629,
+        "y": -972.90594
+      }
+    },
+    {
+      "key": "Glissando",
+      "attributes": {
+        "label": "Glissando",
+        "size": 40.47619,
+        "color": "#00c7ff",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "sonoridad",
+        "indegree": 18,
+        "outdegree": 1,
+        "degree": 19,
+        "x": 421.57062,
+        "y": -624.2564
+      }
+    },
+    {
+      "key": "Ostinato",
+      "attributes": {
+        "label": "Ostinato",
+        "size": 11.904762,
+        "color": "#69c404",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "sintaxis",
+        "indegree": 3,
+        "outdegree": 1,
+        "degree": 4,
+        "x": -837.7347,
+        "y": -873.69855
+      }
+    },
+    {
+      "key": "Secuencia",
+      "attributes": {
+        "label": "Secuencia",
+        "size": 21.428572,
+        "color": "#69c404",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "sintaxis",
+        "indegree": 8,
+        "outdegree": 1,
+        "degree": 9,
+        "x": -541.3394,
+        "y": -870.2757
+      }
+    },
+    {
+      "key": "Arpegio",
+      "attributes": {
+        "label": "Arpegio",
+        "size": 11.904762,
+        "color": "#69c404",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "sintaxis",
+        "indegree": 3,
+        "outdegree": 1,
+        "degree": 4,
+        "x": -774.9834,
+        "y": -657.67255
+      }
+    },
+    {
+      "key": "Montaje",
+      "attributes": {
+        "label": "Montaje",
+        "size": 23.333334,
+        "color": "#69c404",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "sintaxis",
+        "indegree": 9,
+        "outdegree": 1,
+        "degree": 10,
+        "x": -544.7274,
+        "y": -950.55035
+      }
+    },
+    {
+      "key": "Ornamento",
+      "attributes": {
+        "label": "Ornamento",
+        "size": 19.52381,
+        "color": "#69c404",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "sintaxis",
+        "indegree": 7,
+        "outdegree": 1,
+        "degree": 8,
+        "x": -549.4706,
+        "y": -633.1847
+      }
+    },
+    {
+      "key": "Motivo",
+      "attributes": {
+        "label": "Motivo",
+        "size": 21.428572,
+        "color": "#69c404",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "sintaxis",
+        "indegree": 8,
+        "outdegree": 1,
+        "degree": 9,
+        "x": -547.0061,
+        "y": -1092.4021
+      }
+    },
+    {
+      "key": "Escala",
+      "attributes": {
+        "label": "Escala",
+        "size": 27.142857,
+        "color": "#69c404",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "sintaxis",
+        "indegree": 11,
+        "outdegree": 1,
+        "degree": 12,
+        "x": -732.53784,
+        "y": -1031.7302
+      }
+    },
+    {
+      "key": "Cadencia",
+      "attributes": {
+        "label": "Cadencia",
+        "size": 15.714286,
+        "color": "#69c404",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "sintaxis",
+        "indegree": 5,
+        "outdegree": 1,
+        "degree": 6,
+        "x": -534.802,
+        "y": -766.08435
+      }
+    },
+    {
+      "key": "Sintaxis (MOC)",
+      "attributes": {
+        "label": "Sintaxis (MOC)",
+        "size": 50,
+        "color": "#69c404",
+        "nivel": "dimension",
+        "orden": 0,
+        "dimension": "sintaxis",
+        "indegree": 12,
+        "outdegree": 12,
+        "degree": 24,
+        "x": -1363.244,
+        "y": -776.0695
+      }
+    },
+    {
+      "key": "Canon",
+      "attributes": {
+        "label": "Canon",
+        "size": 10,
+        "color": "#69c404",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "sintaxis",
+        "indegree": 2,
+        "outdegree": 1,
+        "degree": 3,
+        "x": -1068.0521,
+        "y": -864.4373
+      }
+    },
+    {
+      "key": "Homofonía",
+      "attributes": {
+        "label": "Homofonía",
+        "size": 19.52381,
+        "color": "#69c404",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "sintaxis",
+        "indegree": 7,
+        "outdegree": 1,
+        "degree": 8,
+        "x": -866.2408,
+        "y": -950.17804
+      }
+    },
+    {
+      "key": "Unísono",
+      "attributes": {
+        "label": "Unísono",
+        "size": 11.904762,
+        "color": "#69c404",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "sintaxis",
+        "indegree": 3,
+        "outdegree": 1,
+        "degree": 4,
+        "x": -744.40796,
+        "y": -810.69037
+      }
+    },
+    {
+      "key": "Discontinua",
+      "attributes": {
+        "label": "Discontinua",
+        "size": 11.904762,
+        "color": "#69c404",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "sintaxis",
+        "indegree": 3,
+        "outdegree": 1,
+        "degree": 4,
+        "x": -864.2415,
+        "y": -751.9625
+      }
+    },
+    {
+      "key": "Lenguaje (MOC)",
+      "attributes": {
+        "label": "Lenguaje (MOC)",
+        "size": 27.142857,
+        "color": "#fa9200",
+        "nivel": "dimension",
+        "orden": 0,
+        "dimension": "lenguaje",
+        "indegree": 6,
+        "outdegree": 6,
+        "degree": 12,
+        "x": 1146.4365,
+        "y": -67.37921
+      }
+    },
+    {
+      "key": "Atonal",
+      "attributes": {
+        "label": "Atonal",
+        "size": 25.238094,
+        "color": "#fa9200",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "lenguaje",
+        "indegree": 10,
+        "outdegree": 1,
+        "degree": 11,
+        "x": 660.82086,
+        "y": -311.09442
+      }
+    },
+    {
+      "key": "Modal",
+      "attributes": {
+        "label": "Modal",
+        "size": 19.52381,
+        "color": "#fa9200",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "lenguaje",
+        "indegree": 7,
+        "outdegree": 1,
+        "degree": 8,
+        "x": 786.2017,
+        "y": 1.7147217
+      }
+    },
+    {
+      "key": "Politonal",
+      "attributes": {
+        "label": "Politonal",
+        "size": 11.904762,
+        "color": "#fa9200",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "lenguaje",
+        "indegree": 3,
+        "outdegree": 1,
+        "degree": 4,
+        "x": 759.90643,
+        "y": -165.1507
+      }
+    },
+    {
+      "key": "Cromático",
+      "attributes": {
+        "label": "Cromático",
+        "size": 34.761906,
+        "color": "#fa9200",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "lenguaje",
+        "indegree": 15,
+        "outdegree": 1,
+        "degree": 16,
+        "x": 482.9124,
+        "y": -20.173523
+      }
+    },
+    {
+      "key": "Tonal",
+      "attributes": {
+        "label": "Tonal",
+        "size": 38.57143,
+        "color": "#fa9200",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "lenguaje",
+        "indegree": 17,
+        "outdegree": 1,
+        "degree": 18,
+        "x": 458.1865,
+        "y": 163.93597
+      }
+    },
+    {
+      "key": "No-Funcional",
+      "attributes": {
+        "label": "No-Funcional",
+        "size": 36.666668,
+        "color": "#fa9200",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "lenguaje",
+        "indegree": 16,
+        "outdegree": 1,
+        "degree": 17,
+        "x": 482.24243,
+        "y": -205.60632
+      }
+    },
+    {
+      "key": "Carácter",
+      "attributes": {
+        "label": "Carácter",
+        "size": 29.047619,
+        "color": "#aa00fc",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "referencia",
+        "indegree": 12,
+        "outdegree": 1,
+        "degree": 13,
+        "x": 448.48914,
+        "y": -1888.0674
+      }
+    },
+    {
+      "key": "Estilo",
+      "attributes": {
+        "label": "Estilo",
+        "size": 30.952381,
+        "color": "#aa00fc",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "referencia",
+        "indegree": 13,
+        "outdegree": 1,
+        "degree": 14,
+        "x": 462.2016,
+        "y": -1704.6646
+      }
+    },
+    {
+      "key": "Referencia (MOC)",
+      "attributes": {
+        "label": "Referencia (MOC)",
+        "size": 19.52381,
+        "color": "#aa00fc",
+        "nivel": "dimension",
+        "orden": 0,
+        "dimension": "referencia",
+        "indegree": 4,
+        "outdegree": 4,
+        "degree": 8,
+        "x": 1139.2567,
+        "y": -1682.5342
+      }
+    },
+    {
+      "key": "Mímesis",
+      "attributes": {
+        "label": "Mímesis",
+        "size": 30.952381,
+        "color": "#aa00fc",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "referencia",
+        "indegree": 13,
+        "outdegree": 1,
+        "degree": 14,
+        "x": 452.80212,
+        "y": -1525.4346
+      }
+    },
+    {
+      "key": "Cita",
+      "attributes": {
+        "label": "Cita",
+        "size": 13.809524,
+        "color": "#aa00fc",
+        "nivel": "subtipo",
+        "orden": 0,
+        "dimension": "referencia",
+        "indegree": 4,
+        "outdegree": 1,
+        "degree": 5,
+        "x": 705.6513,
+        "y": -1708.9409
+      }
+    },
+    {
+      "key": "Frase 07",
+      "attributes": {
+        "label": "Frase 07",
+        "size": 27.142857,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 7,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 10,
+        "degree": 12,
+        "x": -31.417068,
+        "y": -283.66394
+      }
+    },
+    {
+      "key": "Frase 04",
+      "attributes": {
+        "label": "Frase 04",
+        "size": 21.428572,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 4,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 7,
+        "degree": 9,
+        "x": -31.417068,
+        "y": -55.276794
+      }
+    },
+    {
+      "key": "Frase 27",
+      "attributes": {
+        "label": "Frase 27",
+        "size": 29.047619,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 27,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 11,
+        "degree": 13,
+        "x": -31.417068,
+        "y": -1830.3306
+      }
+    },
+    {
+      "key": "Frase 12",
+      "attributes": {
+        "label": "Frase 12",
+        "size": 23.333334,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 12,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 8,
+        "degree": 10,
+        "x": -31.417068,
+        "y": -668.03723
+      }
+    },
+    {
+      "key": "Frase 26",
+      "attributes": {
+        "label": "Frase 26",
+        "size": 32.857143,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 26,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 13,
+        "degree": 15,
+        "x": -31.417068,
+        "y": -1752.9973
+      }
+    },
+    {
+      "key": "Frase 19",
+      "attributes": {
+        "label": "Frase 19",
+        "size": 30.952381,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 19,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 12,
+        "degree": 14,
+        "x": -31.417068,
+        "y": -1211.6641
+      }
+    },
+    {
+      "key": "Frase 17",
+      "attributes": {
+        "label": "Frase 17",
+        "size": 36.666668,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 17,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 15,
+        "degree": 17,
+        "x": -31.417068,
+        "y": -1056.9973
+      }
+    },
+    {
+      "key": "Frase 25",
+      "attributes": {
+        "label": "Frase 25",
+        "size": 42.38095,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 25,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 18,
+        "degree": 20,
+        "x": -31.417068,
+        "y": -1675.6641
+      }
+    },
+    {
+      "key": "Frase 23",
+      "attributes": {
+        "label": "Frase 23",
+        "size": 27.142857,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 23,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 10,
+        "degree": 12,
+        "x": -31.417068,
+        "y": -1520.9973
+      }
+    },
+    {
+      "key": "Frase 05",
+      "attributes": {
+        "label": "Frase 05",
+        "size": 23.333334,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 5,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 8,
+        "degree": 10,
+        "x": -31.417068,
+        "y": -132.61017
+      }
+    },
+    {
+      "key": "Frase 18",
+      "attributes": {
+        "label": "Frase 18",
+        "size": 25.238094,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 18,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 9,
+        "degree": 11,
+        "x": -31.417068,
+        "y": -1134.3306
+      }
+    },
+    {
+      "key": "Frase 09",
+      "attributes": {
+        "label": "Frase 09",
+        "size": 29.047619,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 9,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 11,
+        "degree": 13,
+        "x": -31.417068,
+        "y": -438.33063
+      }
+    },
+    {
+      "key": "Frase 28",
+      "attributes": {
+        "label": "Frase 28",
+        "size": 29.047619,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 28,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 11,
+        "degree": 13,
+        "x": -31.417068,
+        "y": -1907.6638
+      }
+    },
+    {
+      "key": "Frase 08",
+      "attributes": {
+        "label": "Frase 08",
+        "size": 46.190475,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 8,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 20,
+        "degree": 22,
+        "x": -31.417068,
+        "y": -360.9973
+      }
+    },
+    {
+      "key": "Frase 21",
+      "attributes": {
+        "label": "Frase 21",
+        "size": 29.047619,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 21,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 11,
+        "degree": 13,
+        "x": -31.417068,
+        "y": -1366.3306
+      }
+    },
+    {
+      "key": "Frase 20",
+      "attributes": {
+        "label": "Frase 20",
+        "size": 32.857143,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 20,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 13,
+        "degree": 15,
+        "x": -31.417068,
+        "y": -1288.9973
+      }
+    },
+    {
+      "key": "Frase 22",
+      "attributes": {
+        "label": "Frase 22",
+        "size": 36.666668,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 22,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 15,
+        "degree": 17,
+        "x": -31.417068,
+        "y": -1443.6641
+      }
+    },
+    {
+      "key": "Frase 11",
+      "attributes": {
+        "label": "Frase 11",
+        "size": 48.095238,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 11,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 21,
+        "degree": 23,
+        "x": -31.417068,
+        "y": -590.704
+      }
+    },
+    {
+      "key": "Frase 14",
+      "attributes": {
+        "label": "Frase 14",
+        "size": 23.333334,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 14,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 8,
+        "degree": 10,
+        "x": -31.417068,
+        "y": -824.99725
+      }
+    },
+    {
+      "key": "Frase 16",
+      "attributes": {
+        "label": "Frase 16",
+        "size": 42.38095,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 16,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 18,
+        "degree": 20,
+        "x": -31.417068,
+        "y": -979.664
+      }
+    },
+    {
+      "key": "Frase 01",
+      "attributes": {
+        "label": "Frase 01",
+        "size": 29.047619,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 1,
+        "dimension": "N/A",
+        "indegree": 1,
+        "outdegree": 12,
+        "degree": 13,
+        "x": -31.417068,
+        "y": 176.7232
+      }
+    },
+    {
+      "key": "Frase 02",
+      "attributes": {
+        "label": "Frase 02",
+        "size": 36.666668,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 2,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 15,
+        "degree": 17,
+        "x": -31.417068,
+        "y": 99.38983
+      }
+    },
+    {
+      "key": "Frase 15",
+      "attributes": {
+        "label": "Frase 15",
+        "size": 27.142857,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 15,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 10,
+        "degree": 12,
+        "x": -31.417068,
+        "y": -902.3306
+      }
+    },
+    {
+      "key": "Frase 13",
+      "attributes": {
+        "label": "Frase 13",
+        "size": 38.57143,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 13,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 16,
+        "degree": 18,
+        "x": -31.417068,
+        "y": -745.3706
+      }
+    },
+    {
+      "key": "Frase 06",
+      "attributes": {
+        "label": "Frase 06",
+        "size": 27.142857,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 6,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 10,
+        "degree": 12,
+        "x": -31.417068,
+        "y": -209.94354
+      }
+    },
+    {
+      "key": "Frase 03",
+      "attributes": {
+        "label": "Frase 03",
+        "size": 38.57143,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 3,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 16,
+        "degree": 18,
+        "x": -31.417068,
+        "y": 22.056458
+      }
+    },
+    {
+      "key": "Frase 29",
+      "attributes": {
+        "label": "Frase 29",
+        "size": 17.619047,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 29,
+        "dimension": "N/A",
+        "indegree": 1,
+        "outdegree": 6,
+        "degree": 7,
+        "x": -31.417068,
+        "y": -1984.9973
+      }
+    },
+    {
+      "key": "Frase 24",
+      "attributes": {
+        "label": "Frase 24",
+        "size": 21.428572,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 24,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 7,
+        "degree": 9,
+        "x": -31.417068,
+        "y": -1598.3306
+      }
+    },
+    {
+      "key": "Frase 10",
+      "attributes": {
+        "label": "Frase 10",
+        "size": 17.619047,
+        "color": "#a6a6a6",
+        "nivel": "frase",
+        "orden": 10,
+        "dimension": "N/A",
+        "indegree": 2,
+        "outdegree": 5,
+        "degree": 7,
+        "x": -31.417068,
+        "y": -515.66394
+      }
+    },
+    {
+      "key": "MG_Xenakis",
+      "attributes": {
+        "label": "Xenakis",
+        "size": 16,
+        "color": "#e900fc",
+        "nivel": "microgesto",
+        "orden": 0,
+        "dimension": "referencia",
+        "indegree": 2,
+        "outdegree": 1,
+        "degree": 3,
+        "x": 226.56,
+        "y": -1134.33
+      }
+    },
+    {
+      "key": "MG_Ives",
+      "attributes": {
+        "label": "Ives",
+        "size": 13,
+        "color": "#e900fc",
+        "nivel": "microgesto",
+        "orden": 0,
+        "dimension": "referencia",
+        "indegree": 1,
+        "outdegree": 1,
+        "degree": 2,
+        "x": 226.56,
+        "y": -438.33
+      }
+    },
+    {
+      "key": "MG_Paganini",
+      "attributes": {
+        "label": "Paganini",
+        "size": 13,
+        "color": "#e900fc",
+        "nivel": "microgesto",
+        "orden": 0,
+        "dimension": "referencia",
+        "indegree": 1,
+        "outdegree": 1,
+        "degree": 2,
+        "x": 226.56,
+        "y": -1830.33
+      }
+    },
+    {
+      "key": "MG_Schoenberg",
+      "attributes": {
+        "label": "Schoenberg",
+        "size": 13,
+        "color": "#e900fc",
+        "nivel": "microgesto",
+        "orden": 0,
+        "dimension": "referencia",
+        "indegree": 1,
+        "outdegree": 1,
+        "degree": 2,
+        "x": 226.56,
+        "y": -1830.33
+      }
+    },
+    {
+      "key": "MG_Messiaen",
+      "attributes": {
+        "label": "Messiaen",
+        "size": 13,
+        "color": "#e900fc",
+        "nivel": "microgesto",
+        "orden": 0,
+        "dimension": "referencia",
+        "indegree": 1,
+        "outdegree": 1,
+        "degree": 2,
+        "x": 226.56,
+        "y": -1830.33
+      }
+    },
+    {
+      "key": "MG_Country",
+      "attributes": {
+        "label": "Country",
+        "size": 28,
+        "color": "#e900fc",
+        "nivel": "microgesto",
+        "orden": 0,
+        "dimension": "referencia",
+        "indegree": 6,
+        "outdegree": 1,
+        "degree": 7,
+        "x": 141.35,
+        "y": -1083.38
+      }
+    },
+    {
+      "key": "MG_Swing",
+      "attributes": {
+        "label": "Swing",
+        "size": 19,
+        "color": "#e900fc",
+        "nivel": "microgesto",
+        "orden": 0,
+        "dimension": "referencia",
+        "indegree": 3,
+        "outdegree": 1,
+        "degree": 4,
+        "x": 141.35,
+        "y": -903.53
+      }
+    },
+    {
+      "key": "MG_Habanera",
+      "attributes": {
+        "label": "Habanera",
+        "size": 13,
+        "color": "#e900fc",
+        "nivel": "microgesto",
+        "orden": 0,
+        "dimension": "referencia",
+        "indegree": 1,
+        "outdegree": 1,
+        "degree": 2,
+        "x": 141.35,
+        "y": -55.28
+      }
+    },
+    {
+      "key": "MG_Blues",
+      "attributes": {
+        "label": "Blues",
+        "size": 16,
+        "color": "#e900fc",
+        "nivel": "microgesto",
+        "orden": 0,
+        "dimension": "referencia",
+        "indegree": 2,
+        "outdegree": 1,
+        "degree": 3,
+        "x": 141.35,
+        "y": -1326.52
+      }
+    },
+    {
+      "key": "MG_Lullaby",
+      "attributes": {
+        "label": "Lullaby",
+        "size": 13,
+        "color": "#e900fc",
+        "nivel": "microgesto",
+        "orden": 0,
+        "dimension": "referencia",
+        "indegree": 1,
+        "outdegree": 1,
+        "degree": 2,
+        "x": 141.35,
+        "y": -1134.33
+      }
+    },
+    {
+      "key": "MG_Hardcore",
+      "attributes": {
+        "label": "Hardcore",
+        "size": 13,
+        "color": "#e900fc",
+        "nivel": "microgesto",
+        "orden": 0,
+        "dimension": "referencia",
+        "indegree": 1,
+        "outdegree": 1,
+        "degree": 2,
+        "x": 141.35,
+        "y": -1211.66
+      }
+    }
+  ],
+  "edges": [
+    {
+      "key": "0",
+      "source": "Pausa",
+      "target": "Temporalidad (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "4",
+      "source": "Rápido",
+      "target": "Temporalidad (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "5",
+      "source": "Lento",
+      "target": "Temporalidad (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "6",
+      "source": "Hoquete",
+      "target": "Acción (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "10",
+      "source": "Improvisación",
+      "target": "Acción (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "11",
+      "source": "Solo",
+      "target": "Acción (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "12",
+      "source": "Ruido",
+      "target": "Sonoridad (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "13",
+      "source": "Vibrato",
+      "target": "Sonoridad (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "22",
+      "source": "Trémolo",
+      "target": "Sonoridad (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "23",
+      "source": "Armónicos",
+      "target": "Sonoridad (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "24",
+      "source": "Sul-Pont",
+      "target": "Sonoridad (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "25",
+      "source": "Pizzicato",
+      "target": "Sonoridad (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "26",
+      "source": "Rasgueo",
+      "target": "Sonoridad (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "27",
+      "source": "Glissando",
+      "target": "Sonoridad (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "28",
+      "source": "Ostinato",
+      "target": "Sintaxis (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "29",
+      "source": "Secuencia",
+      "target": "Sintaxis (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "30",
+      "source": "Arpegio",
+      "target": "Sintaxis (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "32",
+      "source": "Montaje",
+      "target": "Sintaxis (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "33",
+      "source": "Ornamento",
+      "target": "Sintaxis (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "34",
+      "source": "Motivo",
+      "target": "Sintaxis (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "35",
+      "source": "Escala",
+      "target": "Sintaxis (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "36",
+      "source": "Cadencia",
+      "target": "Sintaxis (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "49",
+      "source": "Canon",
+      "target": "Sintaxis (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "50",
+      "source": "Homofonía",
+      "target": "Sintaxis (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "51",
+      "source": "Unísono",
+      "target": "Sintaxis (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "52",
+      "source": "Discontinua",
+      "target": "Sintaxis (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "59",
+      "source": "Atonal",
+      "target": "Lenguaje (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "60",
+      "source": "Modal",
+      "target": "Lenguaje (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "61",
+      "source": "Politonal",
+      "target": "Lenguaje (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "62",
+      "source": "Cromático",
+      "target": "Lenguaje (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "63",
+      "source": "Tonal",
+      "target": "Lenguaje (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "64",
+      "source": "No-Funcional",
+      "target": "Lenguaje (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "65",
+      "source": "Carácter",
+      "target": "Referencia (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "66",
+      "source": "Estilo",
+      "target": "Referencia (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "71",
+      "source": "Mímesis",
+      "target": "Referencia (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "72",
+      "source": "Cita",
+      "target": "Referencia (MOC)",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "73",
+      "source": "Frase 07",
+      "target": "Glissando",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "74",
+      "source": "Frase 07",
+      "target": "Pizzicato",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "75",
+      "source": "Frase 07",
+      "target": "Tonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "76",
+      "source": "Frase 07",
+      "target": "No-Funcional",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "77",
+      "source": "Frase 07",
+      "target": "Politonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "78",
+      "source": "Frase 07",
+      "target": "Escala",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "79",
+      "source": "Frase 07",
+      "target": "Arpegio",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "80",
+      "source": "Frase 07",
+      "target": "Motivo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "81",
+      "source": "Frase 07",
+      "target": "Frase 06",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "82",
+      "source": "Frase 07",
+      "target": "Frase 08",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "83",
+      "source": "Frase 04",
+      "target": "No-Funcional",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "84",
+      "source": "Frase 04",
+      "target": "Carácter",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "85",
+      "source": "Frase 04",
+      "target": "Estilo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "86",
+      "source": "Frase 04",
+      "target": "Lento",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "87",
+      "source": "Frase 04",
+      "target": "Improvisación",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "88",
+      "source": "Frase 04",
+      "target": "Frase 03",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "89",
+      "source": "Frase 04",
+      "target": "Frase 05",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "90",
+      "source": "Frase 27",
+      "target": "Ruido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "91",
+      "source": "Frase 27",
+      "target": "Trémolo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "92",
+      "source": "Frase 27",
+      "target": "Tonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "93",
+      "source": "Frase 27",
+      "target": "Atonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "94",
+      "source": "Frase 27",
+      "target": "Modal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "95",
+      "source": "Frase 27",
+      "target": "Cita",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "96",
+      "source": "Frase 27",
+      "target": "Pausa",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "97",
+      "source": "Frase 27",
+      "target": "Improvisación",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "98",
+      "source": "Frase 27",
+      "target": "Hoquete",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "99",
+      "source": "Frase 27",
+      "target": "Frase 26",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "100",
+      "source": "Frase 27",
+      "target": "Frase 28",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "101",
+      "source": "Frase 12",
+      "target": "Cromático",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "102",
+      "source": "Frase 12",
+      "target": "No-Funcional",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "103",
+      "source": "Frase 12",
+      "target": "Homofonía",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "104",
+      "source": "Frase 12",
+      "target": "Carácter",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "105",
+      "source": "Frase 12",
+      "target": "Lento",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "106",
+      "source": "Frase 12",
+      "target": "Pausa",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "107",
+      "source": "Frase 12",
+      "target": "Frase 11",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "108",
+      "source": "Frase 12",
+      "target": "Frase 13",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "109",
+      "source": "Frase 26",
+      "target": "Ruido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "110",
+      "source": "Frase 26",
+      "target": "Pizzicato",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "111",
+      "source": "Frase 26",
+      "target": "Glissando",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "112",
+      "source": "Frase 26",
+      "target": "Trémolo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "113",
+      "source": "Frase 26",
+      "target": "Atonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "114",
+      "source": "Frase 26",
+      "target": "No-Funcional",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "115",
+      "source": "Frase 26",
+      "target": "Tonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "116",
+      "source": "Frase 26",
+      "target": "Montaje",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "117",
+      "source": "Frase 26",
+      "target": "Estilo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "118",
+      "source": "Frase 26",
+      "target": "Carácter",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "119",
+      "source": "Frase 26",
+      "target": "Solo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "120",
+      "source": "Frase 26",
+      "target": "Frase 25",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "121",
+      "source": "Frase 26",
+      "target": "Frase 27",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "122",
+      "source": "Frase 19",
+      "target": "Ruido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "123",
+      "source": "Frase 19",
+      "target": "Pizzicato",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "124",
+      "source": "Frase 19",
+      "target": "No-Funcional",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "125",
+      "source": "Frase 19",
+      "target": "Tonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "126",
+      "source": "Frase 19",
+      "target": "Secuencia",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "127",
+      "source": "Frase 19",
+      "target": "Unísono",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "128",
+      "source": "Frase 19",
+      "target": "Mímesis",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "129",
+      "source": "Frase 19",
+      "target": "Estilo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "130",
+      "source": "Frase 19",
+      "target": "Rápido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "131",
+      "source": "Frase 19",
+      "target": "Improvisación",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "132",
+      "source": "Frase 19",
+      "target": "Frase 18",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "133",
+      "source": "Frase 19",
+      "target": "Frase 20",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "134",
+      "source": "Frase 17",
+      "target": "Trémolo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "135",
+      "source": "Frase 17",
+      "target": "Cromático",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "136",
+      "source": "Frase 17",
+      "target": "Atonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "137",
+      "source": "Frase 17",
+      "target": "Tonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "138",
+      "source": "Frase 17",
+      "target": "Modal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "139",
+      "source": "Frase 17",
+      "target": "Escala",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "140",
+      "source": "Frase 17",
+      "target": "Secuencia",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "141",
+      "source": "Frase 17",
+      "target": "Motivo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "142",
+      "source": "Frase 17",
+      "target": "Carácter",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "143",
+      "source": "Frase 17",
+      "target": "Estilo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "144",
+      "source": "Frase 17",
+      "target": "Lento",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "145",
+      "source": "Frase 17",
+      "target": "Rápido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "146",
+      "source": "Frase 17",
+      "target": "Pausa",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "147",
+      "source": "Frase 17",
+      "target": "Frase 16",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "148",
+      "source": "Frase 17",
+      "target": "Frase 18",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "149",
+      "source": "Frase 25",
+      "target": "Glissando",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "150",
+      "source": "Frase 25",
+      "target": "Trémolo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "151",
+      "source": "Frase 25",
+      "target": "Pizzicato",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "152",
+      "source": "Frase 25",
+      "target": "Ruido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "153",
+      "source": "Frase 25",
+      "target": "Atonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "154",
+      "source": "Frase 25",
+      "target": "Tonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "155",
+      "source": "Frase 25",
+      "target": "Cromático",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "156",
+      "source": "Frase 25",
+      "target": "Discontinua",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "157",
+      "source": "Frase 25",
+      "target": "Montaje",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "158",
+      "source": "Frase 25",
+      "target": "Cadencia",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "159",
+      "source": "Frase 25",
+      "target": "Escala",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "160",
+      "source": "Frase 25",
+      "target": "Canon",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "161",
+      "source": "Frase 25",
+      "target": "Carácter",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "162",
+      "source": "Frase 25",
+      "target": "Mímesis",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "163",
+      "source": "Frase 25",
+      "target": "Rápido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "164",
+      "source": "Frase 25",
+      "target": "Pausa",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "165",
+      "source": "Frase 25",
+      "target": "Frase 24",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "166",
+      "source": "Frase 25",
+      "target": "Frase 26",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "167",
+      "source": "Frase 23",
+      "target": "Cromático",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "168",
+      "source": "Frase 23",
+      "target": "Tonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "169",
+      "source": "Frase 23",
+      "target": "Discontinua",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "170",
+      "source": "Frase 23",
+      "target": "Homofonía",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "171",
+      "source": "Frase 23",
+      "target": "Motivo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "172",
+      "source": "Frase 23",
+      "target": "Estilo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "173",
+      "source": "Frase 23",
+      "target": "Rápido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "174",
+      "source": "Frase 23",
+      "target": "Hoquete",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "175",
+      "source": "Frase 23",
+      "target": "Frase 22",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "176",
+      "source": "Frase 23",
+      "target": "Frase 24",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "177",
+      "source": "Frase 05",
+      "target": "Glissando",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "178",
+      "source": "Frase 05",
+      "target": "Ruido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "179",
+      "source": "Frase 05",
+      "target": "Armónicos",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "180",
+      "source": "Frase 05",
+      "target": "Modal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "181",
+      "source": "Frase 05",
+      "target": "Escala",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "182",
+      "source": "Frase 05",
+      "target": "Pausa",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "183",
+      "source": "Frase 05",
+      "target": "Frase 04",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "184",
+      "source": "Frase 05",
+      "target": "Frase 06",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "185",
+      "source": "Frase 18",
+      "target": "Ruido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "186",
+      "source": "Frase 18",
+      "target": "Tonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "187",
+      "source": "Frase 18",
+      "target": "No-Funcional",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "188",
+      "source": "Frase 18",
+      "target": "Cita",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "189",
+      "source": "Frase 18",
+      "target": "Mímesis",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "190",
+      "source": "Frase 18",
+      "target": "Estilo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "191",
+      "source": "Frase 18",
+      "target": "Pausa",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "192",
+      "source": "Frase 18",
+      "target": "Frase 17",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "193",
+      "source": "Frase 18",
+      "target": "Frase 19",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "194",
+      "source": "Frase 09",
+      "target": "Glissando",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "195",
+      "source": "Frase 09",
+      "target": "Sul-Pont",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "196",
+      "source": "Frase 09",
+      "target": "Trémolo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "197",
+      "source": "Frase 09",
+      "target": "Cromático",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "198",
+      "source": "Frase 09",
+      "target": "Secuencia",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "199",
+      "source": "Frase 09",
+      "target": "Escala",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "200",
+      "source": "Frase 09",
+      "target": "Cita",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "201",
+      "source": "Frase 09",
+      "target": "Rápido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "202",
+      "source": "Frase 09",
+      "target": "Lento",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "203",
+      "source": "Frase 09",
+      "target": "Frase 08",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "204",
+      "source": "Frase 09",
+      "target": "Frase 10",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "205",
+      "source": "Frase 28",
+      "target": "Armónicos",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "206",
+      "source": "Frase 28",
+      "target": "No-Funcional",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "207",
+      "source": "Frase 28",
+      "target": "Atonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "208",
+      "source": "Frase 28",
+      "target": "Modal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "209",
+      "source": "Frase 28",
+      "target": "Ostinato",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "210",
+      "source": "Frase 28",
+      "target": "Arpegio",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "211",
+      "source": "Frase 28",
+      "target": "Mímesis",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "212",
+      "source": "Frase 28",
+      "target": "Estilo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "213",
+      "source": "Frase 28",
+      "target": "Pausa",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "214",
+      "source": "Frase 28",
+      "target": "Frase 27",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "215",
+      "source": "Frase 28",
+      "target": "Frase 29",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "216",
+      "source": "Frase 08",
+      "target": "Ruido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "217",
+      "source": "Frase 08",
+      "target": "Glissando",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "218",
+      "source": "Frase 08",
+      "target": "Vibrato",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "219",
+      "source": "Frase 08",
+      "target": "Pizzicato",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "220",
+      "source": "Frase 08",
+      "target": "Armónicos",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "221",
+      "source": "Frase 08",
+      "target": "Trémolo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "222",
+      "source": "Frase 08",
+      "target": "Tonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "223",
+      "source": "Frase 08",
+      "target": "Cromático",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "224",
+      "source": "Frase 08",
+      "target": "Atonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "225",
+      "source": "Frase 08",
+      "target": "No-Funcional",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "226",
+      "source": "Frase 08",
+      "target": "Unísono",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "227",
+      "source": "Frase 08",
+      "target": "Escala",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "228",
+      "source": "Frase 08",
+      "target": "Montaje",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "229",
+      "source": "Frase 08",
+      "target": "Ornamento",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "230",
+      "source": "Frase 08",
+      "target": "Mímesis",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "231",
+      "source": "Frase 08",
+      "target": "Rápido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "232",
+      "source": "Frase 08",
+      "target": "Hoquete",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "233",
+      "source": "Frase 08",
+      "target": "Improvisación",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "234",
+      "source": "Frase 08",
+      "target": "Frase 07",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "235",
+      "source": "Frase 08",
+      "target": "Frase 09",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "236",
+      "source": "Frase 21",
+      "target": "Glissando",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "237",
+      "source": "Frase 21",
+      "target": "Ruido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "238",
+      "source": "Frase 21",
+      "target": "Armónicos",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "239",
+      "source": "Frase 21",
+      "target": "Trémolo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "240",
+      "source": "Frase 21",
+      "target": "Sul-Pont",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "241",
+      "source": "Frase 21",
+      "target": "Pizzicato",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "242",
+      "source": "Frase 21",
+      "target": "Montaje",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "243",
+      "source": "Frase 21",
+      "target": "Carácter",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "244",
+      "source": "Frase 21",
+      "target": "Solo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "245",
+      "source": "Frase 21",
+      "target": "Frase 20",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "246",
+      "source": "Frase 21",
+      "target": "Frase 22",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "247",
+      "source": "Frase 20",
+      "target": "Ruido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "248",
+      "source": "Frase 20",
+      "target": "Trémolo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "249",
+      "source": "Frase 20",
+      "target": "Glissando",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "250",
+      "source": "Frase 20",
+      "target": "Rasgueo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "251",
+      "source": "Frase 20",
+      "target": "Pizzicato",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "252",
+      "source": "Frase 20",
+      "target": "Atonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "253",
+      "source": "Frase 20",
+      "target": "Montaje",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "254",
+      "source": "Frase 20",
+      "target": "Ornamento",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "255",
+      "source": "Frase 20",
+      "target": "Carácter",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "256",
+      "source": "Frase 20",
+      "target": "Solo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "257",
+      "source": "Frase 20",
+      "target": "Improvisación",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "258",
+      "source": "Frase 20",
+      "target": "Frase 19",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "259",
+      "source": "Frase 20",
+      "target": "Frase 21",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "260",
+      "source": "Frase 22",
+      "target": "Vibrato",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "261",
+      "source": "Frase 22",
+      "target": "Pizzicato",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "262",
+      "source": "Frase 22",
+      "target": "Ruido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "263",
+      "source": "Frase 22",
+      "target": "Armónicos",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "264",
+      "source": "Frase 22",
+      "target": "Modal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "265",
+      "source": "Frase 22",
+      "target": "Cromático",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "266",
+      "source": "Frase 22",
+      "target": "No-Funcional",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "267",
+      "source": "Frase 22",
+      "target": "Montaje",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "268",
+      "source": "Frase 22",
+      "target": "Escala",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "269",
+      "source": "Frase 22",
+      "target": "Carácter",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "270",
+      "source": "Frase 22",
+      "target": "Estilo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "271",
+      "source": "Frase 22",
+      "target": "Mímesis",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "272",
+      "source": "Frase 22",
+      "target": "Solo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "273",
+      "source": "Frase 22",
+      "target": "Frase 21",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "274",
+      "source": "Frase 22",
+      "target": "Frase 23",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "275",
+      "source": "Frase 11",
+      "target": "Glissando",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "276",
+      "source": "Frase 11",
+      "target": "Trémolo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "277",
+      "source": "Frase 11",
+      "target": "Ruido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "278",
+      "source": "Frase 11",
+      "target": "Pizzicato",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "279",
+      "source": "Frase 11",
+      "target": "No-Funcional",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "280",
+      "source": "Frase 11",
+      "target": "Cromático",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "281",
+      "source": "Frase 11",
+      "target": "Tonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "282",
+      "source": "Frase 11",
+      "target": "Escala",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "283",
+      "source": "Frase 11",
+      "target": "Homofonía",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "284",
+      "source": "Frase 11",
+      "target": "Secuencia",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "285",
+      "source": "Frase 11",
+      "target": "Ornamento",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "286",
+      "source": "Frase 11",
+      "target": "Montaje",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "287",
+      "source": "Frase 11",
+      "target": "Cadencia",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "288",
+      "source": "Frase 11",
+      "target": "Motivo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "289",
+      "source": "Frase 11",
+      "target": "Mímesis",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "290",
+      "source": "Frase 11",
+      "target": "Rápido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "291",
+      "source": "Frase 11",
+      "target": "Lento",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "292",
+      "source": "Frase 11",
+      "target": "Pausa",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "293",
+      "source": "Frase 11",
+      "target": "Solo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "294",
+      "source": "Frase 11",
+      "target": "Frase 10",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "295",
+      "source": "Frase 11",
+      "target": "Frase 12",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "296",
+      "source": "Frase 14",
+      "target": "Ruido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "297",
+      "source": "Frase 14",
+      "target": "Pizzicato",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "298",
+      "source": "Frase 14",
+      "target": "Trémolo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "299",
+      "source": "Frase 14",
+      "target": "Armónicos",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "300",
+      "source": "Frase 14",
+      "target": "Mímesis",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "301",
+      "source": "Frase 14",
+      "target": "Pausa",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "302",
+      "source": "Frase 14",
+      "target": "Frase 13",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "303",
+      "source": "Frase 14",
+      "target": "Frase 15",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "304",
+      "source": "Frase 16",
+      "target": "Ruido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "305",
+      "source": "Frase 16",
+      "target": "Glissando",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "306",
+      "source": "Frase 16",
+      "target": "Vibrato",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "307",
+      "source": "Frase 16",
+      "target": "Trémolo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "308",
+      "source": "Frase 16",
+      "target": "Pizzicato",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "309",
+      "source": "Frase 16",
+      "target": "Rasgueo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "310",
+      "source": "Frase 16",
+      "target": "Tonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "311",
+      "source": "Frase 16",
+      "target": "No-Funcional",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "312",
+      "source": "Frase 16",
+      "target": "Montaje",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "313",
+      "source": "Frase 16",
+      "target": "Ornamento",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "314",
+      "source": "Frase 16",
+      "target": "Escala",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "315",
+      "source": "Frase 16",
+      "target": "Estilo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "316",
+      "source": "Frase 16",
+      "target": "Mímesis",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "317",
+      "source": "Frase 16",
+      "target": "Rápido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "318",
+      "source": "Frase 16",
+      "target": "Lento",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "319",
+      "source": "Frase 16",
+      "target": "Improvisación",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "320",
+      "source": "Frase 16",
+      "target": "Frase 15",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "321",
+      "source": "Frase 16",
+      "target": "Frase 17",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "322",
+      "source": "Frase 01",
+      "target": "Ruido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "323",
+      "source": "Frase 01",
+      "target": "Glissando",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "324",
+      "source": "Frase 01",
+      "target": "Pizzicato",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "325",
+      "source": "Frase 01",
+      "target": "Atonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "326",
+      "source": "Frase 01",
+      "target": "Tonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "327",
+      "source": "Frase 01",
+      "target": "Cadencia",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "328",
+      "source": "Frase 01",
+      "target": "Motivo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "329",
+      "source": "Frase 01",
+      "target": "Mímesis",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "330",
+      "source": "Frase 01",
+      "target": "Carácter",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "331",
+      "source": "Frase 01",
+      "target": "Rápido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "332",
+      "source": "Frase 01",
+      "target": "Improvisación",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "333",
+      "source": "Frase 01",
+      "target": "Frase 02",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "334",
+      "source": "Frase 02",
+      "target": "Trémolo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "335",
+      "source": "Frase 02",
+      "target": "Glissando",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "336",
+      "source": "Frase 02",
+      "target": "Pizzicato",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "337",
+      "source": "Frase 02",
+      "target": "Armónicos",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "338",
+      "source": "Frase 02",
+      "target": "Tonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "339",
+      "source": "Frase 02",
+      "target": "Cromático",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "340",
+      "source": "Frase 02",
+      "target": "Escala",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "341",
+      "source": "Frase 02",
+      "target": "Secuencia",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "342",
+      "source": "Frase 02",
+      "target": "Ornamento",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "343",
+      "source": "Frase 02",
+      "target": "Mímesis",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "344",
+      "source": "Frase 02",
+      "target": "Carácter",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "345",
+      "source": "Frase 02",
+      "target": "Pausa",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "346",
+      "source": "Frase 02",
+      "target": "Rápido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "347",
+      "source": "Frase 02",
+      "target": "Frase 01",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "348",
+      "source": "Frase 02",
+      "target": "Frase 03",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "349",
+      "source": "Frase 15",
+      "target": "Glissando",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "350",
+      "source": "Frase 15",
+      "target": "No-Funcional",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "351",
+      "source": "Frase 15",
+      "target": "Cromático",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "352",
+      "source": "Frase 15",
+      "target": "Secuencia",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "353",
+      "source": "Frase 15",
+      "target": "Lento",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "354",
+      "source": "Frase 15",
+      "target": "Pausa",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "355",
+      "source": "Frase 15",
+      "target": "Hoquete",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "356",
+      "source": "Frase 15",
+      "target": "Improvisación",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "357",
+      "source": "Frase 15",
+      "target": "Frase 14",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "358",
+      "source": "Frase 15",
+      "target": "Frase 16",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "359",
+      "source": "Frase 13",
+      "target": "Ruido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "360",
+      "source": "Frase 13",
+      "target": "Glissando",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "361",
+      "source": "Frase 13",
+      "target": "Trémolo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "362",
+      "source": "Frase 13",
+      "target": "Tonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "363",
+      "source": "Frase 13",
+      "target": "No-Funcional",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "364",
+      "source": "Frase 13",
+      "target": "Homofonía",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "365",
+      "source": "Frase 13",
+      "target": "Cadencia",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "366",
+      "source": "Frase 13",
+      "target": "Ornamento",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "367",
+      "source": "Frase 13",
+      "target": "Secuencia",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "368",
+      "source": "Frase 13",
+      "target": "Estilo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "369",
+      "source": "Frase 13",
+      "target": "Rápido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "370",
+      "source": "Frase 13",
+      "target": "Lento",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "371",
+      "source": "Frase 13",
+      "target": "Pausa",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "372",
+      "source": "Frase 13",
+      "target": "Improvisación",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "373",
+      "source": "Frase 13",
+      "target": "Frase 12",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "374",
+      "source": "Frase 13",
+      "target": "Frase 14",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "375",
+      "source": "Frase 06",
+      "target": "Glissando",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "376",
+      "source": "Frase 06",
+      "target": "Trémolo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "377",
+      "source": "Frase 06",
+      "target": "Atonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "378",
+      "source": "Frase 06",
+      "target": "Cromático",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "379",
+      "source": "Frase 06",
+      "target": "Homofonía",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "380",
+      "source": "Frase 06",
+      "target": "Motivo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "381",
+      "source": "Frase 06",
+      "target": "Lento",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "382",
+      "source": "Frase 06",
+      "target": "Rápido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "383",
+      "source": "Frase 06",
+      "target": "Frase 05",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "384",
+      "source": "Frase 06",
+      "target": "Frase 07",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "385",
+      "source": "Frase 03",
+      "target": "Ruido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "386",
+      "source": "Frase 03",
+      "target": "Glissando",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "387",
+      "source": "Frase 03",
+      "target": "Cromático",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "388",
+      "source": "Frase 03",
+      "target": "Tonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "389",
+      "source": "Frase 03",
+      "target": "Politonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "390",
+      "source": "Frase 03",
+      "target": "Modal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "391",
+      "source": "Frase 03",
+      "target": "No-Funcional",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "392",
+      "source": "Frase 03",
+      "target": "Ostinato",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "393",
+      "source": "Frase 03",
+      "target": "Motivo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "394",
+      "source": "Frase 03",
+      "target": "Mímesis",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "395",
+      "source": "Frase 03",
+      "target": "Estilo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "396",
+      "source": "Frase 03",
+      "target": "Carácter",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "397",
+      "source": "Frase 03",
+      "target": "Rápido",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "398",
+      "source": "Frase 03",
+      "target": "Improvisación",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "399",
+      "source": "Frase 03",
+      "target": "Frase 02",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "400",
+      "source": "Frase 03",
+      "target": "Frase 04",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "401",
+      "source": "Frase 29",
+      "target": "Armónicos",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "402",
+      "source": "Frase 29",
+      "target": "No-Funcional",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "403",
+      "source": "Frase 29",
+      "target": "Cromático",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "404",
+      "source": "Frase 29",
+      "target": "Homofonía",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "405",
+      "source": "Frase 29",
+      "target": "Lento",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "406",
+      "source": "Frase 29",
+      "target": "Frase 28",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "407",
+      "source": "Frase 24",
+      "target": "Glissando",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "408",
+      "source": "Frase 24",
+      "target": "Sul-Pont",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "409",
+      "source": "Frase 24",
+      "target": "Trémolo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "410",
+      "source": "Frase 24",
+      "target": "Cromático",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "411",
+      "source": "Frase 24",
+      "target": "Lento",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "412",
+      "source": "Frase 24",
+      "target": "Frase 23",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "413",
+      "source": "Frase 24",
+      "target": "Frase 25",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "414",
+      "source": "Frase 10",
+      "target": "Tonal",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "415",
+      "source": "Frase 10",
+      "target": "Estilo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "416",
+      "source": "Frase 10",
+      "target": "Lento",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_subtipo"
+      }
+    },
+    {
+      "key": "417",
+      "source": "Frase 10",
+      "target": "Frase 09",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "418",
+      "source": "Frase 10",
+      "target": "Frase 11",
+      "attributes": {
+        "weight": 1.0
+      }
+    },
+    {
+      "key": "419",
+      "source": "Frase 09",
+      "target": "MG_Xenakis",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_microgesto"
+      }
+    },
+    {
+      "key": "420",
+      "source": "Frase 27",
+      "target": "MG_Xenakis",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_microgesto"
+      }
+    },
+    {
+      "key": "421",
+      "source": "MG_Xenakis",
+      "target": "Cita",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "microgesto_subtipo"
+      }
+    },
+    {
+      "key": "422",
+      "source": "Frase 09",
+      "target": "MG_Ives",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_microgesto"
+      }
+    },
+    {
+      "key": "423",
+      "source": "MG_Ives",
+      "target": "Cita",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "microgesto_subtipo"
+      }
+    },
+    {
+      "key": "424",
+      "source": "Frase 27",
+      "target": "MG_Paganini",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_microgesto"
+      }
+    },
+    {
+      "key": "425",
+      "source": "MG_Paganini",
+      "target": "Cita",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "microgesto_subtipo"
+      }
+    },
+    {
+      "key": "426",
+      "source": "Frase 27",
+      "target": "MG_Schoenberg",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_microgesto"
+      }
+    },
+    {
+      "key": "427",
+      "source": "MG_Schoenberg",
+      "target": "Cita",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "microgesto_subtipo"
+      }
+    },
+    {
+      "key": "428",
+      "source": "Frase 27",
+      "target": "MG_Messiaen",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_microgesto"
+      }
+    },
+    {
+      "key": "429",
+      "source": "MG_Messiaen",
+      "target": "Cita",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "microgesto_subtipo"
+      }
+    },
+    {
+      "key": "430",
+      "source": "Frase 03",
+      "target": "MG_Country",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_microgesto"
+      }
+    },
+    {
+      "key": "431",
+      "source": "Frase 16",
+      "target": "MG_Country",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_microgesto"
+      }
+    },
+    {
+      "key": "432",
+      "source": "Frase 17",
+      "target": "MG_Country",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_microgesto"
+      }
+    },
+    {
+      "key": "433",
+      "source": "Frase 19",
+      "target": "MG_Country",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_microgesto"
+      }
+    },
+    {
+      "key": "434",
+      "source": "Frase 23",
+      "target": "MG_Country",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_microgesto"
+      }
+    },
+    {
+      "key": "435",
+      "source": "Frase 26",
+      "target": "MG_Country",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_microgesto"
+      }
+    },
+    {
+      "key": "436",
+      "source": "MG_Country",
+      "target": "Estilo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "microgesto_subtipo"
+      }
+    },
+    {
+      "key": "437",
+      "source": "Frase 03",
+      "target": "MG_Swing",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_microgesto"
+      }
+    },
+    {
+      "key": "438",
+      "source": "Frase 16",
+      "target": "MG_Swing",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_microgesto"
+      }
+    },
+    {
+      "key": "439",
+      "source": "Frase 26",
+      "target": "MG_Swing",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_microgesto"
+      }
+    },
+    {
+      "key": "440",
+      "source": "MG_Swing",
+      "target": "Estilo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "microgesto_subtipo"
+      }
+    },
+    {
+      "key": "441",
+      "source": "Frase 04",
+      "target": "MG_Habanera",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_microgesto"
+      }
+    },
+    {
+      "key": "442",
+      "source": "MG_Habanera",
+      "target": "Estilo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "microgesto_subtipo"
+      }
+    },
+    {
+      "key": "443",
+      "source": "Frase 13",
+      "target": "MG_Blues",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_microgesto"
+      }
+    },
+    {
+      "key": "444",
+      "source": "Frase 28",
+      "target": "MG_Blues",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_microgesto"
+      }
+    },
+    {
+      "key": "445",
+      "source": "MG_Blues",
+      "target": "Estilo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "microgesto_subtipo"
+      }
+    },
+    {
+      "key": "446",
+      "source": "Frase 18",
+      "target": "MG_Lullaby",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_microgesto"
+      }
+    },
+    {
+      "key": "447",
+      "source": "MG_Lullaby",
+      "target": "Estilo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "microgesto_subtipo"
+      }
+    },
+    {
+      "key": "448",
+      "source": "Frase 19",
+      "target": "MG_Hardcore",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "frase_microgesto"
+      }
+    },
+    {
+      "key": "449",
+      "source": "MG_Hardcore",
+      "target": "Estilo",
+      "attributes": {
+        "weight": 1.0,
+        "edge_nivel": "microgesto_subtipo"
+      }
+    }
+  ]
+}
